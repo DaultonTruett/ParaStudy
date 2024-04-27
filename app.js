@@ -3,15 +3,22 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const hbs = require('hbs');
 
+// define routes
 var indexRouter = require('./app_server/routes/index');
+var cardiacRouter = require('./app_server/routes/cardiac');
+
 var usersRouter = require('./app_server/routes/users');
 
 var app = express();
 
+
 // view engine setup
 // add "app_server" when restructring architecture
 app.set('views', path.join(__dirname, 'app_server', 'views'));
+
+hbs.registerPartials(__dirname + '/app_server/views/partials');
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -20,8 +27,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// wire routes to views
 app.use('/', indexRouter);
+app.use('/cardiac', cardiacRouter);
 app.use('/users', usersRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
