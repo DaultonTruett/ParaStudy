@@ -5,11 +5,16 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('hbs');
 
+// DB
+require('./app_api/models/db');
+
 // define routes
 var indexRouter = require('./app_server/routes/index');
 var cardiacRouter = require('./app_server/routes/cardiac');
 
 var usersRouter = require('./app_server/routes/users');
+
+const apiRouter = require('./app_api/routes/index');
 
 var app = express();
 
@@ -31,6 +36,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/cardiac', cardiacRouter);
 app.use('/users', usersRouter);
+
+app.use('/api', apiRouter);
 
 
 
