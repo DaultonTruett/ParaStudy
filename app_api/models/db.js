@@ -62,6 +62,7 @@ connect();
 
 // pull in models
 require('./medications');
+require('./algorithms');
 
 
 module.exports = mongoose;

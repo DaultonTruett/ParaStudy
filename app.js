@@ -11,6 +11,8 @@ require('./app_api/models/db');
 // define routes
 var indexRouter = require('./app_server/routes/index');
 var cardiacRouter = require('./app_server/routes/cardiac');
+var medicationsRouter = require('./app_server/routes/medications');
+const algorithmsRouter = require('./app_server/routes/algorithms');
 
 var usersRouter = require('./app_server/routes/users');
 
@@ -30,11 +32,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('./public'));
 
 // wire routes to views
 app.use('/', indexRouter);
 app.use('/cardiac', cardiacRouter);
+app.use('/cardiac/medications', medicationsRouter);
+app.use('/cardiac/algorithms', algorithmsRouter);
+
 app.use('/users', usersRouter);
 
 app.use('/api', apiRouter);

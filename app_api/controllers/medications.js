@@ -4,7 +4,7 @@ const Med = require('../models/medications');
 
 const getMedsByCategory = async(req, res) => {
     const getMeds = await Med.find({
-        'category': req.body.category
+        'category': req.params.category
     })
     .exec();
 
@@ -24,6 +24,7 @@ const addMedication = async(req, res) => {
         indications: req.body.indications,
         contraindications: req.body.contraindications,
         sideEffects: req.body.sideEffects,
+        actions: req.body.actions,
         notes: req.body.notes
     }).catch(err => {
         return res.status(500).json(err);
