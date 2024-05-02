@@ -1,12 +1,19 @@
 
-conditions = [
+topics = [
     {
-        name: "SVT",
-        presents: "HR > 100 bpm"
+        name: "Medications",
+        image: 'med.png',
+        link: "/cardiac/medications"
     },
     {
-        name: "Bradycardia",
-        presents: "HR < 60 bpm"
+        name: "Treatment Algorithms",
+        image: 'qrs.png',
+        link: '/cardiac/algorithms'
+    },
+    {
+        name: "Anatomy & Physiology",
+        image: "heart.png",
+        link: '/cardiac/anatomy'
     }
 ]
 
@@ -14,7 +21,7 @@ const cardiac = (req, res) => {
     res.render('cardiac', {
         title: "Cardiac",
         pageName: 'CARDIAC',
-        conditions
+        topics
     });
 };
 

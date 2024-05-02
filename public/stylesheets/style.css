@@ -1,8 +1,121 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* Global */
+a{
+  text-decoration: none;
 }
 
-a {
-  color: #00B7FF;
+ul{
+  list-style-type: none;
+}
+
+h1{
+  text-align: center;
+}
+
+#sidebar{
+  position:sticky;
+  float: right;
+  top: 0;
+  z-index: 1;
+  width: 15vw;
+  height:100vh;
+  ul{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 900px){
+  #sidebar{
+    display:none;
+  }
+}
+
+#content_card{
+  width: 75vw;
+}
+@media (max-width: 900px){
+  #content_card{
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+/* header (navbar) */
+
+
+/* footer */
+#footer{
+  display: flex;
+  align-items: flex-end;
+  bottom: 0;
+  background-color: rgb(122, 25, 25);
+  width: 100vw;
+  height: 15vh;
+}
+
+
+/* index */
+#index_bg{
+  background-image: url("/images/ambulance.avif");
+  background-size: 33rem 100vh;
+  background-repeat: no-repeat;
+}
+
+.welcome{
+  background-color: white;
+  display: flex;
+  flex-direction:column;
+  float: right;
+  height: 50vh;
+  width: 33vw;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  opacity: 0.85;
+}
+
+@media (max-width: 1100px){
+  #index_bg{
+    background-size: cover;
+  }
+  .welcome{
+    float: left;
+    height: auto;
+    width: 75vw;
+  }
+}
+
+
+/* cardiac */
+#cardiac_bg{
+  background: rgb(122, 25, 25);
+}
+
+
+#cardiac_card{
+  height: 50vh;
+  width: 18rem;
+}
+
+@media (max-width: 1100px){
+  #content_cardiac{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
+
+
+/* algorithms */
+#algorithms_bg{
+  background-color:rgb(42, 144, 212);
+}
+
+
+
+
+/* medications */
+#medications_bg{
+  background-color: rgb(42, 144, 212);
 }
