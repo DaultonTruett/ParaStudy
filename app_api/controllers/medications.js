@@ -1,6 +1,5 @@
-const mongoose = require('mongoose');
-
 const Med = require('../models/medications');
+const auth = require('../controllers/authentication');
 
 const getMedsByCategory = async(req, res) => {
     const getMeds = await Med.find({
@@ -16,26 +15,27 @@ const getMedsByCategory = async(req, res) => {
 }
 
 const addMedication = async(req, res) => {
-    const addMed = await Med.create({
-        category: req.body.category,
-        name: req.body.name,
-        age: req.body.age,
-        dose: req.body.dose,
-        indications: req.body.indications,
-        contraindications: req.body.contraindications,
-        sideEffects: req.body.sideEffects,
-        actions: req.body.actions,
-        notes: req.body.notes
+    await auth.getUser(req, res, (req, res) => {
+        Med.create({
+            category: req.body.category,
+            name: req.body.name,
+            age: req.body.age,
+            dose: req.body.dose,
+            indications: req.body.indications,
+            contraindications: req.body.contraindications,
+            sideEffects: req.body.sideEffects,
+            actions: req.body.actions,
+            notes: req.body.notes
+    }).then(med => {
+        if(!med){
+            return res.status(404).json({message: 'Not found'});
+        }
+        res.send(med);
     }).catch(err => {
         return res.status(500).json(err);
     })
-    
-    if(!addMed){
-        return res.status(404).json({message: 'Not found'});
-    }
-
-    res.send(addMed);
-} 
+    });
+};
 
 
 module.exports = {

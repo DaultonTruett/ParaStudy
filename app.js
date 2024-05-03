@@ -1,12 +1,17 @@
+require('dotenv').config();
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const hbs = require('hbs');
+const passport = require('passport');
 
 // DB
 require('./app_api/models/db');
+
+require('./app_api/config/passport');
 
 // define routes
 var indexRouter = require('./app_server/routes/index');
@@ -34,6 +39,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('./public'));
 
+app.use(passport.initialize());
+
+
+//CORS
+app.use('/api', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  next();
+});
+
+
 // wire routes to views
 app.use('/', indexRouter);
 app.use('/cardiac', cardiacRouter);
@@ -44,6 +61,12 @@ app.use('/users', usersRouter);
 
 app.use('/api', apiRouter);
 
+
+app.use( (err, req, res, next) => {
+  if(err.name === 'UnauthorizedError'){
+    res.status(401).json({message: err.name + ': ' + err.message});
+  };
+});
 
 
 // catch 404 and forward to error handler
