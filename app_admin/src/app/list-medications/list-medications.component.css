@@ -1,0 +1,13 @@
+#add_btn{
+    width: 100vw;
+    button{
+        float: right;
+        width: 13vw;
+        padding: 1.4em;
+        margin: 4.4rem;
+        background-color: rgb(8, 85, 8);
+        color: white;
+        border-width: 0;
+    }
+
+}

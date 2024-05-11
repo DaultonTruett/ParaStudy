@@ -1,0 +1,116 @@
+
+<div id="editMed">
+    <form id="editMed_form" *ngIf="editForm" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        
+        <div class="form_fields">
+            <label>Category</label>
+            <input type="text" formControlName="category" placeholder="category"
+                [ngClass]="{'is-invalid': submitted && values['category'].errors}">
+
+            <div *ngIf="submitted && values['category'].errors">
+                <div *ngIf="values['category'].errors?.['required']">
+                    Category is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Name</label>
+            <input type="text" formControlName="name" placeholder="name"
+                [ngClass]="{'is-invalid': submitted && values['name'].errors}">
+
+            <div *ngIf="submitted && values['name'].errors">
+                <div *ngIf="values['category'].errors?.['required']">
+                    Name is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Age</label>
+            <input type="text" formControlName="age" placeholder="age"
+                [ngClass]="{'is-invalid': submitted && values['age'].errors}">
+
+            <div *ngIf="submitted && values['v'].errors">
+                <div *ngIf="values['age'].errors?.['required']">
+                    Age is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Dose</label>
+            <input type="text" formControlName="dose" placeholder="dose"
+                [ngClass]="{'is-invalid': submitted && values['dose'].errors}">
+
+            <div *ngIf="submitted && values['dose'].errors">
+                <div *ngIf="values['dose'].errors?.['required']">
+                    Dose is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Indications</label>
+            <textarea type="text" formControlName="indications" placeholder="indications"
+                [ngClass]="{'is-invalid': submitted && values['indications'].errors}"></textarea>
+
+            <div *ngIf="submitted && values['indications'].errors">
+                <div *ngIf="values['indications'].errors?.['required']">
+                    Indications are required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Contraindication</label>
+            <textarea type="text" formControlName="contraindications" placeholder="contraindications"
+                [ngClass]="{'is-invalid': submitted && values['contraindications'].errors}"></textarea>
+
+            <div *ngIf="submitted && values['contraindications'].errors">
+                <div *ngIf="values['contraindications'].errors?.['required']">
+                    Contraindications are required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Side Effects</label>
+            <textarea type="text" formControlName="sideEffects" placeholder="sideEffects"
+                [ngClass]="{'is-invalid': submitted && values['sideEffects'].errors}"></textarea>
+
+            <div *ngIf="submitted && values['sideEffects'].errors">
+                <div *ngIf="values['sideEffects'].errors?.['required']">
+                    Contraindication is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Actions</label>
+            <textarea type="text" formControlName="actions" placeholder="actions"
+                [ngClass]="{'is-invalid': submitted && values['actions'].errors}"></textarea>
+
+            <div *ngIf="submitted && values['actions'].errors">
+                <div *ngIf="values['actions'].errors?.['required']">
+                    Actions is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Notes</label>
+            <textarea type="text" formControlName="notes" placeholder="notes"
+                [ngClass]="{'is-invalid': submitted && values['notes'].errors}"></textarea>
+
+            <div *ngIf="submitted && values['notes'].errors">
+                <div *ngIf="values['notes'].errors?.['required']">
+                    Notes is required.
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Save</button>
+
+    </form>
+</div>

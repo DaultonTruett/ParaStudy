@@ -1,0 +1,28 @@
+
+<div class="med_card">
+    <div>
+        <!--{{medication._id}}-->
+        <h2><b>Category: </b>
+            {{medication.category}}
+        </h2>
+
+        <h3><b>Name: </b>
+            {{medication.name}}
+        </h3>
+
+        <h4><b>{{medication.age}} dose: </b>
+            {{medication.dose}}
+        </h4>
+
+        <h4><b>Indications: </b>
+            {{medication.indications}}
+        </h4>
+        <button id="edit_btn" *ngIf="isLoggedIn()" type="button" (click)="editMed(medication)">
+            Edit
+        </button>
+        <button id="delete_btn" *ngIf="isLoggedIn()" type="button" (click)="deleteMed(medication)">
+            Delete
+        </button>
+    </div>
+    <br>
+</div>

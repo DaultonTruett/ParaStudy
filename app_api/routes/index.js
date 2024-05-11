@@ -24,13 +24,21 @@ router
 
 
 router
-    .route('/cardiac/medications/:category')
-    .get(medController.getMedsByCategory);
-    
+    .route('/medications')
+    .get(medController.getMedications)
+    .post(auth, medController.addMedication);
+
 
 router
-    .route('/cardiac/medications')
-    .post(auth, medController.addMedication);
+    .route('/medications/:_id')
+    .get(medController.getMedicationById)
+    .put(auth, medController.updateMedication)
+    .post(auth, medController.deleteMedication);
+
+
+router
+    .route('/cardiac/medications/:category')
+    .get(medController.getMedsByCategory);
 
 
 router

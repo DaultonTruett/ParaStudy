@@ -1,0 +1,19 @@
+nav{
+    width: 100vw;
+    background-color: rgb(44, 40, 40);
+    color: white;
+    top: 0;
+    box-shadow: 2px 2px 4px 4px rgb(24, 23, 23);
+    ul{
+        display: inline-flex;
+        li{
+            list-style-type: none;
+            margin: 1rem 1rem 0 0;
+            font-size: large;
+            a{
+                text-decoration: none;
+                color:white;
+            }
+        }
+    }
+}

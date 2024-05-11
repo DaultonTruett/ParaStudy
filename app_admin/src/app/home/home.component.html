@@ -1,0 +1,9 @@
+
+<div *ngIf="!isLoggedIn()">
+    <h1>Welcome, ParaStudy Admin</h1>
+    <h3><i>Please login to continue</i></h3>
+</div>
+
+<div *ngIf="isLoggedIn()">
+    <h1>Welcome, {{this.userName}}</h1>
+</div>

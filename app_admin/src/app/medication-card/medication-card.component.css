@@ -1,0 +1,28 @@
+.med_card{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 2rem;
+    padding: 1.7rem 1rem;
+    width: 75vw;
+    border-color: black;
+    border-width: 2px;
+    background-color:rgb(108, 155, 202);
+    box-shadow: 8px 4px 4px grey;
+    button{
+        width: 5.5rem;
+        height: 2rem;
+        margin: 18px 10px;
+        padding: 2px 6px;
+        border-width: 0;
+        color: white;
+    }
+}
+
+#edit_btn{
+    background-color: rgb(9, 9, 161);
+}
+
+#delete_btn{
+    background-color: rgb(163, 7, 7);
+}
