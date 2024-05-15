@@ -62,7 +62,7 @@ connect();
 
 // pull in models
 require('./medications');
-require('./algorithms');
+require('./protocols');
 require('./users');
 
 

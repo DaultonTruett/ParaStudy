@@ -8,7 +8,7 @@ cardiacTopics = [
     {
         name: "Cardiac Protocols",
         image: 'qrs.png',
-        link: '/cardiac/algorithms'
+        link: '/cardiac/protocols'
     },
     /*{
         name: "Anatomy & Physiology",

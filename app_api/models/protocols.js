@@ -6,7 +6,7 @@ const stepsSchema = new mongoose.Schema({
 })
 */
 
-const algorithmSchema = new mongoose.Schema({
+const protocolSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
@@ -17,12 +17,12 @@ const algorithmSchema = new mongoose.Schema({
         required: true,
         index: true
     },
-    algorithm: {
+    protocol: {
         type: String,
         required: true
     }
 });
 
-const Algorithm = mongoose.model('algorithms', algorithmSchema);
+const Protocol = mongoose.model('protocols', protocolSchema);
 
-module.exports = Algorithm;
+module.exports = Protocol;

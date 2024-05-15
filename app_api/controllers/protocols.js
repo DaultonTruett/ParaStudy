@@ -1,21 +1,21 @@
 const mongoose = require('mongoose');
-const Algorithm = mongoose.model('algorithms');
-const auth = require('../controllers/authentication');
+const Protocol = mongoose.model('protocols');
+const auth = require('./authentication');
 
-const getAlgorithms = async(req, res) => {
-    const getAlgorithms = await Algorithm.find({}).exec();
+const getProtocols = async(req, res) => {
+    const getProtocols = await Protocol.find({}).exec();
 
-    if(!getAlgorithms){
+    if(!getProtocols){
         return res.status(404).json({message: `No algorithms found found with category: ${req.body.category}`});
     };
 
-    return res.status(200).json(getAlgorithms);
+    return res.status(200).json(getProtocols);
 };
 
 const getProtocolsByCategory = async(req, res) => {
-    const getProtocols = await Algorithm.find({"category": req.params.category}).exec();
+    const getProtocols = await Protocol.find({"category": req.params.category}).exec();
 
-    if(!getAlgorithms){
+    if(!getProtocols){
         return res.status(404).json({message: `No algorithms found found with category: ${req.body.category}`});
     };
 
@@ -23,24 +23,24 @@ const getProtocolsByCategory = async(req, res) => {
 };
 
 
-const addAlgorithm = async(req, res) => {
+const addProtocol = async(req, res) => {
     await auth.getUser(req, res, (req, res) => {
-        Algorithm.create({
+        Protocol.create({
             category: req.body.category,
             name: req.body.name,
-            algorithm: req.body.algorithm
+            protocol: req.body.protocol
         })
-        .then(algorithm => {
-            if(!algorithm){
+        .then(protocol => {
+            if(!protocol){
                 return res.status(404).json({message: 'Not found'});
             };
         
-            res.send(algorithm);
+            res.send(protocol);
         })
         .catch(err => {
             if(err.kind === 'ObjectId'){
                 return res.status(404).send({
-                    message: 'Algorithm not created'
+                    message: 'protocol not created'
                 });
             }
             return res.status(500).json(err);
@@ -51,7 +51,7 @@ const addAlgorithm = async(req, res) => {
 
 
 module.exports = {
-    getAlgorithms,
+    getProtocols,
     getProtocolsByCategory,
-    addAlgorithm
+    addProtocol
 }

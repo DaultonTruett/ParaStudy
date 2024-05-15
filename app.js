@@ -18,7 +18,7 @@ const indexRouter = require('./app_server/routes/index');
 
 const cardiacRouter = require('./app_server/routes/cardiac');
 const cardiacMedicationsRouter = require('./app_server/routes/cardiacMedications');
-const algorithmsRouter = require('./app_server/routes/algorithms');
+const cardiacProtocolsRouter = require('./app_server/routes/cardiacProtocols');
 
 const medicalRouter = require('./app_server/routes/medical');
 const medicalMedicationsRouter = require('./app_server/routes/medicalMedications');
@@ -65,11 +65,11 @@ app.use('/', indexRouter);
 
 app.use('/cardiac', cardiacRouter);
 app.use('/cardiac/medications', cardiacMedicationsRouter);
-app.use('/cardiac/algorithms', algorithmsRouter);
+app.use('/cardiac/protocols', cardiacProtocolsRouter);
 
 app.use('/medical', medicalRouter);
 app.use('/medical/medications', medicalMedicationsRouter);
-app.use('/medical/algorithms', medicalProtocolsRouter);
+app.use('/medical/protocols', medicalProtocolsRouter);
 
 
 app.use('/trauma', traumaRouter);

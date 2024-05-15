@@ -8,7 +8,7 @@ medicalTopics = [
 {
     name: "Medical Protocols",
     image: 'stethoscope.png',
-    link: '/medical/algorithms'
+    link: '/medical/protocols'
 }
 ]
 

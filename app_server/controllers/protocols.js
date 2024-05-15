@@ -7,8 +7,8 @@ const options = {
     }
 };
 
-const cardiacAlgorithms = async(req, res) => {
-    await fetch(`${endpoint}/cardiac/algorithms/cardiac`, options)
+const cardiacProtocols = async(req, res) => {
+    await fetch(`${endpoint}/cardiac/protocols/cardiac`, options)
     .then(res => res.json())
     .then(protocol => {
 
@@ -19,12 +19,12 @@ const cardiacAlgorithms = async(req, res) => {
             protocol = [];
         }else{
             if(!protocol.length){
-                msg = 'No algorithms found.'
+                msg = 'No protocols found.'
             };
         };
 
-        res.render('algorithms', {
-            title: 'Algorithms',
+        res.render('protocols', {
+            title: 'Protocols',
             pageName: "Cardiac Protocols",
             protocol
         })
@@ -47,7 +47,7 @@ const medicalProtocols = async(req, res) => {
             };
         }
 
-        res.render('algorithms', {
+        res.render('protocols', {
             title: 'Protocols',
             pageName: 'Medical Protocols',
             protocol
@@ -71,7 +71,7 @@ const traumaProtocols = async(req, res) => {
             };
         }
 
-        res.render('algorithms', {
+        res.render('protocols', {
             title: 'Protocols',
             pageName: 'Trauma Protocols',
             protocol
@@ -81,7 +81,7 @@ const traumaProtocols = async(req, res) => {
 };
 
 module.exports = {
-    cardiacAlgorithms,
+    cardiacProtocols,
     medicalProtocols,
     traumaProtocols
 };

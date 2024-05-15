@@ -11,7 +11,7 @@ const auth = jwt({
 // controllers
 const authController = require('../controllers/authentication');
 const medController = require('../controllers/medications');
-const algorithmController = require('../controllers/algorithms');
+const protocolsController = require('../controllers/protocols');
 
 // Login & registration
 router
@@ -51,20 +51,20 @@ router
 // Protocols
 router
     .route('/protocols')
-    .get(algorithmController.getAlgorithms)
-    .post(auth, algorithmController.addAlgorithm)
+    .get(protocolsController.getProtocols)
+    .post(auth, protocolsController.addProtocol)
 
 router
-    .route('/cardiac/algorithms/:category')
-    .get(algorithmController.getProtocolsByCategory)
+    .route('/cardiac/protocols/:category')
+    .get(protocolsController.getProtocolsByCategory)
 
 router
     .route('/medical/protocols/:category')
-    .get(algorithmController.getProtocolsByCategory)
+    .get(protocolsController.getProtocolsByCategory)
 
 router
     .route('/trauma/protocols/:category')
-    .get(algorithmController.getProtocolsByCategory)
+    .get(protocolsController.getProtocolsByCategory)
 
 
 
