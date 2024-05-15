@@ -22,17 +22,18 @@ const algorithmsRouter = require('./app_server/routes/algorithms');
 
 const medicalRouter = require('./app_server/routes/medical');
 const medicalMedicationsRouter = require('./app_server/routes/medicalMedications');
-
+const medicalProtocolsRouter = require('./app_server/routes/medicalProtocols');
 
 const traumaRouter = require('./app_server/routes/trauma');
 const traumaMedicationsRouter = require('./app_server/routes/traumaMedications');
+const traumaProtocolsRouter = require('./app_server/routes/traumaProtocols');
 
 const usersRouter = require('./app_server/routes/users');
 
 const apiRouter = require('./app_api/routes/index');
 
-const app = express();
 
+const app = express();
 
 // view engine setup
 // add "app_server" when restructring architecture
@@ -68,10 +69,12 @@ app.use('/cardiac/algorithms', algorithmsRouter);
 
 app.use('/medical', medicalRouter);
 app.use('/medical/medications', medicalMedicationsRouter);
+app.use('/medical/algorithms', medicalProtocolsRouter);
 
 
 app.use('/trauma', traumaRouter);
 app.use('/trauma/medications', traumaMedicationsRouter);
+app.use('/trauma/protocols', traumaProtocolsRouter);
 
 app.use('/users', usersRouter);
 

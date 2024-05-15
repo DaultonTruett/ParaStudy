@@ -22,7 +22,7 @@
         <div class="container-fluid">
             <div class="" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {{#each algorithm}}
+                    {{#each protocol}}
                         <li class="nav-item d-flex">
                             <a class="nav-link" href="#{{this.name}}">{{this.name}}</a>
                         </li>
@@ -38,7 +38,7 @@
     <div id="content_card" class="d-flex-inline col-gap-3 row-gap-3 mt-5 mb-5">
         <h1 class="m-5">{{pageName}}</h1>
 
-        {{#each algorithm}}
+        {{#each protocol}}
             <div class="row m-5">
                 <div class="card col shadow bg-body-tertiary rounded m-3" id="{{this.name}}">
 

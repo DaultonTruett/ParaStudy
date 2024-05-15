@@ -12,6 +12,16 @@ const getAlgorithms = async(req, res) => {
     return res.status(200).json(getAlgorithms);
 };
 
+const getProtocolsByCategory = async(req, res) => {
+    const getProtocols = await Algorithm.find({"category": req.params.category}).exec();
+
+    if(!getAlgorithms){
+        return res.status(404).json({message: `No algorithms found found with category: ${req.body.category}`});
+    };
+
+    return res.status(200).json(getProtocols);
+};
+
 
 const addAlgorithm = async(req, res) => {
     await auth.getUser(req, res, (req, res) => {
@@ -42,5 +52,6 @@ const addAlgorithm = async(req, res) => {
 
 module.exports = {
     getAlgorithms,
+    getProtocolsByCategory,
     addAlgorithm
 }

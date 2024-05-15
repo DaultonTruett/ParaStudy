@@ -6,9 +6,9 @@ traumaTopics = [
     link: "/trauma/medications"
 },
 {
-    name: "Injury Management",
+    name: "Trauma Protocols",
     image: 'medical.png',
-    link: '/trauma/assessments'
+    link: '/trauma/protocols'
 }
 ]
 

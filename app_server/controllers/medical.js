@@ -6,9 +6,9 @@ medicalTopics = [
     link: "/medical/medications"
 },
 {
-    name: "Common Conditions",
+    name: "Medical Protocols",
     image: 'stethoscope.png',
-    link: '/medical/conditions'
+    link: '/medical/algorithms'
 }
 ]
 

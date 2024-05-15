@@ -6,7 +6,7 @@ cardiacTopics = [
         link: "/cardiac/medications"
     },
     {
-        name: "Treatment Algorithms",
+        name: "Cardiac Protocols",
         image: 'qrs.png',
         link: '/cardiac/algorithms'
     },
