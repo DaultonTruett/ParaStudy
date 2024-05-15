@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListAlgorithmsComponent } from './list-algorithms.component';
+import { EditProtocolComponent } from './edit-protocol.component';
 
-describe('ListAlgorithmsComponent', () => {
-  let component: ListAlgorithmsComponent;
-  let fixture: ComponentFixture<ListAlgorithmsComponent>;
+describe('EditProtocolComponent', () => {
+  let component: EditProtocolComponent;
+  let fixture: ComponentFixture<EditProtocolComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListAlgorithmsComponent]
+      imports: [EditProtocolComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ListAlgorithmsComponent);
+    fixture = TestBed.createComponent(EditProtocolComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

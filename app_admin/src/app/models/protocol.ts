@@ -1,6 +1,6 @@
-export interface Algorithm {
+export interface Protocol {
     _id: string,
     category: string,
     name: string,
-    algorithm: string
-};
+    protocol: string
+}
