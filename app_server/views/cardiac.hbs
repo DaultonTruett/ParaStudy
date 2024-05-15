@@ -12,28 +12,22 @@
       <link href="stylesheets/style.css" rel="stylesheet">
     </head>
     
-    <body id="cardiac_bg">
+    <body class="cardiac_bg">
     
-        {{> header}}
+    {{> header}}
 
-        <h1 class="mt-5 mb-5">{{this.pageName}}</h1>           
+    <h1 class="cardiac_header">{{this.pageName}}</h1>
 
-        <div id="content_cardiac" class="d-flex col-gap-3 row-gap-3 justify-content-center mt-5 mb-5">
-            {{#each topics}}
-                <div class="row m-5">
-                <a class="nav-link" href={{this.link}}>
-
-                    <div id="cardiac_card" class="card col g-col-3 shadow bg-body-tertiary rounded mb-3" type="button">
-                        <h5 class="card-title text-center">{{this.name}}</h5>
-                        <div class="card-body">
-                            <img src="images/{{this.image}}" class="card-img-top"  alt=""/>
-                        </div>
-                    </div>
-
-                </a>
-                </div>
-            {{/each}}
-        </div>
+    <div class="cardiac_content">
+    {{#each cardiacTopics}}
+      <div class="cardiac_card">
+        <a href={{this.link}}>
+          <h3>{{this.name}}</h3>
+          <img class="cardiac_card_img" src="images/{{this.image}}">
+        </a>
+      </div>
+    {{/each}}
+    </div>
 
     </body>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

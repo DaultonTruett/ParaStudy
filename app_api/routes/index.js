@@ -46,6 +46,15 @@ router
     .get(algorithmController.getAlgorithms)
     .post(auth, algorithmController.addAlgorithm);
 
+router
+    .route('/medical/medications/:category')
+    .get(medController.getMedsByCategory)
+
+
+router
+    .route('/trauma/medications/:category')
+    .get(medController.getMedsByCategory)
+
 
 
 

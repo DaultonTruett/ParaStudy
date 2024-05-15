@@ -24,7 +24,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {{#each json}}
+                    {{#each medications}}
                         <li class="nav-item d-flex">
                             <a class="nav-link" href="#{{this.name}}">{{this.name}}</a>
                         </li>
@@ -40,7 +40,7 @@
     <div id="content_card" class="d-flex-inline col-gap-3 row-gap-3 mt-5 mb-5">
         <h1 class="m-5">{{pageName}}</h1>
 
-        {{#each json}}
+        {{#each medications}}
             <div class="row m-5" id={{this.name}}>
                 <div class="card col shadow bg-body-tertiary rounded m-3">
 
@@ -60,7 +60,32 @@
             </div>
         {{/each}}
     </div>
-    {{> footer}}
+
+<!-- template to convert from bootstrap to custom CSS for med cards
+    <div id="content_card" class="">
+        <h1 class="">{{pageName}}</h1>
+
+        {{#each medications}}
+            <div class="" id={{this.name}}>
+                <div class="">
+
+                    <div class="">
+                        <h5 class="" >{{this.name}}</h5>
+                    </div>
+                    <div class="">
+                        <p class="">{{this.age}}</p>
+                        <p class=""><b>Dose:</b> {{{this.dose}}}</p>
+                        <p class=""><b>Indications:</b> {{{this.indications}}}</p>
+                        <p class=""><b>Contraindications:</b> {{this.contraindications}}</p>
+                        <p class=""><b>Side Effects:</b> {{this.sideEffects}}</p>
+                        <p class=""><b>Actions:</b> {{this.actions}}</p>
+                        <p class=""><b>Notes:</b> {{this.notes}}</p>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+-->
 
   </body>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

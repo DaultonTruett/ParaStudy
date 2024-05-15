@@ -14,16 +14,24 @@ require('./app_api/models/db');
 require('./app_api/config/passport');
 
 // define routes
-var indexRouter = require('./app_server/routes/index');
-var cardiacRouter = require('./app_server/routes/cardiac');
-var medicationsRouter = require('./app_server/routes/medications');
+const indexRouter = require('./app_server/routes/index');
+
+const cardiacRouter = require('./app_server/routes/cardiac');
+const cardiacMedicationsRouter = require('./app_server/routes/cardiacMedications');
 const algorithmsRouter = require('./app_server/routes/algorithms');
 
-var usersRouter = require('./app_server/routes/users');
+const medicalRouter = require('./app_server/routes/medical');
+const medicalMedicationsRouter = require('./app_server/routes/medicalMedications');
+
+
+const traumaRouter = require('./app_server/routes/trauma');
+const traumaMedicationsRouter = require('./app_server/routes/traumaMedications');
+
+const usersRouter = require('./app_server/routes/users');
 
 const apiRouter = require('./app_api/routes/index');
 
-var app = express();
+const app = express();
 
 
 // view engine setup
@@ -53,9 +61,17 @@ app.use('/api', (req, res, next) => {
 
 // wire routes to views
 app.use('/', indexRouter);
+
 app.use('/cardiac', cardiacRouter);
-app.use('/cardiac/medications', medicationsRouter);
+app.use('/cardiac/medications', cardiacMedicationsRouter);
 app.use('/cardiac/algorithms', algorithmsRouter);
+
+app.use('/medical', medicalRouter);
+app.use('/medical/medications', medicalMedicationsRouter);
+
+
+app.use('/trauma', traumaRouter);
+app.use('/trauma/medications', traumaMedicationsRouter);
 
 app.use('/users', usersRouter);
 

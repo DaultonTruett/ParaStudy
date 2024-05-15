@@ -1,8 +1,8 @@
 
-topics = [
+cardiacTopics = [
     {
         name: "Medications",
-        image: 'med.png',
+        image: 'med_5.png',
         link: "/cardiac/medications"
     },
     {
@@ -10,18 +10,18 @@ topics = [
         image: 'qrs.png',
         link: '/cardiac/algorithms'
     },
-    {
+    /*{
         name: "Anatomy & Physiology",
         image: "heart.png",
         link: '/cardiac/anatomy'
-    }
+    }*/
 ]
 
 const cardiac = (req, res) => {
     res.render('cardiac', {
         title: "Cardiac",
         pageName: 'CARDIAC',
-        topics
+        cardiacTopics
     });
 };
 

@@ -1,5 +1,5 @@
 
-const endpoint = 'http://localhost:3000/api/cardiac/algorithms';
+const endpoint = 'http://localhost:3000/api';
 const options = {
     method: 'GET',
     headers: {
@@ -7,8 +7,8 @@ const options = {
     }
 };
 
-const algorithms = async(req, res) => {
-    await fetch(endpoint, options)
+const cardiacAlgorithms = async(req, res) => {
+    await fetch(`${endpoint}/cardiac/algorithms`, options)
     .then(res => res.json())
     .then(algorithm => {
 
@@ -30,7 +30,8 @@ const algorithms = async(req, res) => {
         })
     })
     .catch(err => res.status(500).send(err.message));
-
 };
 
-module.exports = algorithms;
+module.exports = {
+    cardiacAlgorithms
+};
