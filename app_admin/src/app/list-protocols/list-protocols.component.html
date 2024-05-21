@@ -1,1 +1,9 @@
-<p>list-protocols works!</p>
+<div id="add_btn">
+    <button type="submit" (click)="addProtocol()">New Protocol</button>
+</div>
+
+<div>
+    <div *ngFor="let protocol of protocols">
+        <app-protocol-card [protocol]="protocol"></app-protocol-card>
+    </div>
+</div>

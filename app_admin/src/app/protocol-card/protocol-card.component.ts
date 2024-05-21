@@ -1,12 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
+
+import { Protocol } from '../models/protocol';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-protocol-card',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './protocol-card.component.html',
   styleUrl: './protocol-card.component.css'
 })
-export class ProtocolCardComponent {
+export class ProtocolCardComponent implements OnInit{
+  @Input('protocol') protocol: any;
 
+  constructor(
+    private router: Router,
+    private authService: AuthenticationService
+  ){}
+
+  ngOnInit(){}
+
+  public isLoggedIn(): boolean{
+    return this.authService.isLoggedIn();
+  };
+
+  public editProtocol(protocol: Protocol){
+    localStorage.removeItem('_id');
+    localStorage.setItem('_id', protocol._id);
+
+    this.router.navigate(['edit-protocol']);
+  };
+
+  public deleteProtocol(protocol: Protocol){
+    localStorage.removeItem('_id');
+    localStorage.setItem('_id', protocol._id);
+
+    this.router.navigate(['delete-protocol']);
+  };
 }

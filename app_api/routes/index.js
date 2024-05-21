@@ -52,19 +52,25 @@ router
 router
     .route('/protocols')
     .get(protocolsController.getProtocols)
-    .post(auth, protocolsController.addProtocol)
+    .post(auth, protocolsController.addProtocol);
+
+router
+    .route('/protocols/:_id')
+    .get(protocolsController.getProtocolsById)
+    .put(auth, protocolsController.updateProtocol)
+    .post(auth, protocolsController.deleteProtocol);
 
 router
     .route('/cardiac/protocols/:category')
-    .get(protocolsController.getProtocolsByCategory)
+    .get(protocolsController.getProtocolsByCategory);
 
 router
     .route('/medical/protocols/:category')
-    .get(protocolsController.getProtocolsByCategory)
+    .get(protocolsController.getProtocolsByCategory);
 
 router
     .route('/trauma/protocols/:category')
-    .get(protocolsController.getProtocolsByCategory)
+    .get(protocolsController.getProtocolsByCategory);
 
 
 
