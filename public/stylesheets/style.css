@@ -47,40 +47,39 @@ h1{
   }
 }
 
-/*-------------------------------------------------------------------------- Navbar: Global --------------------------------------------------------------------------*/
-
-
 
 /*-------------------------------------------------------------------------- Home --------------------------------------------------------------------------*/
 #index_bg{
-  background-image: url("/images/ambulance.avif");
-  background-size: 33rem 100vh;
+  background: rgb(255,255,255);
+  background: linear-gradient(220deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
   background-repeat: no-repeat;
+  height: 100%;
 }
 
-.welcome{
-  background-color: white;
+.home_container{
   display: flex;
-  flex-direction:column;
-  float: right;
-  height: 50vh;
-  width: 33vw;
-  margin-top: 3rem;
-  margin-left: 3rem;
-  margin-right: 3rem;
-  opacity: 0.85;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
 }
 
-@media (max-width: 1100px){
-  #index_bg{
-    background-size: cover;
-  }
-  .welcome{
-    float: left;
-    height: auto;
-    width: 75vw;
-  }
+.home_content{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 80vw;
+  height: 60vh;
+  margin-top: 7rem;
+  background-color: white;
+  padding: 1rem;
 }
+
+.home_header{
+  text-align: center
+}
+
 
 
 /*-------------------------------------------------------------------------- Cardiac --------------------------------------------------------------------------*/
@@ -129,19 +128,21 @@ h1{
 }
 
 
-/*---------------------------------------------------------------------- protocols ----------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------- Protocols ----------------------------------------------------------------------------*/
 #protocols_bg{
-  background-color: rgb(60, 17, 116);
+  background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
+
 }
 
 
-/*-------------------------------------------------------------------------- Medications --------------------------------------------------------------------------*/
+/*-------------------------------------------------------------------------- Medications ---------------------------------------------------------------------------*/
 #medications_bg{
-  background-color: rgb(175, 101, 57);
+  background: linear-gradient(220deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
+
 }
 
 
-/*-------------------------------------------------------------------------- Medical --------------------------------------------------------------------------*/
+/*----------------------------------------------------------------------------- Medical -----------------------------------------------------------------------------*/
 .medical_bg{
   background-color: rgb(25, 87, 19);
   color: white;

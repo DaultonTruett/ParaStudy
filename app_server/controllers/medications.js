@@ -7,6 +7,31 @@ const options = {
     }
 };
 
+const allMedications = async(req, res) => {
+    await fetch(`${endpoint}/medications`, options)
+    .then(res => res.json())
+    .then(medications => {
+        let msg = null;
+        if( !(medications instanceof Array)){
+            msg = 'API error';
+            medications = [];
+        }else{
+            if(!medications.length){
+                msg = 'No medications found.'
+            };
+        }
+
+        console.log(medications);
+
+        res.render('medications', {
+            title: 'Medications',
+            pageName: 'Medications',
+            medications
+        });
+    })
+    .catch(err => res.status(500).send(err.message));
+}
+
 const cardiacMedications = async(req, res) => {
     await fetch(`${endpoint}/cardiac/medications/cardiac`, options)
     .then(res => res.json())
@@ -81,6 +106,7 @@ const traumaMedications =  async(req, res) => {
 }
 
 module.exports = {
+    allMedications,
     cardiacMedications,
     medicalMedications,
     traumaMedications

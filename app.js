@@ -16,6 +16,8 @@ require('./app_api/config/passport');
 // define routes
 const indexRouter = require('./app_server/routes/index');
 
+const medicationsRouter = require('./app_server/routes/medications');
+
 const cardiacRouter = require('./app_server/routes/cardiac');
 const cardiacMedicationsRouter = require('./app_server/routes/cardiacMedications');
 const cardiacProtocolsRouter = require('./app_server/routes/cardiacProtocols');
@@ -62,6 +64,8 @@ app.use('/api', (req, res, next) => {
 
 // wire routes to views
 app.use('/', indexRouter);
+
+app.use('/medications', medicationsRouter);
 
 app.use('/cardiac', cardiacRouter);
 app.use('/cardiac/medications', cardiacMedicationsRouter);
