@@ -2,7 +2,9 @@ const Med = require('../models/medications');
 const auth = require('../controllers/authentication');
 
 const getMedications = async(req, res) => {
-    const getMeds = await Med.find({}).exec();
+    let sortedMedications = {name: 1};
+
+    const getMeds = await Med.find({}).sort(sortedMedications).exec();
 
     if(!getMeds){
         return res.status(404).json({message: 'No medications found.'})

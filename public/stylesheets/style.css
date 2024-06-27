@@ -49,11 +49,30 @@ h1{
 
 
 /*-------------------------------------------------------------------------- Home --------------------------------------------------------------------------*/
-#index_bg{
-  background: rgb(255,255,255);
-  background: linear-gradient(220deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
-  background-repeat: no-repeat;
-  height: 100%;
+#home_bg{
+  background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
+}
+
+.home_header{
+  text-align: center
+}
+
+.welcome{
+  background: url(../images/ambulance.jpg);
+  background-size:cover;
+  height: 35vh;
+  width: 100vw;
+  background-repeat: "no-repeat";
+}
+
+@media(max-width: 900px){
+  .welcome{
+    background: url(../images/ambulance_small.jpg);
+    background-size:cover;
+    height: 30vh;
+    width: 100vw;
+    background-repeat: "no-repeat";
+  }
 }
 
 .home_container{
@@ -62,24 +81,58 @@ h1{
   justify-content: center;
   flex-wrap: wrap;
   width: 100vw;
-  height: 100vh;
+  height: 100%;
 }
 
 .home_content{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 80vw;
-  height: 60vh;
-  margin-top: 7rem;
+  width: 40vw;
+  height: auto;
+  margin: 4rem;
   background-color: white;
   padding: 1rem;
+  border-radius: 10%;
+  box-shadow: 2px 2px 2px 2px rgb(22, 22, 22, 20%);
+
+  h2{
+    text-align: center;
+    color: black;
+  }
+  p{
+    color: black;
+  }
 }
 
-.home_header{
-  text-align: center
+@media(max-width: 1100px){
+  .home_content{
+    width: 80vw;
+  }
 }
 
+
+
+/*-------------------------------------------------------------------------- Footer ----------------------------------------------------------------------------*/
+#footer{
+  height: 15vh;
+  margin-bottom: 0;
+}
+
+
+/*-------------------------------------------------------------------------- Protocols ----------------------------------------------------------------------------*/
+#protocols_bg{
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
+
+}
+
+
+/*-------------------------------------------------------------------------- Medications ---------------------------------------------------------------------------*/
+#medications_bg{
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
+  background-repeat: no-repeat;
+
+}
 
 
 /*-------------------------------------------------------------------------- Cardiac --------------------------------------------------------------------------*/
@@ -125,20 +178,6 @@ h1{
   width: 300px;
   height: 300px;
   object-fit: fill;
-}
-
-
-/*-------------------------------------------------------------------------- Protocols ----------------------------------------------------------------------------*/
-#protocols_bg{
-  background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
-
-}
-
-
-/*-------------------------------------------------------------------------- Medications ---------------------------------------------------------------------------*/
-#medications_bg{
-  background: linear-gradient(220deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
-
 }
 
 
