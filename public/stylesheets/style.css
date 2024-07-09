@@ -1,63 +1,62 @@
+/* Color palette
 
+#1e3d58
+#057dcd
+#43b0f1
+#e8eef1
+
+*/
 
 /*-------------------------------------------------------------------------- Global --------------------------------------------------------------------------*/
+body{
+  margin: 0;
+}
+
+.bg{
+  background-color: #e8eef1;
+}
+
 a{
   text-decoration: none;
   color: black;
 }
 
 ul{
-  list-style-type: none;
+  list-style: none;
 }
 
 h1{
   text-align: center;
-  color: white;
+  color: black;
   font-weight: bold;
+  font-size: 48px;
 }
 
-/*-------------------------------------------------------------------------- Sidebar --------------------------------------------------------------------------*/
-
-#sidebar{
-  position:sticky;
-  float: right;
-  top: 0;
-  z-index: 1;
-  width: 15vw;
-  height:100vh;
-  ul{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-}
-@media (max-width: 900px){
-  #sidebar{
-    display:none;
-  }
+.bottom_margin{
+  margin-bottom: 20%;
+  margin-top: 10%;
 }
 
-#content_card{
-  width: 75vw;
-}
-@media (max-width: 900px){
-  #content_card{
-    width: 100vw;
-    height: 100vh;
-  }
-}
+/*-------------------------------------------------------------------------- Navbar --------------------------------------------------------------------------*/
 
-
-/*-------------------------------------------------------------------------- Home --------------------------------------------------------------------------*/
-#home_bg{
-  background: linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
+#navbar_div{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 7vh;
+  background-color: #1e3d58;
 }
 
-.home_header{
-  text-align: center
+#navbar_div a{
+  padding: 0.5rem;
+  margin-left: 2rem;
+  font-size: 32px;
+  font-weight: 600;
+  color: white;
 }
 
-.welcome{
+/*-------------------------------------------------------------------------- Home ----------------------------------------------------------------------------*/
+.index_top_pic{
   background: url(../images/ambulance.jpg);
   background-size:cover;
   height: 35vh;
@@ -68,74 +67,197 @@ h1{
 @media(max-width: 900px){
   .welcome{
     background: url(../images/ambulance_small.jpg);
-    background-size:cover;
-    height: 30vh;
+    background-size: cover;
+    height: 25vh;
     width: 100vw;
     background-repeat: "no-repeat";
   }
 }
 
-.home_container{
+.card_container{
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
 }
 
-.home_content{
+.card_header{
+  background-color: #057dcd;;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 2px rgba(75, 82, 90, 0.822);
+  margin-bottom: 1rem;
+  color: white;
+  
+  h3{
+    font-style: italic;
+    font-size: 36px;
+    text-align: center;
+  }
+}
+
+.pic{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25vw;
+  height: 45vh;
+}
+
+.card_content{
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 40vw;
-  height: auto;
-  margin: 4rem;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 10%;
-  box-shadow: 2px 2px 2px 2px rgb(22, 22, 22, 20%);
 
-  h2{
-    text-align: center;
-    color: black;
+  width: 35vw;
+  height: auto;
+  margin: 2rem 1rem;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 2px 2px 2px 2px rgba(75, 82, 90, 0.822);
+
+  a:hover{
+    background-color: #43b0f1;
+    border-radius: 15px;
   }
-  p{
-    color: black;
+  h3{
+    margin: 1rem;
   }
 }
+
 
 @media(max-width: 1100px){
-  .home_content{
+  .card_content{
     width: 80vw;
+  }
+  .pic{
+    width: 50vw;
+    height: 35vh;
   }
 }
 
+.about_container{
+  display: flex;
+  flex-direction: row;
+}
+
+/*-------------------------------------------------------------------- Topics: Protocols & Medications ----------------------------------------------------------------------------*/
+
+.topics_card_container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 85vw;
+  height: auto;
+  margin-top: 2rem;
+}
+
+.topic_card{
+  background-color: white;
+  width: 60vw;
+  border-radius: 25px;
+  box-shadow: 2px 2px 2px 2px rgba(75, 82, 90, 0.822);
+  margin: 2.5rem 0;
+}
+
+.topic_card_header{
+  text-align: center;
+  background-color: #057dcd;
+  border-radius: 25px;
+  box-shadow: 2px 2px 2px 2px rgba(75, 82, 90, 0.822);
+  margin: 0 1rem;
+  height: auto;
+}
 
 
-/*-------------------------------------------------------------------------- Footer ----------------------------------------------------------------------------*/
+
+.topic_card_header h3{
+  font-size: 28px;
+  padding: 0.3rem;
+  color: #e8eef1;
+}
+
+.topic_card_body{
+  margin: 0 1rem;
+  font-size: 20px;
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  position:sticky;
+  float: right;
+  width: 15vw;
+  height:100vh;
+  top: 0;
+  background-color: #1e3d58;
+
+  a{
+    font-size: larger;
+    font-weight: bold;
+    color: white;
+  }
+  a:hover{
+    background-color: white;
+    color: black;
+  }
+  li{
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 900px){
+  .sidebar{
+    display: none;
+  }
+}
+
+/*-------------------------------------------------------------------------- Footer --------------------------------------------------------------------------------*/
 #footer{
-  height: 15vh;
+  position: relative;
+  bottom: 0;
   margin-bottom: 0;
+  width: 100vw;
+  height: 10vh;
+  background-color: #1e3d58; 
 }
 
 
-/*-------------------------------------------------------------------------- Protocols ----------------------------------------------------------------------------*/
-#protocols_bg{
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
-
-}
 
 
-/*-------------------------------------------------------------------------- Medications ---------------------------------------------------------------------------*/
-#medications_bg{
-  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(7, 106, 187, 0.92) 27%);
-  background-repeat: no-repeat;
-
-}
 
 
-/*-------------------------------------------------------------------------- Cardiac --------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-------------------------------------------------------------------------- Cardiac -------------------------------------------------------------------------------*/
 .cardiac_bg{
   background-color: rgb(87, 19, 19);
   color: white;

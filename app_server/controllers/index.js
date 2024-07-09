@@ -1,4 +1,60 @@
 
+topics = [
+    {
+        name: "Medications",
+        link: "/medications"
+    },
+    {
+        name: "Cardiac Protocols",
+        link: "/cardiac/protocols"
+    },
+    {
+        name: "Medical Protocols",
+        link: "/medical/protocols"
+    },
+    {
+        name: "Trauma Protocols",
+        link: "/trauma/protocols"
+    }
+]
+
+resources = [
+    {
+        name: "NREMT",
+        link: "https://www.nremt.org/"
+    },
+    {
+        name: "NAEMT",
+        link: "https://www.naemt.org/"
+    },
+    {
+        name: "Prodigy EMS",
+        link: "https://www.prodigyems.com/"
+    },
+    {
+        name: "12 Lead Trainer",
+        link: "https://12leadtrainer.com/"
+    }
+];
+
+
+
+const index = (req, res) => {
+    res.render('index', {
+        title: 'ParaStudy',
+        pageName: 'Home',
+        topics,
+        resources
+    })
+};
+
+
+module.exports = index;
+
+
+
+
+/*
 quickReference = [
     {
     name: "Adult Vital Signs: Expected Normals",
@@ -57,18 +113,4 @@ medicationMath = [
         name: "Medication Math"
     }
 ]
-
-
-const index = (req, res) => {
-    res.render('index', {
-        title: 'ParaStudy',
-        pageName: 'Home',
-        quickReference,
-        acronyms,
-        assessment,
-        medicationMath
-    })
-};
-
-
-module.exports = index;
+    */
