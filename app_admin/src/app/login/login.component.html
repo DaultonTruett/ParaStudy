@@ -1,28 +1,20 @@
 
-<h2>Login</h2>
-
-
 <div id="login">
     <form id="login_form" (ngSubmit)="loginSubmit()">
+        <h2>Login</h2>
 
         <div *ngIf="formErrors">
             {{formErrors}}
         </div>
 
         <div class="form_fields">
-            <label for="email">
-                Email address
-            </label>
             <input type="email" name="email" placeholder="Enter email"
-                [(ngModel)]="user.email">
+                [(ngModel)]="user.email"/>
         </div>
 
         <div class="form_fields">
-            <label for="password">
-                Password
-            </label>
             <input type="password" name="password" placeholder="Enter password"
-                [(ngModel)]="user.password">
+                [(ngModel)]="user.password"/>
         </div>
 
         <button type="submit" role="button">

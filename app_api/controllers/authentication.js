@@ -10,6 +10,8 @@ const register = async(req, res) => {
     const user = new User();
     user.name = req.body.name;
     user.email = req.body.email;
+    user.study_deck = [];
+    user.role = "user"
     user.setPassword(req.body.password);
 
     const token = user.generateJwt();

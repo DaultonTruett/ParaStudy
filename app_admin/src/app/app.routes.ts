@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+//import { RegisterComponent } from './register/register.component';
 import { ListMedicationsComponent } from './list-medications/list-medications.component';
 import { AddMedicationComponent } from './add-medication/add-medication.component';
 import { EditMedicationComponent } from './edit-medication/edit-medication.component';
@@ -9,10 +10,12 @@ import { ListProtocolsComponent } from './list-protocols/list-protocols.componen
 import { AddProtocolComponent } from './add-protocol/add-protocol.component';
 import { EditProtocolComponent } from './edit-protocol/edit-protocol.component';
 import { DeleteProtocolComponent } from './delete-protocol/delete-protocol.component';
+import { StudydeckComponent } from './studydeck/studydeck.component'
 
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
+    //{path: 'register', component: RegisterComponent}
     {path: 'list-medications', component: ListMedicationsComponent},
     {path: 'add-medication', component: AddMedicationComponent},
     {path: 'edit-medication', component: EditMedicationComponent},
@@ -21,5 +24,6 @@ export const routes: Routes = [
     {path: 'add-protocol', component: AddProtocolComponent},
     {path: 'edit-protocol', component: EditProtocolComponent},
     {path: 'delete-protocol', component: DeleteProtocolComponent},
+    {path: 'studydeck', component: StudydeckComponent},
     {path: '', component: HomeComponent, pathMatch: 'full'}
 ];

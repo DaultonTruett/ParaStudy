@@ -1,0 +1,14 @@
+#foot_div{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    width: 100vw;
+    height: 6.8rem;
+    background-color: #1e3d58;
+    bottom: 0;
+  }
+
+  p, a{
+    color: white;
+  }

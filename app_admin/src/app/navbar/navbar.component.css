@@ -1,19 +1,37 @@
-nav{
-    width: 100vw;
-    background-color: rgb(44, 40, 40);
-    color: white;
-    top: 0;
-    box-shadow: 2px 2px 4px 4px rgb(24, 23, 23);
-    ul{
-        display: inline-flex;
-        li{
-            list-style-type: none;
-            margin: 1rem 1rem 0 0;
-            font-size: large;
-            a{
-                text-decoration: none;
-                color:white;
-            }
-        }
-    }
+#navbar_div{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  height: 3.8rem;
+  background-color: #1e3d58;
+  z-index: 100;
+  overflow: hidden;
+}
+
+#navbar_div_right{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100vw;
+  overflow: hidden;
+}
+
+  
+#navbar_div a{
+  padding: 0.8rem;
+  margin-left: 2rem;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  z-index: 100;
+}
+
+#brand{
+  font-weight: bold;
+}
+
+
+.login_logout{
+  margin-right: 2rem;
+  z-index: 100;
 }

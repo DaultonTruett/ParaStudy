@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+
 import { ListMedicationsComponent } from './list-medications/list-medications.component';
 
 
@@ -10,10 +12,10 @@ import { ListMedicationsComponent } from './list-medications/list-medications.co
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet, NavbarComponent,
-    ListMedicationsComponent],
+    ListMedicationsComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'parastudy-admin';
+  title = 'parastudy';
 }

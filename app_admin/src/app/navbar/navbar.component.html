@@ -1,20 +1,16 @@
-<nav>
-    <ul>
-        <li>
-            <a href="">Home</a>
-        </li>
-        <li>
-            <a href="list-medications">Medications</a>
-        </li>
-        <li>
-            <a href="list-protocols" >Protocols</a>
-        </li>
 
-        <li>
-            <a *ngIf="!isLoggedIn()" routerLink="login" class="login_logout">Login</a>
-        </li>
-        <li>
-            <a *ngIf="isLoggedIn()" (click)="onLogout()" routerLink=''>Logout</a>
-        </li>
-    </ul>
-</nav>
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+<div id="navbar_div">
+  <a id="brand">ParaStudy</a>
+  <a class="nav_items" href="" >Home</a>
+  <a class="nav_items" href="list-medications">Medications</a>
+  <a class="nav_items" href="list-protocols" >Protocols</a>
+  <a class="nav_items" href='studydeck'>Study</a>
+
+  <div id="navbar_div_right">
+    <a class="login_logout" *ngIf="!isLoggedIn()" routerLink="login">Login</a>
+    <a class="login_logout" *ngIf="isLoggedIn()" routerLink='' (click)="onLogout()">Logout</a>
+  </div>
+
+</div>

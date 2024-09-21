@@ -1,9 +1,30 @@
 
-<div *ngIf="!isLoggedIn()">
-    <h1>Welcome, ParaStudy Admin</h1>
-    <h3><i>Please login to continue</i></h3>
-</div>
+<div id="index_top_pic"></div>
 
-<div *ngIf="isLoggedIn()">
-    <h1>Welcome, {{this.userName}}</h1>
+
+<div class="home">
+
+  <div class="blur_card_container">
+
+  </div>
+
+  <div class="card_container">
+    <div class="card_content">
+      <!--
+      <div class="card_header">
+      </div>
+      -->
+      <h3>Medications</h3>
+    
+      <div class="card_pic">
+        <img class="pic" src="../../assets/images/med.png">
+      </div>
+
+      <button type="button" routerlink="">
+          Open Deck
+      </button>
+    </div>
+    <h2 id="success"><i>Craft custom study decks</i></h2>
+  </div>
+
 </div>

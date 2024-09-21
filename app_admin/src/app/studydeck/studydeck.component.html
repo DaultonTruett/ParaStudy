@@ -1,0 +1,28 @@
+<div id="not_user" *ngIf="!isLoggedIn()">
+    <h1>Sorry, you must be logged in to create a study deck.</h1>
+</div>
+
+<div id="empty" *ngIf="!checkDeck()">
+    <h1>You do not have any medications in your deck</h1>
+</div>
+
+
+<div class="med_parent">
+    <div id="side_1" class="flip">
+        <app-medication-card class="med_cards" [medication]="showMed()"></app-medication-card>
+
+        <button class="buttons" type="submit" (click)="previousMed()">previous</button>
+        <button id="flip_card_front" class="buttons" type="submit" (click)="flipCard()">Flip</button>
+        <button class="buttons" type="submit" (click)="nextMed()">next</button>
+    </div>
+    <div id="side_2" class="flip">
+        <app-medication-card id="med_name" class="med_cards" [medication]="getMedName()"></app-medication-card>
+
+        <button class="buttons" type="submit" (click)="previousMed()">previous</button>
+        <button id="flip_card_back" class="buttons" type="submit" (click)="flipCard()">Flip</button>
+        <button class="buttons" type="submit" (click)="nextMed()">next</button>
+    </div>
+</div>
+
+
+

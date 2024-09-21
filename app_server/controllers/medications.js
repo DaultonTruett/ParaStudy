@@ -21,8 +21,6 @@ const allMedications = async(req, res) => {
             };
         }
 
-        console.log(medications);
-
         res.render('medications', {
             title: 'Medications',
             pageName: 'Medications',
@@ -51,9 +49,9 @@ const cardiacMedications = async(req, res) => {
         console.log(medications);
 
         res.render('medications', {
-            title: 'Medications',
-            pageName: 'Cardiac Medications',
-            medications
+                title: 'Medications',
+                pageName: 'Cardiac Medications',
+                medications
         });
     })
     .catch(err => res.status(500).send(err.message));

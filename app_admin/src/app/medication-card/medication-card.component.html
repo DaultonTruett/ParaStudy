@@ -1,28 +1,43 @@
 
-<div class="med_card">
-    <div>
-        <!--{{medication._id}}-->
-        <h2><b>Category: </b>
-            {{medication.category}}
-        </h2>
+<div class="topics_card_container" *ngIf="checkMed()">
+    <div class="topic_card">
+        <div class="topic_card_header">
+            <h3 class="topic_card_title">{{medication.name}}</h3>
+        </div>
+        <div class="topic_card_body">
+            <p><b>Age: </b>{{medication.age}}</p>
+            <p><b>Dose:</b> {{medication.dose}}</p>
+            <p><b>Indications:</b> {{medication.indications}}</p>
+            <p><b>Contraindications:</b> {{medication.contraindications}}</p>
+            <p><b>Side Effects:</b> {{medication.sideEffects}}</p>
+            <p><b>Actions:</b> {{medication.actions}}</p>
+            <p><b>Notes:</b> {{medication.notes}}</p>
 
-        <h3><b>Name: </b>
-            {{medication.name}}
-        </h3>
-
-        <h4><b>{{medication.age}} dose: </b>
-            {{medication.dose}}
-        </h4>
-
-        <h4><b>Indications: </b>
-            {{medication.indications}}
-        </h4>
-        <button id="edit_btn" *ngIf="isLoggedIn()" type="button" (click)="editMed(medication)">
-            Edit
-        </button>
-        <button id="delete_btn" *ngIf="isLoggedIn()" type="button" (click)="deleteMed(medication)">
-            Delete
-        </button>
+            <div class="edit_delete" *ngIf="isLoggedIn()">
+                <button id="edit_btn" *ngIf="isAdmin()" type="button" (click)="editMed(medication)">
+                    Edit
+                </button>
+                <button id="delete_btn" *ngIf="isAdmin()" type="button" (click)="deleteMed(medication)">
+                    Delete
+                </button>
+            </div>
+        </div>
     </div>
-    <br>
+</div>
+
+<div class="topics_card_container" *ngIf="!checkMed()">
+    <div class="topic_card">
+        <div class="topic_card_header">
+            <h3 class="topic_card_title">{{medication}}</h3>
+        </div>
+        <div class="topic_card_body">
+            <p><b>Age: </b></p>
+            <p><b>Dose:</b></p>
+            <p><b>Indications:</b></p>
+            <p><b>Contraindications:</b></p>
+            <p><b>Side Effects:</b></p>
+            <p><b>Actions:</b></p>
+            <p><b>Notes:</b></p>
+        </div>
+    </div>
 </div>

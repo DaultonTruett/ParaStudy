@@ -1,22 +1,28 @@
-<div class="protocol_card">
-    <div>
-        <h2><b>Category: </b>
-            {{protocol.category}}
-        </h2>
 
-        <h3><b>Name: </b>
-            {{protocol.name}}
-        </h3>
-
-        <h4><b>Protocol: </b>
+<!--
+<div class="topics_card_container">
+    <div class="topic_card">
+        <div class="topic_card_header">
+            <h3 class="topic_card_title">{{protocol.name}}</h3>
+        </div>
+        <div class="topic_card_body">
             {{protocol.protocol}}
-        </h4>
-
-        <button id="edit_btn" *ngIf="isLoggedIn()" type="button" (click)="editProtocol(protocol)">
+        </div>
+    </div>
+    <div *ngIf="isLoggedIn()">
+        <button id="edit_btn" *ngIf="isAdmin()" type="button" (click)="editProtocol(protocol)">
             Edit
         </button>
-        <button id="delete_btn" *ngIf="isLoggedIn()" type="button" (click)="deleteProtocol(protocol)">
+        <button id="delete_btn" *ngIf="isAdmin()" type="button" (click)="deleteProtocol(protocol)">
             Delete
         </button>
     </div>
+</div>
+
+-->
+
+<div>
+    <h1>
+        Under construction Coming soon!
+    </h1>
 </div>

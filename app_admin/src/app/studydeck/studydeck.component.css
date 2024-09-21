@@ -1,0 +1,63 @@
+#not_user {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+
+#empty{
+    width: 100vw;
+    height: 100vh;
+    text-align: center; 
+}
+
+.med_parent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttons{
+    width: 10rem;
+    height: 5rem;
+    margin-bottom: 4rem;
+    margin-left: 8rem;
+    margin-right: 8rem;
+    padding: 1rem;
+    font-size: large;
+    color: black;
+    background-color: #43b0f1;
+    z-index: 2;
+}
+
+.flip{
+    backface-visibility: hidden;
+    transition: all 1s;
+    transform-origin: 50% 50% 0px;
+    position: absolute;
+}
+
+#side_1{
+    transform: rotateY(0deg);
+}
+
+#side_2{
+    transform: rotateY(180deg);
+}
+
+.flip_side_1{
+    transform: rotateY(0deg) !important;
+}
+
+.flip_side_2{
+    transform: rotateY(180deg) !important;
+}
+
+
+@media screen and (max-width: 600px){
+
+    .buttons{
+        margin-left: 4rem;
+        margin-right: 4rem;
+    }
+}
+

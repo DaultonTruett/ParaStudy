@@ -1,6 +1,9 @@
-<div id="add_btn">
-    <button type="submit" (click)="addMed()">New Med</button>
+<div *ngIf="isAdmin()">
+    <div id="add_btn">
+        <button type="submit" (click)="addMed()">New Med</button>
+    </div>
 </div>
+
 
 <div>
     <div *ngFor="let medication of medications">

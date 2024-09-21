@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit{
   public user = {
     name: '',
     email: '',
-    password: ''
+    password: '',
+    role: '',
+    study_deck: []
   };
 
   constructor(

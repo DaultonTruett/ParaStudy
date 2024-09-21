@@ -14,6 +14,8 @@ import { AuthenticationService } from '../services/authentication.service';
 })
 
 export class NavbarComponent implements OnInit{
+  x!: HTMLElement;
+
   constructor(
   private authenticationService: AuthenticationService
   ){}
@@ -27,4 +29,5 @@ export class NavbarComponent implements OnInit{
   public onLogout(): void{
     return this.authenticationService.logout();
   };
+  
 }

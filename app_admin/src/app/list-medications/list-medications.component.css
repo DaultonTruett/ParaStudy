@@ -1,13 +1,14 @@
 #add_btn{
+    display: flex;
+    justify-content: center;
     width: 100vw;
-    button{
-        float: right;
-        width: 13vw;
-        padding: 1.4em;
-        margin: 4.4rem;
-        background-color: rgb(8, 85, 8);
-        color: white;
-        border-width: 0;
-    }
+}
 
+#add_btn button {
+    width: 50vw;
+    padding: 1.4em;
+    margin: 4.4rem;
+    background-color: #057dcd;;
+    color: white;
+    border-width: 0;
 }

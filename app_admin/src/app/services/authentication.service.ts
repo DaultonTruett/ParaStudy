@@ -24,7 +24,7 @@ export class AuthenticationService {
 
   public async authApiCall(urlPath: string, user: User): Promise<AuthResponse>{
     const url: string = `${this.apiBaseUrl}/${urlPath}`;
-
+    console.log(user)
     return await lastValueFrom(this.http.post(url, user)) as AuthResponse;
   };
 
@@ -73,9 +73,9 @@ export class AuthenticationService {
       const token: string = this.getToken();
 
       if(token != 'null'){
-        const {email, name} = JSON.parse(atob(token.split('.')[1]));
+        const {email, name, role, study_deck} = JSON.parse(atob(token.split('.')[1]));
         //console.log(token, email, name);
-        return {email, name} as User;
+        return {email, name, role, study_deck} as User;
       }
     }
     return {} as User;

@@ -1,6 +1,5 @@
 h2{
     text-align: center;
-    margin-top: 2rem;
     font-style: italic;
 }
 
@@ -9,6 +8,9 @@ h2{
     flex-direction: row;
     justify-content: center;
     width: 100vw;
+    height: 100vh;
+    /*background: url('../../assets/images/ambulance.avif');
+    background-image: contain;*/
 }
 
 form{
@@ -16,7 +18,7 @@ form{
     flex-direction: column;
     justify-content: center;
     width: 25vw;
-    margin-top: 2rem;
+    padding-bottom: 18rem;
 }
 .form_fields{
     display: flex;
@@ -29,7 +31,7 @@ form{
 }
 
 button{
-    background-color: rgb(34, 105, 238);
+    background-color: #057dcd;
     color: white;
     margin-top: 20px;
     height: 2.3rem;

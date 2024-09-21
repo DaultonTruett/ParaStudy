@@ -31,6 +31,7 @@ const traumaMedicationsRouter = require('./app_server/routes/traumaMedications')
 const traumaProtocolsRouter = require('./app_server/routes/traumaProtocols');
 
 const usersRouter = require('./app_server/routes/users');
+const loginRouter = require('./app_server/routes/login');
 
 const apiRouter = require('./app_api/routes/index');
 
@@ -48,7 +49,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static('./public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
 
@@ -81,6 +82,7 @@ app.use('/trauma/medications', traumaMedicationsRouter);
 app.use('/trauma/protocols', traumaProtocolsRouter);
 
 app.use('/users', usersRouter);
+app.use('/login', loginRouter);
 
 app.use('/api', apiRouter);
 
