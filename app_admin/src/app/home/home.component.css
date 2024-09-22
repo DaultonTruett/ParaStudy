@@ -12,14 +12,6 @@ h2{
 }
 
 
-#index_top_pic{
-    background: url(../../assets/images/ambulance.jpg);
-    background-size: cover;
-    height: 35vh;
-    width: 100vw;
-    background-repeat: "no-repeat";
-}
-
 .home{
     display: flex;
     flex-direction: column;

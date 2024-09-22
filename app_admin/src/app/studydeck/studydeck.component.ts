@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from'@angular/router';
 
 import { Medication } from '../models/medication';
 import { User } from '../models/user';
@@ -32,12 +33,17 @@ export class StudydeckComponent implements OnInit{
   public constructor(
     private authService: AuthenticationService,
     private medicationDataService: MedicationDataService,
+    private router: Router
   ){}
 
   ngOnInit(){
-    this.user = this.authService.getCurrentUser();
-    this.deck = this.user.study_deck;
-    this.getStudyMeds();
+    if (!this.isLoggedIn()){
+      this.router.navigate(['login'])
+    }else{
+      this.user = this.authService.getCurrentUser();
+      this.deck = this.user.study_deck;
+      this.getStudyMeds();
+    }
   }
 
   public getStudyMeds(): void{

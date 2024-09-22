@@ -1,10 +1,12 @@
 
+<div id="index_top_pic"></div>
+
 <div id="login">
     <form id="login_form" (ngSubmit)="loginSubmit()">
         <h2>Login</h2>
 
         <div *ngIf="formErrors">
-            {{formErrors}}
+            <p>Incorrect email or password</p>
         </div>
 
         <div class="form_fields">
@@ -15,6 +17,11 @@
         <div class="form_fields">
             <input type="password" name="password" placeholder="Enter password"
                 [(ngModel)]="user.password"/>
+        </div>
+
+        <div class="subfield_div">
+            <p>Don't have an account? <a class="subfields" href="">Sign up!</a></p>
+            <p><a class="subfields" href="">Forgot your password?</a></p>
         </div>
 
         <button type="submit" role="button">

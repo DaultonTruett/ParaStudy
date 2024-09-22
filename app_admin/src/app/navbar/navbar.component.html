@@ -5,12 +5,12 @@
   <a id="brand">ParaStudy</a>
   <a class="nav_items" href="" >Home</a>
   <a class="nav_items" href="list-medications">Medications</a>
-  <a class="nav_items" href="list-protocols" >Protocols</a>
+  <!--<a class="nav_items" href="list-protocols" >Protocols</a>-->
   <a class="nav_items" href='studydeck'>Study</a>
 
   <div id="navbar_div_right">
     <a class="login_logout" *ngIf="!isLoggedIn()" routerLink="login">Login</a>
-    <a class="login_logout" *ngIf="isLoggedIn()" routerLink='' (click)="onLogout()">Logout</a>
+    <a class="login_logout" *ngIf="isLoggedIn()" routerLink="login" (click)="onLogout()">Logout</a>
   </div>
 
 </div>

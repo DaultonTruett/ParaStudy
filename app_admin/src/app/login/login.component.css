@@ -3,22 +3,26 @@ h2{
     font-style: italic;
 }
 
+#index_top_pic{
+    background: url(../../assets/images/ambulance.jpg);
+    background-size: cover;
+    height: 35vh;
+    width: 100vw;
+    background-repeat: "no-repeat";
+}
+
 #login{
     display: flex;
     flex-direction: row;
     justify-content: center;
     width: 100vw;
     height: 100vh;
-    /*background: url('../../assets/images/ambulance.avif');
-    background-image: contain;*/
 }
 
 form{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 25vw;
-    padding-bottom: 18rem;
 }
 .form_fields{
     display: flex;
@@ -30,9 +34,25 @@ form{
     }
 }
 
+.subfield_div{
+    text-align: center;
+}
+
+.subfields{
+    text-decoration: none;
+    color:#057dcd;
+}
+
 button{
     background-color: #057dcd;
     color: white;
     margin-top: 20px;
     height: 2.3rem;
+}
+
+@media screen and (max-width: 600px){
+    form{
+        width: 80vw;
+        padding-bottom: 12rem;
+    }
 }
