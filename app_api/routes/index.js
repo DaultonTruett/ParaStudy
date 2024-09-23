@@ -22,6 +22,10 @@ router
     .route('/register')
     .post(authController.register);
 
+router
+    .route('/password-reset')
+    .post(authController.resetPassword) // TO_DO
+
 
 // Medications
 router

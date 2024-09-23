@@ -32,9 +32,13 @@ export class ListMedicationsComponent implements OnInit{
   ){};
 
   ngOnInit(): void {
-    this.getMeds();
-    this.user = this.authService.getCurrentUser();
-    this.userRole = this.user.role;
+    if(!this.isLoggedIn()){
+      this.router.navigateByUrl('login');
+    }else{
+      this.getMeds();
+      this.user = this.authService.getCurrentUser();
+      this.userRole = this.user.role;
+    }
   }
 
   private getMeds(): void {
@@ -63,6 +67,10 @@ export class ListMedicationsComponent implements OnInit{
     };
     
     return false;
+  };
+
+  public isLoggedIn(): boolean{
+    return this.authService.isLoggedIn();
   }
 
   public addMed(): void{

@@ -1,7 +1,7 @@
 
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
 
-<div id="navbar_div">
+<div id="navbar_div" *ngIf="isLoggedIn()">
   <a id="brand">ParaStudy</a>
   <a class="nav_items" href="" >Home</a>
   <a class="nav_items" href="list-medications">Medications</a>

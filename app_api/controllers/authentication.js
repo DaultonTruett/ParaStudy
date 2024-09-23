@@ -42,6 +42,10 @@ const login = (req, res) => {
     })(req, res);
 };
 
+const resetPassword = (req, res) => { // TO_DO
+    console.log('x')
+}
+
 const getUser = async(req, res, callback) => {
     if(req.auth && req.auth.email){
         try{
@@ -61,5 +65,6 @@ const getUser = async(req, res, callback) => {
 module.exports = {
     login,
     register,
+    resetPassword,
     getUser
 }

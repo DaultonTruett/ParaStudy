@@ -10,7 +10,7 @@ h2{
     width: 100vw;
 }
 
-#login{
+#signup{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -18,11 +18,12 @@ h2{
     height: 100vh;
 }
 
-form{
+#signup_form{
     display: flex;
     flex-direction: column;
     width: 25vw;
 }
+
 .form_fields{
     display: flex;
     flex-direction: column;
@@ -31,6 +32,11 @@ form{
         font-weight: bold;
         text-align: center;
     }
+}
+
+#form_errors{
+    text-align:center;
+    color: red;
 }
 
 .subfield_div{
@@ -55,11 +61,4 @@ button{
         width: 80vw;
         padding-bottom: 12rem;
     }
-
-    #index_top_pic{
-        background: url(../../assets/images/ambulance_small.jpg);
-        height: 40vh;
-
-    }
-
 }

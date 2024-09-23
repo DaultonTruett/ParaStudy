@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../models/user';
@@ -17,12 +18,18 @@ user!: User;
 userName = '';
 
   constructor(
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private router: Router
   ){}
 
   ngOnInit(){
-    this.user = this.authService.getCurrentUser();
-    this.userName = this.user.name;
+    if (!this.isLoggedIn()){
+      this.router.navigateByUrl('login')
+    }else{
+      this.user = this.authService.getCurrentUser();
+      this.userName = this.user.name;
+    }
+
   }
 
   public isLoggedIn(): boolean{

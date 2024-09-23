@@ -46,6 +46,9 @@ export class AuthenticationService {
       this.saveToken(authResp.token));
   };
 
+  public resetPassword(user: User): Promise<any>{
+    return this.authApiCall('reset-password', user)
+  }
 
   public saveToken(token: string): void{
     localStorage.setItem('paraStudy-token', token)

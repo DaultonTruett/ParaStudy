@@ -1,0 +1,36 @@
+
+<div id="login_signup_pic"></div>
+
+<div id="signup">
+    <form id="signup_form" (ngSubmit)="signUpSubmit()">
+        <h2>Sign up</h2>
+
+        <div id="form_errors" *ngIf="formErrors">
+            <p>All fields required</p>
+        </div>
+
+        <div class="form_fields">
+            <input type="text" name="name" placeholder="Name"
+                [(ngModel)]="user.name"/>
+        </div>
+
+        <div class="form_fields">
+            <input type="email" name="email" placeholder="Email"
+                [(ngModel)]="user.email"/>
+        </div>
+
+        <div class="form_fields">
+            <input type="password" name="password" placeholder="Password"
+                [(ngModel)]="user.password"/>
+        </div>
+
+        <button type="submit" role="button">
+            Sign Up
+        </button>
+
+        <div class="subfield_div">
+            <p>Have an account? <a class="subfields" href="login">Log in</a></p>
+        </div>
+
+    </form>
+</div>
