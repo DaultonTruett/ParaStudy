@@ -11,11 +11,8 @@ const CLIENT_URL = process.env.CLIENT_URL;
 const sendEmail = require('../utils/sendEmail');
 
 const register = async(req, res) => {
-    if(!req.body.name || !req.body.email || !req.body.password){
-        return res.status(400).json({message: 'All fields required.'})
-    };
-
     let checkUser = await User.findOne({email: req.body.email});
+
     if(checkUser){
         res.status(422).json({msg: "Email already exists"});
     };
@@ -23,7 +20,7 @@ const register = async(req, res) => {
     const user = new User();
     user.name = req.body.name;
     user.email = req.body.email;
-    user.role = "user"
+    user.role = req.body.role;
     user.study_deck = [];
     user.setPassword(req.body.password);
 
@@ -39,9 +36,6 @@ const register = async(req, res) => {
 };
 
 const login = (req, res) => {
-    if(!req.body.email || !req.body.password){
-        return res.status(400).json({message: 'All fields required.'});
-    }
     passport.authenticate('local', (err, user, info) => {
         if(err){
             return res.status(404).json(err);
@@ -120,18 +114,16 @@ const resetPassword = async(req, res) => {
         return res.status(400).json({msg: "Invalid or expired reset token"});
     };
 
-    let salt = crypto.randomBytes(16).toString('hex');
-    let hash = crypto.pbkdf2Sync(password, salt,
+    const user = await User.findById({_id: userId});
+
+    const hash = crypto.pbkdf2Sync(password, user.salt,
         1000, 64, 'sha512').toString('hex');
 
     await User.updateOne(
         {_id: userId},
         {$set: {hash: hash}},
-        {$set: {salt: salt}},
         {new: true}
     );
-
-    const user = await User.findById({_id: userId});
     
     sendEmail(
         user.email,
