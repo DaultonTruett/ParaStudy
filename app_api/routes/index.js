@@ -23,8 +23,12 @@ router
     .post(authController.register);
 
 router
+    .route('/request-password-reset')
+    .post(authController.requestPasswordReset)
+
+router
     .route('/password-reset')
-    .post(authController.resetPassword) // TO_DO
+    .post(authController.resetPassword)
 
 
 // Medications

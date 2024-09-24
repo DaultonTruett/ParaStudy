@@ -24,8 +24,17 @@ export class AuthenticationService {
 
   public async authApiCall(urlPath: string, user: User): Promise<AuthResponse>{
     const url: string = `${this.apiBaseUrl}/${urlPath}`;
-    console.log(user)
     return await lastValueFrom(this.http.post(url, user)) as AuthResponse;
+  };
+
+  public async requestPasswordResetApiCall(urlPath: string, user: User): Promise<any>{
+    const url: string = `${this.apiBaseUrl}/${urlPath}`;
+    return await lastValueFrom(this.http.post(url, user));
+  };
+
+  public async passwordResetApiCall(urlPath: string, request: {}): Promise<any>{
+    const url: string = `${this.apiBaseUrl}/${urlPath}`;
+    return await lastValueFrom(this.http.post(url, request));
   };
 
 
@@ -46,9 +55,43 @@ export class AuthenticationService {
       this.saveToken(authResp.token));
   };
 
-  public resetPassword(user: User): Promise<any>{
-    return this.authApiCall('reset-password', user)
-  }
+  public requestPasswordReset(user: User): Promise<any>{
+    return this.requestPasswordResetApiCall('request-password-reset', user)
+    .then( (resetData: string) => {
+      console.log("request reset response data ", resetData)
+      this.savePasswordResetData(resetData);
+      console.log(this.getResetId())
+      console.log(this.getResetToken())
+
+    })
+  };
+
+  public savePasswordResetData(data: any): void {
+    localStorage.setItem('req-password-user-id', data.userId)
+    localStorage.setItem('req-password-reset-token', data.token)
+  };
+
+  public getResetId(): string{
+    return String(localStorage.getItem('req-password-user-id'));
+  };
+
+  public getResetToken(): string{
+    return String(localStorage.getItem('req-password-reset-token'));
+  };
+
+  public deleteResetData(): void{
+    localStorage.removeItem('req-password-user-id');
+    localStorage.removeItem('req-password-reset-token');
+  };
+
+
+  public passwordReset(request: {}): Promise<any>{
+    return this.passwordResetApiCall('password-reset', request)
+    .then( (response: any) => {
+      this.deleteResetData();
+      console.log("password reset call ", response);
+    })
+  };
 
   public saveToken(token: string): void{
     localStorage.setItem('paraStudy-token', token)

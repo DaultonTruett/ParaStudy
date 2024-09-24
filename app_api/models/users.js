@@ -3,22 +3,21 @@ const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 
 const userSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         unique: true,
         required: true
     },
-    name: {
-        type: String,
-        required: true
+    role: {
+        type: String
     },
     study_deck: {
         type: Array
     },
-    role: {
-        type: String
-    },
-
     hash: String,
     salt: String
 });
@@ -42,10 +41,10 @@ userSchema.methods.generateJwt = function(){
 
     return jwt.sign({
         _id: this._id,
-        email: this.email,
         name: this.name,
-        study_deck: this.study_deck,
+        email: this.email,
         role: this.role,
+        study_deck: this.study_deck,
         exp: parseInt(expiry.getTime() / 1000, 10),
     }, process.env.JWT_SECRET);
 };

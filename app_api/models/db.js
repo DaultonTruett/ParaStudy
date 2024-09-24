@@ -64,6 +64,7 @@ connect();
 require('./medications');
 require('./protocols');
 require('./users');
+require('./resetPasswordToken');
 
 
 module.exports = mongoose;

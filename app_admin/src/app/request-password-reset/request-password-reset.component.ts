@@ -6,14 +6,13 @@ import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
-  selector: 'app-reset-password',
+  selector: 'app-request-password-reset',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './reset-password.component.html',
-  styleUrl: './reset-password.component.css'
+  templateUrl: './request-password-reset.component.html',
+  styleUrl: './request-password-reset.component.css'
 })
-export class ResetPasswordComponent implements OnInit{
-
+export class RequestPasswordResetComponent implements OnInit{
   public formErrors: string = '';
 
   constructor(
@@ -22,9 +21,7 @@ export class ResetPasswordComponent implements OnInit{
   )
   {}
 
-  ngOnInit(){
-    
-  }
+  ngOnInit(){}
 
   public user = {
     name: '',
@@ -34,23 +31,15 @@ export class ResetPasswordComponent implements OnInit{
     study_deck: []
   };
 
-  public resetPasswordSubmit(): void{
-    if(!this.user.password){
+  public requestPasswordResetSubmit(): void{
+    if(!this.user.email){
       this.formErrors = "All fields required."
     }else{
-      let id = this.authService.getResetId();
-      let resetToken = this.authService.getResetToken();
-
-      this.authService.passwordReset({
-        userId: id,
-        token: resetToken,
-        password: this.user.password
-      })
+      this.authService.requestPasswordReset(this.user)
       .then( () => {
         this.router.navigate(['login'])
-    })
+      })
       .catch( (message) => this.formErrors = message);
     }
   }
-
 }
