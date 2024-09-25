@@ -1,0 +1,34 @@
+mat-toolbar{
+    background-color: #1e3d58;
+    color: white;
+}
+
+mat-sidenav-container{
+    height: 100%;
+}
+
+mat-sidenav{
+    width: auto;
+    margin: 16px;
+    padding: 16px;
+    border-right: none;
+    border-radius: 10px;
+    background-color: #057dcd;
+}
+
+mat-sidenav a{
+    font-size: 20px;
+    padding: 1rem;
+    color: white;
+    text-decoration: none;
+}
+
+mat-divider{
+    background-color: white;
+}
+
+@media screen and (max-width: 600px){
+    mat-sidenav{
+        width: 90vw;;
+    }
+}

@@ -1,10 +1,61 @@
 
 
-<app-navbar></app-navbar>
+<mat-toolbar class="mat-elevation-z8">
+    <button mat-icon-button 
+    (click)="sidenav.toggle()">
+    <mat-icon >menu</mat-icon>
+    </button>
+    <span>ParaStudy</span>
+</mat-toolbar>
+  
+<mat-sidenav-container>
+    <mat-sidenav #sidenav class="mat-elevation-z8" mode="over">
+        <mat-list>
+            <mat-list-item>
+                <a routerLink="" class="menu-icons"
+                (click)="sidenav.toggle()">
+                    <span>Home</span>
+                </a>
+            </mat-list-item>
 
-<div>
-    <router-outlet></router-outlet>
-</div>
+            <mat-list-item>
+                <a routerLink="list-medications" class="menu-icons"
+                (click)="sidenav.toggle()">
+                    <span>Medications</span>
+                </a>
+            </mat-list-item>
 
-<app-footer></app-footer>
+            <mat-list-item>
+                <a routerLink='studydeck' class="menu-icons"
+                (click)="sidenav.toggle()">
+                    <span>Study</span>
+                </a>
+            </mat-list-item>
 
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+                <a routerLink="login" class="login_logout" *ngIf="!isLoggedIn()"
+                (click)="sidenav.toggle()">
+                    <span>Login</span>
+                </a>
+            </mat-list-item>
+
+            <mat-list-item>
+                <a routerLink="login" class="login_logout" *ngIf="isLoggedIn()" 
+                (click)="sidenav.toggle()" (click)="onLogout()">
+                    <span>Logout</span>
+                </a>
+            </mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+        <app-footer></app-footer>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+<!--        
+-->
