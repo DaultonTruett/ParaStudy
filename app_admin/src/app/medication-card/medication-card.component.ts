@@ -1,6 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, viewChild, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+
+// Angular Material
+import { MatButtonModule } from '@angular/material/button';
+import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+
+
 
 import { Medication } from '../models/medication';
 import { AuthenticationService } from '../services/authentication.service';
@@ -9,13 +16,20 @@ import { User } from '../models/user';
 
 @Component({
   selector: 'app-medication-card',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './medication-card.component.html',
-  styleUrl: './medication-card.component.css'
+  styleUrl: './medication-card.component.css',
+  standalone: true,
+  imports: [
+    CommonModule, MatButtonModule, MatAccordion,
+    MatExpansionModule, MatIconModule
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MedicationCardComponent implements OnInit{
   @Input('medication') medication!: any;
+
+  accordion = viewChild.required(MatAccordion);
+  readonly panelOpenState = signal(false);
 
   user!: User;
   userRole = '';
