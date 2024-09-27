@@ -24,9 +24,18 @@
     }
 }
 
-button{
+#save_btn{
     margin: 1rem 0.6rem;
     height: 2rem;
     background-color: rgb(34, 99, 219);
     color: white;
+    cursor: pointer;
+}
+
+#cancel_btn{
+    margin: 1rem 0.6rem;
+    height: 2rem;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
 }
