@@ -1,3 +1,8 @@
+
+#card{
+    margin: 2rem 0;
+}
+
 #add_btn{
     display: flex;
     justify-content: center;

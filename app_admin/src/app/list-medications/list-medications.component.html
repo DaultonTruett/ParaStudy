@@ -5,9 +5,9 @@
 </div>
 
 
-<div>
-    <div *ngFor="let medication of medications">
-        <app-medication-card [medication]="medication"></app-medication-card>
-    </div>
+
+<div id="card" *ngFor="let medication of medications">
+    <app-medication-card [medication]="medication"></app-medication-card>
 </div>
+
 
