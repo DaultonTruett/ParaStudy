@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from'@angular/router';
 
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatRadioModule}  from '@angular/material/radio';
+
 import { Medication } from '../models/medication';
 import { User } from '../models/user';
-
 import { MedicationCardComponent } from '../medication-card/medication-card.component';
-
 import { MedicationDataService } from '../services/medication-data.service';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -15,7 +18,9 @@ import { AuthenticationService } from '../services/authentication.service';
 @Component({
   selector: 'app-studydeck',
   standalone: true,
-  imports: [CommonModule, MedicationCardComponent],
+  imports: [CommonModule, MedicationCardComponent, MatTabsModule,
+    MatIconModule, MatButtonModule, MatRadioModule
+  ],
   templateUrl: './studydeck.component.html',
   styleUrl: './studydeck.component.css',
   providers: [MedicationDataService]
@@ -25,8 +30,9 @@ export class StudydeckComponent implements OnInit{
   deck: string[] = [];
 
   medications: any[] = [];
-  //med = {} as Medication;
   msg: string = '';
+
+  quizMedications!: Medication[];
 
   j: number = 0;
 
@@ -51,17 +57,6 @@ export class StudydeckComponent implements OnInit{
       this.medicationDataService.getMedicationById(this.deck[i])
       .subscribe({
         next: (value: any) =>{
-          /*this.med._id = value._id;
-          this.med.name = value.name;
-          this.med.actions = value.actions;
-          this.med.age = value.age;
-          this.med.category = value.category;
-          this.med.contraindications = value.contraindications;
-          this.med.dose = value.dose;
-          this.med.indications = value.indications;
-          this.med.notes = value.notes;
-          this.med.sideEffects = value.sideEffects;
-          */
           this.medications.push(value[0])
           if (!value){
             this.msg = "No medications found in study deck";

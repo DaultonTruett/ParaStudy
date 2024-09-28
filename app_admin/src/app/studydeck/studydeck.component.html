@@ -2,27 +2,50 @@
     <h1>Sorry, you must be logged in to create a study deck.</h1>
 </div>
 
-<div id="empty" *ngIf="!checkDeck()">
-    <h1>You do not have any medications in your deck</h1>
-</div>
 
+<mat-tab-group>
+    <mat-tab label="Flash cards">
+        <div id="empty" *ngIf="!checkDeck()">
+            <h1>You do not have any medications in your deck</h1>
+        </div>
+        
+        
+        <div class="med_parent">
+            <div id="side_1" class="flip">
+                <app-medication-card class="med_cards" [medication]="showMed()"></app-medication-card>
+        
+                <button mat-raised-button class="buttons" type="submit" (click)="previousMed()">previous</button>
+                <button mat-raised-button id="flip_card_front" class="buttons" type="submit" (click)="flipCard()">Flip</button>
+                <button mat-raised-button class="buttons" type="submit" (click)="nextMed()">next</button>
+            </div>
+            <div id="side_2" class="flip">
+                <app-medication-card id="med_name" class="med_cards" [medication]="getMedName()"></app-medication-card>
+        
+                <button mat-raised-button class="buttons" type="submit" (click)="previousMed()">previous</button>
+                <button mat-raised-button id="flip_card_back" class="buttons" type="submit" (click)="flipCard()">Flip</button>
+                <button mat-raised-button class="buttons" type="submit" (click)="nextMed()">next</button>
+            </div>
+        </div>
+    </mat-tab>
 
-<div class="med_parent">
-    <div id="side_1" class="flip">
-        <app-medication-card class="med_cards" [medication]="showMed()"></app-medication-card>
+    <mat-tab label="Quiz">
+        <div class="quiz">
+            <h3>What is the dose of {{showMed().name}}?</h3>
+            <mat-radio-group>
+                <mat-radio-button value="1">5mg/kg</mat-radio-button>
+                <mat-radio-button value="2">{{showMed().dose}}</mat-radio-button>
+                <mat-radio-button value="3">2mg</mat-radio-button>
+                <mat-radio-button value="4">2mcg</mat-radio-button>
+            </mat-radio-group>
+            <div class="question_btns_div">
+                <button mat-raised-button class="question_btns" (click)="previousMed()">previous</button>
+                <button mat-raised-button class="question_btns" (click)="nextMed()">next</button>
+            </div>
+        </div>
 
-        <button class="buttons" type="submit" (click)="previousMed()">previous</button>
-        <button id="flip_card_front" class="buttons" type="submit" (click)="flipCard()">Flip</button>
-        <button class="buttons" type="submit" (click)="nextMed()">next</button>
-    </div>
-    <div id="side_2" class="flip">
-        <app-medication-card id="med_name" class="med_cards" [medication]="getMedName()"></app-medication-card>
+    </mat-tab>
+</mat-tab-group>
 
-        <button class="buttons" type="submit" (click)="previousMed()">previous</button>
-        <button id="flip_card_back" class="buttons" type="submit" (click)="flipCard()">Flip</button>
-        <button class="buttons" type="submit" (click)="nextMed()">next</button>
-    </div>
-</div>
 
 
 
