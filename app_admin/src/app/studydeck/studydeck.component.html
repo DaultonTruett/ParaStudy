@@ -2,8 +2,15 @@
     <h1>Sorry, you must be logged in to create a study deck.</h1>
 </div>
 
+<div id="empty_deck" *ngIf="deckEmpty">
+    <h1>
+        Sorry {{user.name}}, you do not have any flash cards in your study deck.
+    </h1>
+    <h3>Visit the <a href="list-medications">Medications</a> page to add some to your study deck. </h3>
+</div>
 
-<mat-tab-group>
+
+<mat-tab-group *ngIf="!deckEmpty">
     <mat-tab label="Flash cards">
         <div id="empty" *ngIf="!checkDeck()">
             <h1>You do not have any medications in your deck</h1>
@@ -29,13 +36,13 @@
     </mat-tab>
 
     <mat-tab label="Quiz">
-        <div class="quiz">
-            <h3>What is the dose of {{showMed().name}}?</h3>
+        <div class="quiz" *ngFor="let item of showMed().indications_dose | keyvalue">
+            <h3>What is the dose of {{showMed().name}} for {{item.key}}?</h3>
             <mat-radio-group>
-                <mat-radio-button value="1">5mg/kg</mat-radio-button>
-                <mat-radio-button value="2">{{showMed().dose}}</mat-radio-button>
-                <mat-radio-button value="3">2mg</mat-radio-button>
-                <mat-radio-button value="4">2mcg</mat-radio-button>
+                <mat-radio-button value="1">{{getRandomValue()}}{{showMed().mu}}</mat-radio-button>
+                <mat-radio-button value="2">{{item.value}}{{showMed().mu}}</mat-radio-button>
+                <mat-radio-button value="3">{{getRandomValue()}}{{showMed().mu}}</mat-radio-button>
+                <mat-radio-button value="4">{{getRandomValue()}}{{showMed().mu}}</mat-radio-button>
             </mat-radio-group>
             <div class="question_btns_div">
                 <button mat-raised-button class="question_btns" (click)="previousMed()">previous</button>

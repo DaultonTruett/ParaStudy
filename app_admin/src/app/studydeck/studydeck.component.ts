@@ -32,7 +32,14 @@ export class StudydeckComponent implements OnInit{
   medications: any[] = [];
   msg: string = '';
 
+  deckEmpty!: boolean;
+
   quizMedications!: Medication[];
+  
+  indications_dose = {
+    indication: String,
+    dose: String
+  };
 
   j: number = 0;
 
@@ -47,9 +54,17 @@ export class StudydeckComponent implements OnInit{
       this.router.navigate(['login'])
     }else{
       this.user = this.authService.getCurrentUser();
+    }
+
+    if(this.user.study_deck.length === 0){
+      this.deckEmpty = true;
+    }else{
+      this.deckEmpty = false;
       this.deck = this.user.study_deck;
       this.getStudyMeds();
     }
+
+    this.getIndicationAndDose();
   }
 
   public getStudyMeds(): void{
@@ -76,6 +91,19 @@ export class StudydeckComponent implements OnInit{
 
   public showMed(): any{
     return this.medications[this.j]
+  }
+
+  public getIndicationAndDose(): any {
+    for(const [key, val] of this.medications[this.j].entries(this.medications[this.j].indications_dose)){
+      this.indications_dose.indication = key
+      this.indications_dose.dose = val
+    };
+    alert(this.indications_dose)
+    return this.indications_dose.indication, this.indications_dose.dose
+  }
+
+  public getRandomValue(): any {
+    return Math.floor(Math.random() * 100);
   }
 
   public getMedName(): any{

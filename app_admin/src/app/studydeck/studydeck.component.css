@@ -4,6 +4,10 @@
     text-align: center;
 }
 
+#empty_deck{
+    height: 100vh;
+}
+
 #empty{
     width: 100vw;
     height: 100vh;
