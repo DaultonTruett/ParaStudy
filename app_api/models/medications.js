@@ -17,12 +17,11 @@ const medicationSchema = new mongoose.Schema({
         required: true,
         index: true
     },
-    dose: {
-        type: String,
-        required: true,
-        
+    indications_dose: {
+        type: Map,
+        required: true
     },
-    indications: {
+    mu: {
         type: String,
         required: true
     },
@@ -36,10 +35,12 @@ const medicationSchema = new mongoose.Schema({
     },
     actions: {
         type: String,
-        required: true
+        required: false
     },
-    notes: String
-
+    notes: {
+        type: String,
+        required: false
+    }
 });
 
 const Medication = mongoose.model('medications', medicationSchema);

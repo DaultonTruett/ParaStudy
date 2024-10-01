@@ -40,12 +40,36 @@ const getMedsByCategory = async(req, res) => {
 
 const addMedication = async(req, res) => {
     await auth.getUser(req, res, (req, res) => {
+        const med = new Med({
+            category: req.body.category,
+            name: req.body.name,
+            age: req.body.age,
+            indications_dose: {},
+            mu: req.body.mu,
+            contraindications: req.body.contraindications,
+            sideEffects: req.body.sideEffects,
+            actions: req.body.actions,
+            notes: req.body.notes,
+        });
+        med.indications_dose.set(req.body.indications, req.body.dose);
+
+        try{
+            med.save()
+            res.status(200).send(med)
+        }catch(error){
+            res.status(400).send(error)
+        }
+    });
+};
+
+/*
+    await auth.getUser(req, res, (req, res) => {
         Med.create({
             category: req.body.category,
             name: req.body.name,
             age: req.body.age,
-            dose: req.body.dose,
-            indications: req.body.indications,
+            indications_dose: [[req.body.indications, req.body.dose]],
+            mu: req.body.mu,
             contraindications: req.body.contraindications,
             sideEffects: req.body.sideEffects,
             actions: req.body.actions,
@@ -59,22 +83,24 @@ const addMedication = async(req, res) => {
         return res.status(500).json(err);
     })
     });
-};
+*/
 
 const updateMedication = async(req, res) => {
     await auth.getUser(req, res, (req, res) => {
         Med.findOneAndUpdate(
-            {'_id': req.body._id},{
+            {'_id': req.body._id},
+            {
                 category: req.body.category,
                 name: req.body.name,
                 age: req.body.age,
-                dose: req.body.dose,
-                indications: req.body.indications,
+                indications_dose:{},
                 contraindications: req.body.contraindications,
                 sideEffects: req.body.sideEffects,
                 actions: req.body.actions,
                 notes: req.body.notes
-            }, {new: true})
+            },
+            Med.indications_dose.set(req.body.indications, req.body.dose),
+            {new: true})
         .then(med => {
             if(!med){
                 return res.status(404).send({message: 'Not found'});
