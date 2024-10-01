@@ -31,7 +31,7 @@
             <input type="text" formControlName="age" placeholder="age"
                 [ngClass]="{'is-invalid': submitted && values['age'].errors}">
 
-            <div *ngIf="submitted && values['v'].errors">
+            <div *ngIf="submitted && values['age'].errors">
                 <div *ngIf="values['age'].errors?.['required']">
                     Age is required.
                 </div>
@@ -46,6 +46,18 @@
             <div *ngIf="submitted && values['dose'].errors">
                 <div *ngIf="values['dose'].errors?.['required']">
                     Dose is required.
+                </div>
+            </div>
+        </div>
+
+        <div class="form_fields">
+            <label>Measurement units</label>
+            <textarea type="text" formControlName="mu" placeholder="unit"
+                [ngClass]="{'is-invalid': submitted && values['mu'].errors}"></textarea>
+
+            <div *ngIf="submitted && values['mu'].errors">
+                <div *ngIf="values['indications'].errors?.['required']">
+                    Units are required.
                 </div>
             </div>
         </div>
@@ -111,7 +123,7 @@
         </div>
 
         <button id="save_btn" type="submit">Save</button>
-        <button id="cancel_btn" type="submit" routerLink="list-medications">Cancel</button>
+        <!--<button id="cancel_btn" type="submit" routerLink="list-medications">Cancel</button>-->
 
     </form>
 </div>

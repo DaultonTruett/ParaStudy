@@ -9,8 +9,11 @@
                 {{medication.age}}
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <p><b>Dose:</b> {{medication.dose}}</p>
-        <p><b>Indications:</b> {{medication.indications}}</p>
+
+        <p><b>Indication(s) and dose:</b></p>
+        <p *ngFor="let item of medication.indications_dose | keyvalue">
+           &nbsp;&nbsp;&nbsp;&nbsp; {{item.key}}: {{item.value}}{{medication.mu}}
+        </p>
         <p><b>Contraindications:</b> {{medication.contraindications}}</p>
         <p><b>Side Effects:</b> {{medication.sideEffects}}</p>
         <p><b>Actions:</b> {{medication.actions}}</p>

@@ -30,6 +30,7 @@ export class AddMedicationComponent implements OnInit{
       name: ['', Validators.required],
       age: ['', Validators.required],
       dose: ['', Validators.required],
+      mu: ['', Validators.required],
       indications: ['', Validators.required],
       contraindications: ['', Validators.required],
       sideEffects: ['', Validators.required],
