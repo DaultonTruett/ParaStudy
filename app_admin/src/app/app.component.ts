@@ -44,4 +44,15 @@ export class AppComponent implements OnInit{
     return this.authenticationService.logout();
   };
 
+  public sidenavState(): boolean {
+    let width!: number;
+    window.addEventListener("resize", function(event) {
+      width = document.body.clientWidth;
+    });
+    if (width > 800){
+      return true;
+    }
+    return false;
+  }
+
 }
