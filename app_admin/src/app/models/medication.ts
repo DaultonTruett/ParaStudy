@@ -4,9 +4,11 @@ export interface Medication {
     name: string,
     age: string,
     dose: string,
+    mu: string,
     indications: string,
     contraindications: string,
     sideEffects: string,
     actions: string,
     notes: string
+    indications_dose: {}
 };
