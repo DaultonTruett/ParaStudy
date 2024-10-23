@@ -22,6 +22,7 @@ const register = async(req, res) => {
     user.email = req.body.email;
     user.role = req.body.role;
     user.study_deck = [];
+    user.quiz_results = [];
     user.setPassword(req.body.password);
 
     const token = user.generateJwt();

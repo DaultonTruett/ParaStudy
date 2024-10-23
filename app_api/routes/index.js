@@ -12,6 +12,7 @@ const auth = jwt({
 const authController = require('../controllers/authentication');
 const medController = require('../controllers/medications');
 const protocolsController = require('../controllers/protocols');
+const userDataController = require('../controllers/userData');
 
 // Login & registration
 router
@@ -29,6 +30,12 @@ router
 router
     .route('/password-reset')
     .post(authController.resetPassword)
+
+
+// User app data
+router
+    .route('/addQuizResult')
+    .post(userDataController.addQuizResult)
 
 
 // Medications

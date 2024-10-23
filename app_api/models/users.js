@@ -18,6 +18,9 @@ const userSchema = new mongoose.Schema({
     study_deck: {
         type: Array
     },
+    quiz_results: {
+        type: Array,
+    },
     hash: String,
     salt: String
 });
@@ -45,6 +48,7 @@ userSchema.methods.generateJwt = function(){
         email: this.email,
         role: this.role,
         study_deck: this.study_deck,
+        quiz_results: this.quiz_results,
         exp: parseInt(expiry.getTime() / 1000, 10),
     }, process.env.JWT_SECRET);
 };
