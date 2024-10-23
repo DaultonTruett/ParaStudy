@@ -1,58 +1,135 @@
 <div id="not_user" *ngIf="!isLoggedIn()">
-    <h1>Sorry, you must be logged in to create a study deck.</h1>
-</div>
-
-<div id="empty_deck" *ngIf="deckEmpty">
-    <h1>
-        Sorry {{user.name}}, you do not have any flash cards in your study deck.
-    </h1>
-    <h3>Visit the <a href="list-medications">Medications</a> page to add some to your study deck. </h3>
+    <h1>Sorry, you must be logged in to create a study deck or take quizes.</h1>
 </div>
 
 
-<mat-tab-group *ngIf="!deckEmpty">
+<mat-tab-group *ngIf="isLoggedIn()">
     <mat-tab label="Flash cards">
-        <div id="empty" *ngIf="!checkDeck()">
-            <h1>You do not have any medications in your deck</h1>
-        </div>
-        
-        
-        <div class="med_parent">
+        <div id="empty_deck" *ngIf="deckEmpty">
+            <h1>
+                Sorry {{user.name}}, you do not have any flash cards in your study deck.
+            </h1>
+            <h3>Visit the <a href="list-medications">Medications</a> page to add some to your study deck. </h3>
+        </div>      
+        <div class="med_parent" *ngIf="flashCards[j] && !deckEmpty"> 
             <div id="side_1" class="flip">
-                <app-medication-card class="med_cards" [medication]="showMed()"></app-medication-card>
-        
-                <button mat-raised-button class="buttons" type="submit" (click)="previousMed()">previous</button>
-                <button mat-raised-button id="flip_card_front" class="buttons" type="submit" (click)="flipCard()">Flip</button>
-                <button mat-raised-button class="buttons" type="submit" (click)="nextMed()">next</button>
+                <mat-card appearance="outlined">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <p class="name_side_hidden"><b>Name:</b></p>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            <p class="name_side_hidden"><b>Age:</b></p>
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+
+                        <p class="name_side_hidden"><b>Indication(s) and dose:</b></p>
+                        <h1 id="flashcard_name_side">{{showMed().name}}</h1>
+
+                        <p class="name_side_hidden">indication/dose</p>
+                        <p class="name_side_hidden"><b>Contraindications:</b></p>
+                        <p class="name_side_hidden"><b>Side Effects:</b></p>
+                        <p class="name_side_hidden"><b>Actions:</b></p>
+                        <p class="name_side_hidden"><b>Notes:</b></p>
+                    </mat-card-content>
+                </mat-card>
+
+                <div class="flashcard_btns_div">
+                    <button mat-raised-button id="prev_side1" class="flashcard_btns" type="submit" (click)="previousMed()">previous</button>
+                    <button mat-raised-button id="flip_card_front" class="flashcard_btns" type="submit" (click)="flipCard()">Flip</button>
+                    <button mat-raised-button id="next_side1" class="flashcard_btns" type="submit" (click)="nextMed()">next</button>
+                </div>
             </div>
+
             <div id="side_2" class="flip">
-                <app-medication-card id="med_name" class="med_cards" [medication]="getMedName()"></app-medication-card>
-        
-                <button mat-raised-button class="buttons" type="submit" (click)="previousMed()">previous</button>
-                <button mat-raised-button id="flip_card_back" class="buttons" type="submit" (click)="flipCard()">Flip</button>
-                <button mat-raised-button class="buttons" type="submit" (click)="nextMed()">next</button>
+                <mat-card appearance="outlined">
+                    <mat-card-header>
+                        <mat-card-title>
+                            {{showMed().name}}
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            {{showMed().age}}
+                        </mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+
+                        <p><b>Indication(s) and dose:</b></p>
+                        <p *ngFor="let item of showMed().indications_dose | keyvalue">
+                           &nbsp;&nbsp;&nbsp;&nbsp; {{item.key}}: {{item.value}}{{showMed().mu}}
+                        </p>
+
+                        <p><b>Contraindications:</b> {{showMed().contraindications}}</p>
+                        <p><b>Side Effects:</b> {{showMed().sideEffects}}</p>
+                        <p><b>Actions:</b> {{showMed().actions}}</p>
+                        <p><b>Notes:</b> {{showMed().notes}}</p>
+                        <h1 class="name_side_hidden"> hide</h1>
+
+                    </mat-card-content>
+                </mat-card>
+
+                <div class="flashcard_btns_div">
+                    <button mat-raised-button id="prev_side2" class="flashcard_btns" type="submit" (click)="previousMed()">previous</button>
+                    <button mat-raised-button id="flip_card_back" class="flashcard_btns" type="submit" (click)="flipCard()">Flip</button>
+                    <button mat-raised-button id="next_side2" class="flashcard_btns" type="submit" (click)="nextMed()">next</button>
+                </div>
+
             </div>
         </div>
     </mat-tab>
 
-    <mat-tab label="Quiz">
-        <div class="quiz" *ngFor="let item of showMed().indications_dose | keyvalue">
-            <h3>What is the dose of {{showMed().name}} for {{item.key}}?</h3>
-            <mat-radio-group>
-                <mat-radio-button value="1">{{getRandomValue()}}{{showMed().mu}}</mat-radio-button>
-                <mat-radio-button value="2">{{item.value}}{{showMed().mu}}</mat-radio-button>
-                <mat-radio-button value="3">{{getRandomValue()}}{{showMed().mu}}</mat-radio-button>
-                <mat-radio-button value="4">{{getRandomValue()}}{{showMed().mu}}</mat-radio-button>
-            </mat-radio-group>
-            <div class="question_btns_div">
-                <button mat-raised-button class="question_btns" (click)="previousMed()">previous</button>
-                <button mat-raised-button class="question_btns" (click)="nextMed()">next</button>
-            </div>
-        </div>
+    <mat-tab label="Quiz" *ngIf="this.quizMedications && this.quizMedications[i]">
+        <div class="quiz">
 
+            <form id="quizForm" *ngIf="quizForm" [formGroup]="quizForm" (ngSubmit)="quizSubmit()">
+                <div class="question_group" *ngFor="let med of quizQuestionData">
+                    <mat-card appearance="outlined">
+                    <mat-card-header>
+                            <mat-card-title>
+                                <h3>{{med.question}}</h3>
+                            </mat-card-title>
+                        </mat-card-header>
+                        
+                        <mat-card-content>
+                            <mat-radio-group color="primary" formControlName="{{med.formControl}}">
+                                <mat-radio-button value={{choice}}
+                                *ngFor="let choice of med.choices">
+                                    {{choice}}{{med.mu}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </mat-card-content>
+                    </mat-card>
+
+                </div>
+            </form>
+            <button id="submit_btn" mat-raised-button type="submit" id="quiz_submit_btn" (click)="quizSubmit()">Submit</button>
+
+
+        </div>
     </mat-tab>
+
 </mat-tab-group>
 
 
+<!--
 
+                <div class="question_btns_div" *ngIf="i == 0">
+                    <button mat-raised-button class="question_btns" (click)="previousQuizMed()" disabled>previous</button>
+                    <button mat-raised-button class="question_btns" (click)="nextQuizMed()">next</button>
+                    <button mat-raised-button type="submit" class="question_btns" (click)="quizSubmit()" disabled>Submit</button>
+                </div>
+    
+                <div class="question_btns_div" *ngIf="i > 0 && i < 9">
+                    <button mat-raised-button class="question_btns" (click)="previousQuizMed()">previous</button>
+                    <button mat-raised-button class="question_btns" (click)="nextQuizMed()">next</button>
+                    <button mat-raised-button type="submit" class="question_btns" (click)="quizSubmit()" disabled>Submit</button>
+                </div>
+    
+                <div class="question_btns_div" *ngIf="i == 9">
+                    <button mat-raised-button class="question_btns" (click)="previousQuizMed()">previous</button>
+                    <button mat-raised-button class="question_btns" (click)="nextQuizMed()" disabled>next</button>
+                    <button mat-raised-button type="submit" class="question_btns" (click)="quizSubmit()">Submit</button>
+                </div>
+
+-->
 
