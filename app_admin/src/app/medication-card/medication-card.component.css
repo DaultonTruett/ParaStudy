@@ -53,6 +53,14 @@ mat-expansion-panel{
   font-size: 16pt;
 }
 
+#flashcard_name_side{
+  text-align:center;
+}
+
+.name_side_hidden{
+  visibility: hidden;
+}
+
 .edit_delete{
   display: flex;
   justify-content: center;

@@ -1,5 +1,5 @@
 
-<mat-accordion class="headers-align" multi>
+<mat-accordion class="headers-align" multi *ngIf="checkMed()">
     <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
         <mat-expansion-panel-header>
             <mat-panel-title>
