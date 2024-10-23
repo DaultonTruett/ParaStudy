@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit{
     email: '',
     password: '',
     role: '',
-    study_deck: []
+    study_deck: [],
+    quiz_results: [],
   };
 
   constructor(

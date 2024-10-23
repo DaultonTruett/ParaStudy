@@ -119,9 +119,9 @@ export class AuthenticationService {
       const token: string = this.getToken();
 
       if(token != 'null'){
-        const {email, name, role, study_deck} = JSON.parse(atob(token.split('.')[1]));
+        const {email, name, role, study_deck, quiz_results} = JSON.parse(atob(token.split('.')[1]));
         //console.log(token, email, name);
-        return {email, name, role, study_deck} as User;
+        return {email, name, role, study_deck, quiz_results} as User;
       }
     }
     return {} as User;

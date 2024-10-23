@@ -21,7 +21,8 @@ export class SignUpComponent implements OnInit{
     email: '',
     password: '',
     role: 'user',
-    study_deck: []
+    study_deck: [],
+    quiz_results: [],
   };
 
   constructor(
