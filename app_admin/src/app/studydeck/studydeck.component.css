@@ -44,6 +44,10 @@
     z-index: 2;
 }
 
+#title_top{
+    text-align: center;
+}
+
 .quiz{
     display: flex;
     flex-direction: column;
@@ -74,6 +78,14 @@ mat-card{
     height: 5rem;
     margin-bottom: 4rem;
     font-size: large;
+}
+
+#user_result{
+    text-align: center;
+}
+
+.question_answer{
+    float: right;
 }
 
 .flip{

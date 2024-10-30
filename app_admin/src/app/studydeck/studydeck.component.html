@@ -78,34 +78,101 @@
         </div>
     </mat-tab>
 
-    <mat-tab label="Quiz" *ngIf="this.quizMedications && this.quizMedications[i]">
-        <div class="quiz">
+    <mat-tab  label="Quiz" *ngIf="this.quizMedications && this.quizMedications[i]">
+        <h1 id="title_top">Medication dose quiz</h1>
 
-            <form id="quizForm" *ngIf="quizForm" [formGroup]="quizForm" (ngSubmit)="quizSubmit()">
-                <div class="question_group" *ngFor="let med of quizQuestionData">
-                    <mat-card appearance="outlined">
-                    <mat-card-header>
-                            <mat-card-title>
-                                <h3>{{med.question}}</h3>
-                            </mat-card-title>
-                        </mat-card-header>
-                        
-                        <mat-card-content>
-                            <mat-radio-group color="primary" formControlName="{{med.formControl}}">
-                                <mat-radio-button value={{choice}}
-                                *ngFor="let choice of med.choices">
-                                    {{choice}}{{med.mu}}
-                                </mat-radio-button>
-                            </mat-radio-group>
-                        </mat-card-content>
-                    </mat-card>
+            <div class="quiz" *ngIf="!submitted">
 
-                </div>
-            </form>
-            <button id="submit_btn" mat-raised-button type="submit" id="quiz_submit_btn" (click)="quizSubmit()">Submit</button>
+                <form id="quizForm" *ngIf="quizForm" [formGroup]="quizForm" (ngSubmit)="quizSubmit()">
+                    <div class="question_group" *ngFor="let med of quizQuestionData">
+                        <mat-card appearance="outlined">
+                        <mat-card-header>
+                                <mat-card-title>
+                                    <h3>{{med.question}}</h3>
+                                </mat-card-title>
+                            </mat-card-header>
+                            
+                            <mat-card-content>
+                                <mat-radio-group color="primary" formControlName="{{med.formControl}}">
+                                    <mat-radio-button value={{item}}
+                                    *ngFor="let item of med.choices">
+                                        {{item}}{{med.mu}}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </mat-card-content>
+                        </mat-card>
+
+                    </div>
+                </form>
+
+                <button mat-raised-button id="quiz_submit_btn" type="submit" (click)="quizSubmit()">
+                    Submit
+                </button>
+
+            </div>
+
+            <div class="quiz" *ngIf="submitted">
+                <form>
+                    <div class="question_group" *ngFor="let med of quizQuestionData">
+                        <mat-card appearance="outlined">
+                            <mat-card-header>
+                                <mat-card-title>
+                                    <h3>{{med.question}}</h3>
+                                </mat-card-title>
+                            </mat-card-header>
+                            
+                            <mat-card-content>
+                                <div *ngFor="let item of med.choices">
+                                    
+                                    <p style="color: green"
+                                    *ngIf="(item == med.answer) && (med.userChoice.length == 0)">
+                                        {{item}}{{med.mu}}
+                                    </p>
+                                    <p style="color: red"
+                                    *ngIf="(item != med.answer) && (med.userChoice.length == 0)">
+                                        {{item}}{{med.mu}}
+                                    </p>
+                                
+
+                                    <p style="color: green"
+                                    *ngIf="(item == med.answer) && (med.userChoice == med.answer)">
+                                        {{item}}{{med.mu}}
+                                    </p>
 
 
-        </div>
+                                    <p style="color: red"
+                                    *ngIf="(item != med.answer) && (item == med.userChoice)">
+                                        {{item}}{{med.mu}}
+                                    </p>
+                                    <p style="color: green"
+                                    *ngIf="(item == med.answer) && (item != med.userChoice) && (med.userChoice.length > 0)">
+                                        {{item}}{{med.mu}}
+                                    </p>
+
+
+                                    <p *ngIf="(item != med.answer) && (item != med.userChoice) && (med.userChoice.length > 0)">
+                                        {{item}}{{med.mu}}
+                                    </p>
+
+                                </div>
+
+                                <p class="question_answer" *ngIf="(med.userChoice.length == 0)">No submission: 0/1</p>
+                                <p class="question_answer" *ngIf="(med.userChoice == med.answer)">Correct: 1/1</p>
+                                <p class="question_answer" *ngIf="(med.userChoice != med.answer) && (med.userChoice.length > 0)">Incorrect: 0/1</p>
+
+                            </mat-card-content>
+                        </mat-card>
+        
+                    </div>
+                </form>
+
+                <h1 id="user_result">Result: {{result}}/{{quizQuestionData.length}}</h1>
+
+                <button mat-raised-button id="quiz_submit_btn" type="submit" (click)="closeQuizResults()">
+                    Close
+                </button>
+
+            </div>
     </mat-tab>
 
 </mat-tab-group>

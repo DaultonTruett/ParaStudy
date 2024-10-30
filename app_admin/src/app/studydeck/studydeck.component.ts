@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from'@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
@@ -45,17 +45,23 @@ export class StudydeckComponent implements OnInit{
       age: string,
       indication: string,
       mu: string
-      choices: string[],
       formControl: number
-      question: string
+      question: string,
+      choices: string[],
+      answer: string,
+      userChoice: string
   }[] = []
 
   quizQuestionAnswers = new Map<number, string>;
+  displayQuizResults: {
+    userChoice: string,
+    answer: any
+  }[] = []
   
-  //quizQuestionAnswerChoices = new Map<number, string[]>;
 
   public quizForm!: FormGroup;
   submitted = false;
+  result = 0;
 
   i: number = 0;
   j: number = 0;
@@ -66,9 +72,7 @@ export class StudydeckComponent implements OnInit{
     private userDataService: UserDataService,
     private router: Router,
     private formBuilder: FormBuilder,
-  ){
-
-  }
+  ){}
 
   ngOnInit(){
     this.user = this.authService.getCurrentUser();
@@ -80,16 +84,16 @@ export class StudydeckComponent implements OnInit{
     }
 
     this.quizForm = this.formBuilder.group({
-      0: '',
-      1: '',
-      2: '',
-      3: '',
-      4: '',
-      5: '',
-      6: '',
-      7: '',
-      8: '',
-      9: ''
+      0: ['', Validators.required],
+      1: ['', Validators.required],
+      2: ['', Validators.required],
+      3: ['', Validators.required],
+      4: ['', Validators.required],
+      5: ['', Validators.required],
+      6: ['', Validators.required],
+      7: ['', Validators.required],
+      8: ['', Validators.required],
+      9: ['', Validators.required]
     })
 
 
@@ -102,6 +106,7 @@ export class StudydeckComponent implements OnInit{
     this.medicationDataService.getMedications()
       .subscribe({
         next: (value: Medication[]) => {
+          this.msg = value.length + ' meds returned'
           if(value.length > 0){
             
             let i = 0;
@@ -127,6 +132,7 @@ export class StudydeckComponent implements OnInit{
                     indication: k,
                     mu: item.mu,
                     formControl: i,
+
                     choices: [
                       String(v),
                       Math.floor(1 + Math.random() * 5).toString() + " - " +  (Math.floor(10 + Math.random() * 10).toString()),
@@ -134,7 +140,9 @@ export class StudydeckComponent implements OnInit{
                       Math.floor(1 + Math.random() * 300).toString(),
                       tmp.toString()
                     ],
-                    question: "What is the " + item.age + " dose of " + item.name + " for " + k + "?"
+                    question: "What is the " + item.age + " dose of " + item.name + " for " + k + "?",
+                    answer: String(v),
+                    userChoice: ''
 
                   });
                   i += 1;
@@ -182,25 +190,40 @@ export class StudydeckComponent implements OnInit{
 
   
   public quizSubmit(){
-    this.submitted = true;
-    let result = 0;
-    for(let i = 0; i < 10; i++){
-      if(this.quizForm.value[i] == this.quizQuestionAnswers.get(i)){
-        result += 1
-      };
-    }
+    //if(this.quizForm.valid){
+      this.submitted = true;
+
+      for(let i = 0; i < 10; i++){
+        if(this.quizForm.value[i] == this.quizQuestionAnswers.get(i)){
+          this.result += 1
+        }
+        let data = this.quizQuestionData.at(i)
+        data!.userChoice = this.quizForm.value[i]
+      }
+
+      document.getElementById('title_top')!.scrollIntoView();
+      
   
-    this.userDataService.addQuizResult(this.user, result)
+    //}
+  
+    /*
+    this.userDataService.addQuizResult(this.user, this.result)
     .subscribe({
       next: (value: any) => {
-        this.router.navigate([''])
+        console.log(value)
       },
       error: (error: any) => {
         console.log("error: ", error)
       }
-    })    
+    });
+    */
+
 
   }; 
+
+  public closeQuizResults(){
+    this.router.navigate([''])
+  }
 
   get values(){
     return this.quizForm.controls;
