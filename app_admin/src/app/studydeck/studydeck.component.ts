@@ -190,39 +190,32 @@ export class StudydeckComponent implements OnInit{
 
   
   public quizSubmit(){
-    //if(this.quizForm.valid){
-      this.submitted = true;
+    this.submitted = true;
 
-      for(let i = 0; i < 10; i++){
-        if(this.quizForm.value[i] == this.quizQuestionAnswers.get(i)){
-          this.result += 1
-        }
-        let data = this.quizQuestionData.at(i)
-        data!.userChoice = this.quizForm.value[i]
+    for(let i = 0; i < 10; i++){
+      if(this.quizForm.value[i] == this.quizQuestionAnswers.get(i)){
+        this.result += 1
       }
+      let data = this.quizQuestionData.at(i)
+      data!.userChoice = this.quizForm.value[i]
+    }
 
-      document.getElementById('title_top')!.scrollIntoView();
-      
-  
-    //}
-  
-    /*
+    document.getElementById('title_top')!.scrollIntoView();
+
+
     this.userDataService.addQuizResult(this.user, this.result)
     .subscribe({
       next: (value: any) => {
-        console.log(value)
+        this.authService.updateToken(this.user.email);
       },
       error: (error: any) => {
         console.log("error: ", error)
       }
     });
-    */
-
-
   }; 
 
   public closeQuizResults(){
-    this.router.navigate([''])
+    this.router.navigateByUrl('');
   }
 
   get values(){
@@ -298,31 +291,4 @@ export class StudydeckComponent implements OnInit{
     });
     }
 
-
-
 }
-
-
-/*
-                this.quizQuestionAnswerChoices.set(i, [String(v)]);
-
-                // Push additional random values into each array for a multiple choice question
-                let arr = this.quizQuestionAnswerChoices.get(i);
-
-                arr?.push( (Math.floor(1 + Math.random() * 5).toString()) + " - " +  (Math.floor(5 + Math.random() * 10).toString()))
-                arr?.push( (Math.floor(1 + Math.random() * 15).toString()) + " - " +  (Math.floor(15 + Math.random() * 20).toString()))
-                arr?.push(Math.floor(1 + Math.random() * 300).toString());
-
-                this.quizQuestionAnswerChoices.forEach( (array) => {
-                  for(let i = array.length - 1; i > 0; i--){
-                    let j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]]
-                  };
-                });
-
-
-                  public getQuestionAnswerChoices(){
-                    return this.quizQuestionAnswerChoices.get(this.i);
-                  }
-
-*/
