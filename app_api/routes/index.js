@@ -24,6 +24,10 @@ router
     .post(authController.register);
 
 router
+    .route('/user/:email')
+    .get(authController.generateNewJWT)
+
+router
     .route('/request-password-reset')
     .post(authController.requestPasswordReset)
 

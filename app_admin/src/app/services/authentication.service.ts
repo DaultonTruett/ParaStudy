@@ -27,6 +27,11 @@ export class AuthenticationService {
     return await lastValueFrom(this.http.post(url, user)) as AuthResponse;
   };
 
+  public async getNewJwtToken(user_email: string, urlPath: string): Promise<AuthResponse>{
+    const url = `${this.apiBaseUrl}/${urlPath}/${user_email}`
+    return await lastValueFrom(this.http.get(url)) as AuthResponse
+  }
+
   public async requestPasswordResetApiCall(urlPath: string, user: User): Promise<any>{
     const url: string = `${this.apiBaseUrl}/${urlPath}`;
     return await lastValueFrom(this.http.post(url, user));
@@ -97,6 +102,16 @@ export class AuthenticationService {
     localStorage.setItem('paraStudy-token', token)
   };
 
+  public async updateToken(user_email: string): Promise<any>{
+    return await this.getNewJwtToken(user_email, 'user')
+    .then( (authResp: AuthResponse) => {
+      localStorage.removeItem('paraStudy-token');
+      localStorage.setItem('paraStudy-token', authResp.token);
+    })
+    .catch(error => {
+      console.log('Error: ', error)
+    });
+  }
 
   public getToken(): string{
     return String(localStorage.getItem('paraStudy-token'));

@@ -66,6 +66,21 @@ const getUser = async(req, res, callback) => {
     }
 };
 
+const generateNewJWT = async(req, res) => {
+    console.log('params:', req.params)
+    await User.findOne({
+       'email': req.params.email}).exec()
+    .then(user => {
+        if(user){
+            const token = user.generateJwt();
+            res.status(200).json({token});
+        }
+    })
+    .catch(err => {
+        return res.status(401).send(err)
+    })
+}
+
 const requestPasswordReset = async(req, res) => {
     const user = await User.findOne({email: req.body.email});
     if(!user){
@@ -141,6 +156,7 @@ const resetPassword = async(req, res) => {
 module.exports = {
     login,
     register,
+    generateNewJWT,
     requestPasswordReset,
     resetPassword,
     getUser
