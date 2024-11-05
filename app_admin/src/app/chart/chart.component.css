@@ -1,0 +1,16 @@
+
+
+#quiz_results_chart{
+    width: 100vw;
+}
+
+canvas{
+    padding: 2rem 6rem;
+    margin-top: 4rem;
+}
+
+@media screen and (max-width: 800px){
+    canvas{
+        padding: 1rem;
+    }
+}
