@@ -1,17 +1,28 @@
 
-<div class="page_div">
+<div class="page_div" *ngIf="!isLoggedIn()">
+  <div id="landing_logged_out_div">
 
-  <div class="landing_logged_out">
-    <h1>Master your medications</h1>
-    <p>Study anytime, anywhere</p>
+    <h1 id="landing_title">Master your medications</h1>
+    <p id="landing_subtitle">Study anytime, anywhere</p>
     <button mat-raised-button>
       <a href="list-medications">Get started >></a>
     </button>
+    
   </div>
-
 </div>
 
-<!--        <app-medication-card class="sample"
-        [medication]="medication">
-      </app-medication-card>-->
 
+<div class="page_div" *ngIf="isLoggedIn()">
+  <div id="user_home_div">
+    <h1 id="user_title" class="info">Hello {{user.name}}</h1>
+
+    <div id="user_info">
+      <h3 class="info">My stats</h3>
+      <p class="info">Flashcards in study deck: {{user.study_deck.length}}</p>
+      <p class="info">Quizes taken in the last 7 days: {{user.quiz_results.length}}</p>
+      <p class="info">Average quiz score: {{average}}%</p>
+    </div>
+
+    <app-chart></app-chart>
+  </div>
+</div>

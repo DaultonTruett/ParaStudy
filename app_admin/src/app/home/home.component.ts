@@ -1,73 +1,51 @@
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 
-import { MedicationDataService } from '../services/medication-data.service';
-import { MedicationCardComponent } from '../medication-card/medication-card.component';
 import { AuthenticationService } from '../services/authentication.service';
 import { User } from '../models/user';
-import { Medication } from '../models/medication';
+import { ChartComponent } from '../chart/chart.component';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, MedicationCardComponent, MatButtonModule,
-    MatTabsModule, MatIconModule
-  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [MedicationDataService],
+  providers: [],
+  imports: [CommonModule, ChartComponent, 
+    MatButtonModule, MatTabsModule, MatIconModule
+  ]
 })
 export class HomeComponent implements OnInit{
 
 user!: User;
-userName = '';
-medication!: Medication;
-msg = '';
+user_email = this.authService.getCurrentUser().email;
 
+average!: number;
 
-  constructor(
-    private medService: MedicationDataService,
-    private authService: AuthenticationService,
-    private router: Router
-  ){}
+constructor(
+  private authService: AuthenticationService,
+){}
 
-  ngOnInit(){
-    if (this.isLoggedIn()){
-      this.user = this.authService.getCurrentUser();
-      this.userName = this.user.name;
+ngOnInit(){
+  if(this.isLoggedIn()){
+    this.user = this.authService.getCurrentUser();
+
+    let curr = 0;
+    for(let i = 0; i < this.user.quiz_results.length; i++){
+      curr += this.user.quiz_results[i]
     }
-    this.getSampleMed();
+    this.average = Math.round((curr / this.user.quiz_results.length) * 10);
   }
 
-  public isLoggedIn(): boolean{
-    return this.authService.isLoggedIn();
-  }
+}
 
-  private getSampleMed(): void{
-    this.medService.getMedicationById("66309adb3b43284a779cafd0")
-    .subscribe({
-      next: (value: any) => {
-        this.medication = value[0];
-        
-        if(!value){
-          this.msg = 'Medication not retrieved.';
-        }else{
-          this.msg = 'OK'
-        }
-
-        console.log(this.msg);
-      },
-      error: (error: any) => {
-        console.log(error);
-      }
-    });
-  }
+public isLoggedIn(): boolean{
+  return this.authService.isLoggedIn();
+}
 
 }

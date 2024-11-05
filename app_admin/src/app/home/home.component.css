@@ -1,13 +1,14 @@
+a{
+    text-decoration: none;
+    color: black;
+}
 
 .page_div{
     min-height: 100vh;
     width: 100vw;
-    background: url("../../assets/images/medical-5835701_1920.jpg");
-    background: contain;
-    background-repeat: no-repeat;
 }
 
-.landing_logged_out{
+#landing_logged_out_div{
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -15,33 +16,53 @@
     justify-content: center;
     padding-left: 4rem;
     color: white;
+    background: url("../../assets/images/medical-5835701_1920.jpg");
+    background: contain;
+    background-repeat: no-repeat;
 }
 
-.landing_logged_in{
-    height: 100vh;
-}
-
-h1{
+#landing_title{
     font-size: 80px;
 }
 
-.sample{
-    width: 33vw;
-    margin-top: 3rem;
-}
-
-p{
+#landing_subtitle{
     font-size: 24px;
 }
 
-a{
-    text-decoration: none;
-    color: black;
+#user_home_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:100vh;
+}
+
+#user_title{
+    margin-top: 4rem;
+}
+
+#user_info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50vw;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px black;
+    margin-top: 4rem;
+}
+
+.info{
+    padding-left: 1rem;
 }
 
 
-@media screen and (max-width: 1200px){
-    mat-grid-title{
-        text-align: center;
+@media screen and (max-width: 600px){
+    #user_info{
+        width: 80vw;
+    }
+    .page_div{
+        min-height: auto;
+    }
+    .info{
+        padding-left: 0.5rem;
     }
 }
