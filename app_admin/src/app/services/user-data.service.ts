@@ -17,6 +17,20 @@ export class UserDataService {
 
   private apiBaseUrl = 'http://localhost:3000/api';
 
+  public addFlashcard(user: any, medicationId: string): Observable<any>{
+    return this.http.post(`${this.apiBaseUrl}/addFlashcard`, {
+      user: user,
+      medId: medicationId
+    });
+  };
+
+  public removeFlashcard(user: any, medicationId: string): Observable<any>{
+    return this.http.post(`${this.apiBaseUrl}/removeFlashcard`, {
+      user: user,
+      medId: medicationId
+    });
+  };
+
   public addQuizResult(user: User, quizResult: any): Observable<any>{
   
     return this.http.post(`${this.apiBaseUrl}/addQuizResult`, {

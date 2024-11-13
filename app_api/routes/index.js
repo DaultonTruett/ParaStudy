@@ -41,6 +41,14 @@ router
     .route('/addQuizResult')
     .post(userDataController.addQuizResult)
 
+router
+    .route('/addFlashcard')
+    .post(userDataController.addFlashcard)
+
+router
+    .route('/removeFlashcard')
+    .post(userDataController.removeFlashcard)
+
 
 // Medications
 router
