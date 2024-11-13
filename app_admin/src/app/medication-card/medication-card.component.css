@@ -61,7 +61,7 @@ mat-expansion-panel{
   visibility: hidden;
 }
 
-.edit_delete{
+.buttons{
   display: flex;
   justify-content: center;
 }
