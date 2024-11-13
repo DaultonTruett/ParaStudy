@@ -267,28 +267,23 @@ export class StudydeckComponent implements OnInit{
     }
   };
 
-  public flipCard(): void{
-    document.getElementById("flip_card_front")?.addEventListener("click", (e) =>{
-      e.preventDefault();
+  public flipCardBack(): void{
+    let x = document.getElementById("side_2");
+    let y = document.getElementById("side_1");
 
-      let x = document.getElementById("side_2");
-      let y = document.getElementById("side_1");
-      if(x && y){
-        x.className = "flip flip_side_1";
-        y.className = "flip flip_side_2";
-      };
-    });
-
-    document.getElementById("flip_card_back")?.addEventListener("click", (e) =>{
-      e.preventDefault();
-
-      let x = document.getElementById("side_2");
-      let y = document.getElementById("side_1");
-      if(x && y){
-        x.className = "flip";
-        y.className = "flip";
-      }
-    });
+    if(x && y){
+      x.className = "flip";
+      y.className = "flip";
     }
+  }
 
+  public flipCardFront(): void{
+    let x = document.getElementById("side_2");
+    let y = document.getElementById("side_1");
+    
+    if(x && y){
+      x.className = "flip flip_side_1";
+      y.className = "flip flip_side_2";
+    };
+  }
 }
