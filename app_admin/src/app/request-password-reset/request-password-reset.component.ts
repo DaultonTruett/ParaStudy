@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
+import { MatButtonModule } from '@angular/material/button';
+
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-request-password-reset',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatButtonModule],
   templateUrl: './request-password-reset.component.html',
   styleUrl: './request-password-reset.component.css'
 })

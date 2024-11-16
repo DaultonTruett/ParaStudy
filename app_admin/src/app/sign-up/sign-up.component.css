@@ -18,7 +18,7 @@ h2{
     height: 100vh;
 }
 
-#signup_form{
+form{
     display: flex;
     flex-direction: column;
     width: 25vw;
@@ -45,20 +45,40 @@ h2{
 
 .subfields{
     text-decoration: none;
-    color:#057dcd;
+    color:#43b0f1;
 }
 
-button{
+#sign_in_btn{
     background-color: #057dcd;
     color: white;
     margin-top: 20px;
     height: 2.3rem;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px){
     form{
         width: 80vw;
         padding-bottom: 12rem;
+    }
+}
+
+@media screen and (max-width: 800px){
+    form{
+        width: 80vw;
+        padding-bottom: 12rem;
+    }
+}
+
+@media screen and (max-width: 1200px){
+    #login_signup_pic{
+        background: url(../../assets/images/ambulance_medium.jpg);
+        background-repeat:no-repeat;
+    }
+}
+
+@media screen and (max-width: 800px){
+    #login_signup_pic{
+        background: url(../../assets/images/ambulance_small.jpg);
     }
 }
