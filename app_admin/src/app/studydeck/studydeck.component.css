@@ -24,7 +24,7 @@
     visibility: hidden;
 }
 
-#flashcard_name_side{
+.flashcard_name_side{
     text-align: center;
 }
 
