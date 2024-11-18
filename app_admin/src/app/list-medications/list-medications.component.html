@@ -5,9 +5,19 @@
 </div>
 
 
+<mat-tab-group>
+    <mat-tab label="Adult" *ngIf="medications">
+        <div id="adult_card" class="card" *ngFor="let medication of medications">
+            <app-medication-card *ngIf="medication.age == 'Adult'" [medication]="medication"></app-medication-card>
+        </div>
+    </mat-tab>
 
-<div id="card" *ngFor="let medication of medications">
-    <app-medication-card [medication]="medication"></app-medication-card>
-</div>
+    <mat-tab label="Pediatric" *ngIf="medications">
+        <div id="pediatric_card" class="card" *ngFor="let medication of medications">
+            <app-medication-card *ngIf="medication.age == 'Pediatric'" [medication]="medication"></app-medication-card>
+        </div>
+    </mat-tab>
+</mat-tab-group>
+
 
 
