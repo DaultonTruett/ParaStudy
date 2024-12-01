@@ -12,6 +12,16 @@ const addQuizResult = async(req, res) => {
 
 };
 
+const deleteAllQuizResults = async(req, res) => {
+    await User.findOneAndUpdate({email: req.body.user.email}, {$set: {quiz_results: []}})
+    .then(user => {
+        return res.status(200).send(user.quiz_results);
+    })
+    .catch( err => {
+        res.status(404).send(err);
+    });
+};
+
 const addFlashcard = async(req, res) => {
     await User.findOneAndUpdate({email: req.body.user.email}, {$push: {study_deck: req.body.medId}})
     .then(user => {
@@ -32,9 +42,21 @@ const removeFlashcard = async(req, res) => {
     })
 }
 
+const deleteAllFlashcards = async(req, res) => {
+    await User.findOneAndUpdate({email: req.body.user.email}, {$set: {study_deck: []}})
+    .then(user => {
+        return res.status(200).send(user.study_deck)
+    })
+    .catch(err => {
+        return res.status(404).send(err);
+    });
+};
+
 
 module.exports = {
     addQuizResult,
+    deleteAllQuizResults,
     addFlashcard,
-    removeFlashcard
+    removeFlashcard,
+    deleteAllFlashcards
 }

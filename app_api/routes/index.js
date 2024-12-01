@@ -14,7 +14,7 @@ const medController = require('../controllers/medications');
 const protocolsController = require('../controllers/protocols');
 const userDataController = require('../controllers/userData');
 
-// Login & registration
+// Account management
 router
     .route('/login')
     .post(authController.login);
@@ -35,11 +35,19 @@ router
     .route('/password-reset')
     .post(authController.resetPassword)
 
+router
+    .route('/deleteUserAccount')
+    .post(authController.deleteUserAccount)
+
 
 // User app data
 router
     .route('/addQuizResult')
     .post(userDataController.addQuizResult)
+
+router
+    .route('/deleteAllQuizResults')
+    .post(userDataController.deleteAllQuizResults)
 
 router
     .route('/addFlashcard')
@@ -48,6 +56,11 @@ router
 router
     .route('/removeFlashcard')
     .post(userDataController.removeFlashcard)
+
+router
+    .route('/deleteAllFlashcards')
+    .post(userDataController.deleteAllFlashcards)
+
 
 
 // Medications

@@ -50,6 +50,16 @@ const login = (req, res) => {
     })(req, res);
 };
 
+const deleteUserAccount = async(req, res) => {
+    await User.findOneAndDelete({email: req.body.user.email})
+    .then(respond =>{
+        res.status(200).send("Ok")
+    })
+    .catch(err => {
+        res.status(404).send(err);
+    })
+}
+
 const getUser = async(req, res, callback) => {
     if(req.auth && req.auth.email){
         try{
@@ -156,6 +166,7 @@ const resetPassword = async(req, res) => {
 module.exports = {
     login,
     register,
+    deleteUserAccount,
     generateNewJWT,
     requestPasswordReset,
     resetPassword,
