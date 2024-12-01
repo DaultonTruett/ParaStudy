@@ -1,0 +1,39 @@
+
+#page_div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+mat-card{
+    width: 60vw;
+    margin: 3rem;
+}
+
+mat-divider{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.options_div{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.account_btns{
+    margin-left: 2rem;
+}
+
+@media screen and (max-width: 800px){
+    mat-card{
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 600px){
+    mat-card{
+        width: 95vw;
+    }
+}

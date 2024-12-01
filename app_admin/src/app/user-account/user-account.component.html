@@ -1,0 +1,56 @@
+
+<div id="page_div">
+    <mat-card id="user_app_data">
+        <mat-card-header>
+            <h1>App data</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="options_div">
+                <h4 class="" >Reset study deck</h4>
+                <button class="account_btns" mat-raised-button (click)="clearStudyDeck()"
+                [disabled]="studyDeckEmpty()">
+                    Reset
+                </button>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="options_div">
+                <h4 class="" >Reset quiz history</h4>
+                <button class="account_btns" mat-raised-button (click)="clearQuizResultsHistory()"
+                [disabled]="quizResultsEmpty()">
+                    Reset
+                </button>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+    
+    <mat-card id="user_account_data">
+        <mat-card-header>
+            <h1>Account</h1> 
+        </mat-card-header>
+        <mat-card-content>
+            <div class="options_div">
+                <h4 class="" >Log out of my account</h4>
+                <button class="account_btns" mat-raised-button
+                    (click)="logout()">
+                    Logout
+                </button>
+            </div>
+
+
+            <mat-divider></mat-divider>
+    
+            <div class="options_div">
+                <h4 id="warning" class="" >Delete my account</h4>
+                <button class="account_btns" mat-raised-button (click)="deleteUserAccount()"
+                style="background-color: rgb(241, 102, 102);">Delete</button>
+            </div>
+
+    
+        </mat-card-content>
+    </mat-card>
+</div>
+
+

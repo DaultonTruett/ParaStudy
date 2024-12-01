@@ -1,6 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { lastValueFrom } from 'rxjs'
 import { HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 
 import { User } from '../models/user';
@@ -58,6 +59,12 @@ export class AuthenticationService {
     return this.authApiCall('register', user)
     .then( (authResp: AuthResponse)  => 
       this.saveToken(authResp.token));
+  };
+
+  public deleteUserAccount(user: User): Observable<any>{
+    return this.http.post(`${this.apiBaseUrl}/deleteUserAccount`, {
+      user: user
+    })
   };
 
   public requestPasswordReset(user: User): Promise<any>{

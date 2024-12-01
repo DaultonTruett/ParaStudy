@@ -13,6 +13,7 @@ import { AddProtocolComponent } from './add-protocol/add-protocol.component';
 import { EditProtocolComponent } from './edit-protocol/edit-protocol.component';
 import { DeleteProtocolComponent } from './delete-protocol/delete-protocol.component';
 import { StudydeckComponent } from './studydeck/studydeck.component'
+import { UserAccountComponent } from './user-account/user-account.component';
 
 
 export const routes: Routes = [
@@ -29,5 +30,6 @@ export const routes: Routes = [
     {path: 'edit-protocol', component: EditProtocolComponent},
     {path: 'delete-protocol', component: DeleteProtocolComponent},
     {path: 'studydeck', component: StudydeckComponent},
+    {path: 'my-account', component: UserAccountComponent},
     {path: '', component: HomeComponent, pathMatch: 'full'}
 ];

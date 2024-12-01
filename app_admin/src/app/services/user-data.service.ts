@@ -31,6 +31,12 @@ export class UserDataService {
     });
   };
 
+  public deleteAllFlashcards(user: any): Observable<any>{
+    return this.http.post(`${this.apiBaseUrl}/deleteAllFlashcards`, {
+      user: user
+    });
+  };
+
   public addQuizResult(user: User, quizResult: any): Observable<any>{
   
     return this.http.post(`${this.apiBaseUrl}/addQuizResult`, {
@@ -39,5 +45,10 @@ export class UserDataService {
     })
   }
 
+  public deleteAllQuizResults(user: User): Observable<any>{
+    return this.http.post(`${this.apiBaseUrl}/deleteAllQuizResults`, {
+      user: user
+    });
+  };
 
 }
