@@ -1,6 +1,22 @@
+/* Color palette
+
+#1e3d58
+#057dcd
+#43b0f1
+#e8eef1
+
+*/
+
 mat-toolbar{
     background-color: #1e3d58;
     color: white;
+    /*
+    position:fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    */
 }
 
 #nav_desktop{
@@ -40,15 +56,40 @@ mat-sidenav-container{
 
 mat-sidenav{
     display: none;
-    width: 100vw;
+    width: 40vw;
     background-color: #057dcd;
     padding: 16px;
     border-right: none;
 }
 
+mat-sidenav span{
+    font-size: 20px;
+    padding: 1rem;
+    color: white;
+}
+
+mat-sidenav a{
+    text-decoration: none;
+}
+
+mat-divider{
+    background-color: white;
+}
+
+#acc_header{
+    padding-top: 1rem;
+}
+
 @media screen and (max-width: 800px){
     mat-sidenav{
         display: initial;
+    }
+
+    #hamburger_div{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content:flex-end;
     }
 
     #hamburger{
@@ -60,14 +101,8 @@ mat-sidenav{
     }
 }
 
-
-mat-sidenav a{
-    font-size: 20px;
-    padding: 1rem;
-    color: white;
-    text-decoration: none;
-}
-
-mat-divider{
-    background-color: white;
+@media screen and (max-width: 800px){
+    mat-sidenav{
+        width: 60vw;
+    }
 }

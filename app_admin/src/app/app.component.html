@@ -1,11 +1,14 @@
 
 
 <mat-toolbar class="mat-elevation-z8">
-    <button id="hamburger" mat-icon-button 
-    (click)="sidenav.toggle()">
-    <mat-icon >menu</mat-icon>
-    </button>
     <span class="menu-items">ParaStudy</span>
+    <div id="hamburger_div">
+        <button id="hamburger" mat-icon-button 
+        (click)="sidenav.toggle()">
+        <mat-icon >menu</mat-icon>
+        </button>
+    </div>
+
     <div id="nav_desktop">
         <a routerLink="" class="menu-items">
             <span>Home</span>
@@ -20,16 +23,15 @@
             <a routerLink="login" class="topnav_login_logout" *ngIf="!isLoggedIn()">
                 <span>Login</span>
             </a>
-            <a routerLink="login" class="topnav_login_logout" *ngIf="isLoggedIn()" 
-            (click)="onLogout()">
-                <span>Logout</span>
+            <a routerLink="my-account" class="topnav_login_logout" *ngIf="isLoggedIn()">
+                <span>Account</span>
             </a>
         </div>
     </div>
 </mat-toolbar>
   
 <mat-sidenav-container>
-    <mat-sidenav #sidenav class="mat-elevation-z8" mode="over">
+    <mat-sidenav #sidenav class="mat-elevation-z8" mode="push">
         <mat-list>
             <mat-list-item>
                 <a routerLink="" class="menu-icons"
@@ -55,27 +57,28 @@
             <mat-divider></mat-divider>
 
             <mat-list-item>
+                <a routerLink="my-account"
+                *ngIf="isLoggedIn()" (click)="sidenav.toggle()">
+                    <span>Account</span>
+                </a>
+            </mat-list-item>
+
+            <mat-list-item>
                 <a routerLink="login" class="login_logout"
                     *ngIf="!isLoggedIn()" (click)="sidenav.toggle()">
                     <span>Login</span>
                 </a>
             </mat-list-item>
 
-            <mat-list-item>
-                <a routerLink="login" class="login_logout" *ngIf="isLoggedIn()" 
-                (click)="sidenav.toggle()" (click)="onLogout()">
-                    <span>Logout</span>
-                </a>
-            </mat-list-item>
         </mat-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
         <router-outlet></router-outlet>
-        <app-footer></app-footer>
     </mat-sidenav-content>
 
 </mat-sidenav-container>
 
-<!--        
+<!--
+    <app-footer></app-footer>
 -->
