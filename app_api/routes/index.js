@@ -75,6 +75,33 @@ router
     .put(auth, medController.updateMedication)
     .post(auth, medController.deleteMedication);
 
+// Medication Indications
+router
+    .route('/medications/addIndication/:_id')
+    .put(auth, medController.addMedicationIndication)
+
+router
+    .route('/medications/editIndication/:_id')
+    .put(auth, medController.updateMedicationIndication)
+
+router
+    .route('/medications/deleteIndication/:_id')
+    .put(auth, medController.deleteMedicationIndication)
+
+// Medication doses
+router
+    .route('/medications/addMedicationDose/:_id')
+    .put(auth, medController.addMedicationDose)
+
+router
+    .route('/medications/updateMedicationDose/:_id')
+    .put(auth, medController.updateMedicationDose)
+
+router
+    .route('/medications/deleteMedicationDose/:_id')
+    .put(auth, medController.deleteMedicationDose)
+
+// NOTE: remove
 router
     .route('/cardiac/medications/:category')
     .get(medController.getMedsByCategory);

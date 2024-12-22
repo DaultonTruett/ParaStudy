@@ -41,17 +41,22 @@ const getMedsByCategory = async(req, res) => {
 const addMedication = async(req, res) => {
     await auth.getUser(req, res, (req, res) => {
         const med = new Med({
-            category: req.body.category,
+            classification: req.body.classification,
             name: req.body.name,
             age: req.body.age,
-            indications_dose: {},
-            mu: req.body.mu,
+            indications_dose: [{
+                indication: req.body.indication,
+                dose_and_route: [{
+                    dose: req.body.dose,
+                    mu: req.body.mu,
+                    route: req.body.route
+                }]
+            }],
             contraindications: req.body.contraindications,
-            sideEffects: req.body.sideEffects,
+            side_effects: req.body.side_effects,
             actions: req.body.actions,
             notes: req.body.notes,
         });
-        med.indications_dose.set(req.body.indications, req.body.dose);
 
         try{
             med.save()
@@ -128,6 +133,185 @@ const deleteMedication = async(req, res) => {
     });
 };
 
+const addMedicationIndication = async(req, res) => {
+    await auth.getUser(req, res, (req, res) => {
+       Med.updateOne(
+            {_id: req.body.medication_id},
+            {$push: {indications_dose: {
+                indication: req.body.indication,
+                dose_and_route: [{
+                    dose: req.body.dose,
+                    mu: req.body.mu,
+                    route: req.body.route
+                }]
+            }}})
+        .then(med => {
+            if(!med){
+                return res.status(404).send({message: 'Not found'});
+            };
+            return res.status(200).send(med);
+        }).catch(err => {
+            return res.status(500).json(err);
+        });
+    });
+};
+
+const updateMedicationIndication = async(req, res) => {
+    await auth.getUser(req, res, (req, res) => {
+        Med.updateOne({
+            _id: req.body.medication_id,
+        },
+        {$set: {
+            "indications_dose.$[id].indication": req.body.indication
+
+        }},
+        {
+            "arrayFilters": [
+                {
+                    "id._id": req.body.indication_id
+                }
+            ]
+        },
+        {new: true}
+    )
+    .then(med => {
+        if(!med){
+            return res.status(404).send({message: "Not found"});
+        };
+        return res.status(200).send(med);
+    }).catch(err => {
+        return res.status(500).json(err);
+    })
+    });
+};
+
+const deleteMedicationIndication = async(req, res) => {
+    await auth.getUser(req, res, (req, res) => {
+        Med.updateOne({
+            _id: req.body.medication_id,
+            "indications_dose._id": req.body.indication_id
+        },
+        {$pull: {
+            indications_dose: {
+                _id: req.body.indication_id
+            }
+        }}
+    )
+    .then(med => {
+        if(!med){
+            return res.status(404).send({message: 'Not found'});
+        };
+        return res.status(200).send(med);
+    })
+    .catch(err => {
+        return res.status(500).json(err);
+    })
+    });
+};
+
+const addMedicationDose = async(req, res) => {
+    await auth.getUser(req, res, (req, res) => {
+        Med.updateOne({
+            _id: req.body.medication_id,
+            "indications_dose._id": req.body.indication_id
+        },
+        {$push: {
+            "indications_dose.$[id].dose_and_route":
+                {
+                    "dose": req.body.dose,
+                    "mu": req.body.mu,
+                    "route": req.body.route
+                }
+            }
+        },
+        {
+            "arrayFilters": [
+                {"id._id": req.body.indication_id}
+            ]
+        })
+        .then(med => {
+            if(!med){
+                return res.status(404).send({message: 'Not found'});
+            };
+            console.log(med)
+            return res.status(200).send(med);
+        }).catch(err => {
+            return res.status(500).json(err)
+        });
+    });
+};
+
+const updateMedicationDose = async(req, res) => {
+    await auth.getUser(req, res, (req, res) => {
+        Med.updateOne({
+            _id: req.body.medication_id,
+            "indications_dose": {
+                $elemMatch: {
+                    _id: req.body.indication_id,
+                    "dose_and_route._id": req.body.dose_id
+                }
+            }
+        },
+        {$set: {
+            "indications_dose.$[indicationID].dose_and_route.$[doseID]": {
+                "dose": req.body.dose,
+                "mu": req.body.mu,
+                "route": req.body.route
+            }
+        }
+        },
+        {
+            "arrayFilters": [
+                {"indicationID._id": req.body.indication_id},
+                {"doseID._id": req.body.dose_id}
+            ]
+        },
+        {new: true})
+        .then(med => {
+            if(!med){
+                return res.status(404).send({message: "Not found"});
+            };
+            return res.status(200).send(med);
+        }).catch(err => {
+            return res.status(500).json(err);
+        })
+    });
+};
+
+const deleteMedicationDose = async(req, res) => {
+    await auth.getUser(req, res, (req, res) => {
+        Med.updateOne({
+            _id: req.body.medication_id,
+            "indications_dose": {
+                $elemMatch: {
+                    _id: req.body.indication_id,
+                    "dose_and_route._id": req.body.dose_id
+                }
+            }
+        },
+        {$pull: {
+            "indications_dose.$[id].dose_and_route":
+            {
+                _id: req.body.dose_id
+            }
+        }
+    },
+    {
+        "arrayFilters": [
+            {"id._id": req.body.indication_id}
+        ]
+    })
+    .then(med => {
+        if(!med){
+            return res.status(404).send({message: 'Not found'});
+        };
+        console.log(med)
+        return res.status(200).send(med);
+    }).catch(err => {
+        return res.status(500).json(err)
+    });
+    });
+};
 
 
 module.exports = {
@@ -136,5 +320,11 @@ module.exports = {
     getMedsByCategory,
     addMedication,
     updateMedication,
-    deleteMedication
+    deleteMedication,
+    addMedicationIndication,
+    updateMedicationIndication,
+    deleteMedicationIndication,
+    addMedicationDose,
+    updateMedicationDose,
+    deleteMedicationDose,
 }
