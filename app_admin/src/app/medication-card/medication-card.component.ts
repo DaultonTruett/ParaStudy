@@ -10,6 +10,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 
 import { User } from '../models/user';
 import { Medication } from '../models/medication';
+import { MedicationDataService } from '../services/medication-data.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserDataService } from '../services/user-data.service';
 
@@ -39,6 +40,7 @@ export class MedicationCardComponent implements OnInit{
   constructor(
     private router: Router,
     private authService: AuthenticationService,
+    private medService: MedicationDataService,
     private userDataService: UserDataService
   ){};
 
@@ -117,22 +119,6 @@ export class MedicationCardComponent implements OnInit{
     window.location.reload()
   }
 
-  // Admin
-  public editMed(medication: Medication){
-    localStorage.removeItem('_id');
-    localStorage.setItem('_id', medication._id);
-
-    this.router.navigate(['edit-medication']);
-  };
-
-  // Admin
-  public deleteMed(medication: Medication){
-    localStorage.removeItem('_id');
-    localStorage.setItem('_id', medication._id);
-
-    this.router.navigate(['delete-medication']);
-  };
-
   public checkMed(): boolean{
     if(this.medication._id){
       return true;
@@ -148,5 +134,116 @@ export class MedicationCardComponent implements OnInit{
     }
     return false;
   }
+
+    // Admin functions below
+
+    // Medications
+    public editMed(medication: Medication){
+      localStorage.removeItem('medication_id');
+      localStorage.setItem('medication_id', medication._id);
+  
+      this.router.navigate(['edit-medication']);
+    };
+  
+    public deleteMed(medication: Medication){
+      localStorage.removeItem('medication_id');
+      localStorage.setItem('medication_id', medication._id);
+  
+      this.router.navigate(['delete-medication']);
+    };
+  
+    // Medication indications
+    public addMedicationIndication(medication_id: string, medication_name: string){
+      localStorage.removeItem('medication_id');
+      localStorage.removeItem('medication_name')
+
+      localStorage.setItem('medication_id', medication_id);
+      localStorage.setItem('medication_name', medication_name);
+  
+      this.router.navigate(['add-medication-indication']);
+    };
+  
+    public editMedicationIndication(medication_id: string, indication_id: string, indication_name: string){
+      localStorage.removeItem('medication_id');
+      localStorage.removeItem('indication_id');
+      localStorage.removeItem('indication_name');
+  
+      localStorage.setItem('medication_id', medication_id);
+      localStorage.setItem('indication_id', indication_id);
+      localStorage.setItem('indication_name', indication_name);
+  
+      this.router.navigate(['edit-medication-indication'])
+    };
+  
+    public deleteMedicationIndication(medication_id: string, indication_id: string){
+      let data = {
+        medication_id: medication_id,
+        indication_id: indication_id
+      };
+      this.medService.deleteMedicationIndication(data)
+      .subscribe({
+        next: () => {
+          this.reloadPage();
+        },
+        error: (err: any) => {
+          console.log(err)
+        }
+      });
+    };
+  
+    // Medication indication doses
+    public addMedicationDose(medication_id: string, indication_id: string, medication_name: string, indication_name: string){
+      localStorage.removeItem('medication_id');
+      localStorage.removeItem('indication_id');
+      localStorage.removeItem('medication_name');
+      localStorage.removeItem('indication_name');
+  
+      localStorage.setItem('medication_id', medication_id);
+      localStorage.setItem('indication_id', indication_id);
+      localStorage.setItem('medication_name', medication_name);
+      localStorage.setItem('indication_name', indication_name);
+  
+      this.router.navigate(['add-medication-dose'])
+    };
+
+    public editMedicationDose(medication_name: string, indication_name: string, medication_id: string, indication_id: string, dose_id: string, dose: string, mu: string, route: string){
+      localStorage.removeItem('medication_name');
+      localStorage.removeItem('indication_name');
+      localStorage.removeItem('medication_id');
+      localStorage.removeItem('indication_id');
+      localStorage.removeItem('dose_id');
+      localStorage.removeItem('dose');
+      localStorage.removeItem('mu');
+      localStorage.removeItem('route');
+
+      localStorage.setItem('medication_name', medication_name);
+      localStorage.setItem('indication_name', indication_name);
+      localStorage.setItem('medication_id', medication_id);
+      localStorage.setItem('indication_id', indication_id);
+      localStorage.setItem('dose_id', dose_id);
+      localStorage.setItem('dose', dose);
+      localStorage.setItem('mu', mu);
+      localStorage.setItem('route', route);
+
+      this.router.navigate(['edit-medication-dose']);
+    };
+
+    public deleteMedicationDose(medication_id: string, indication_id: string, dose_id: string){
+      const data = {
+        medication_id: medication_id,
+        indication_id: indication_id,
+        dose_id: dose_id
+      };
+      
+      this.medService.deleteMedicationDose(data)
+      .subscribe({
+        next: (value: any) => {
+          this.reloadPage();
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
+    };
 
 }

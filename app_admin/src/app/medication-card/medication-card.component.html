@@ -6,33 +6,83 @@
                 {{medication.name}}
             </mat-panel-title>
             <mat-panel-description>
-                {{medication.age}}
+                {{medication.classification}}
             </mat-panel-description>
         </mat-expansion-panel-header>
 
+        <p>{{medication.age}}</p>
+
         <p><b>Indication(s) and dose:</b></p>
-        <p *ngFor="let item of medication.indications_dose | keyvalue">
-           &nbsp;&nbsp;&nbsp;&nbsp; {{item.key}}: {{item.value}}{{medication.mu}}
-        </p>
+        <div *ngFor="let indication of medication.indications_dose">
+            <div id="indications">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp; {{indication.indication}}:</p>
+
+                <div id="indications_btns_div">
+                    <button id="add_dose_btn" class="indications_btns" *ngIf="isAdmin()" type="button" mat-raised-button
+                    (click)="addMedicationDose(medication._id, indication._id, medication.name, indication.indication)">
+                        Add dose
+                    </button>
+
+                    <button id="edit_indications_btn" class="indications_btns" *ngIf="isAdmin()" type="button" mat-raised-button
+                    (click)="editMedicationIndication(medication._id, indication._id, indication.indication)">
+                        Edit indication
+                    </button>
+
+                    <button id="delete_indications_btn" class="indications_btns" *ngIf="isAdmin()" type="button" mat-raised-button
+                    (click)="deleteMedicationIndication(medication._id, indication._id)">
+                        Delete indication
+                    </button>
+                </div>
+
+            </div>
+
+            <div *ngFor="let dose of indication.dose_and_route">
+                <div id="doses">
+                    <p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {{dose.dose}}{{dose.mu}} - {{dose.route}}
+                    </p>
+                    <div id="doses_btns_div">
+                        <button id="edit_dose_btn" class="doses_btns" *ngIf="isAdmin()" type="button" mat-raised-button
+                        (click)="editMedicationDose(medication.name, indication.indication, medication._id, indication._id, dose._id, dose.dose, dose.mu, dose.route)">
+                            Edit dose
+                        </button>
+                        <button id="delete_dose_btn" class="doses_btns" *ngIf="isAdmin()" type="button" mat-raised-button
+                        (click)="deleteMedicationDose(medication._id, indication._id, dose._id)">
+                            Delete dose
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
         <p><b>Contraindications:</b> {{medication.contraindications}}</p>
-        <p><b>Side Effects:</b> {{medication.sideEffects}}</p>
+        <p><b>Side Effects:</b> {{medication.side_effects}}</p>
         <p><b>Actions:</b> {{medication.actions}}</p>
         <p><b>Notes:</b> {{medication.notes}}</p>
 
         <div class="buttons" *ngIf="isLoggedIn()">
-            <button id="edit_btn" *ngIf="isAdmin()" type="button" (click)="editMed(medication)">
+            <button id="add_indication_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" mat-raised-button
+            (click)="addMedicationIndication(medication._id, medication.name)">
+                Add indication
+            </button>
+
+            <button id="edit_med_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" (click)="editMed(medication)" mat-raised-button>
                 Edit
             </button>
-            <button id="delete_btn" *ngIf="isAdmin()" type="button" (click)="deleteMed(medication)">
+
+            <button id="delete_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" (click)="deleteMed(medication)" mat-raised-button>
                 Delete
             </button>
 
             <div>
-                <button id="add_flashcard_btn{{medication._id}}" class="flashcard_add_btns" mat-raised-button type="button"
+                <button id="add_flashcard_btn{{medication._id}}" class="med_card_btn" mat-raised-button type="button"
                 (click)="addMedToStudydeck(medication)" [disabled]="inStudyDeck()" style="background-color: #43b0f1;">
                     Add to study deck
                 </button>
-                <button id="remove_flashcard_btn{{medication._id}}" class="flashcard_remove_btns" mat-raised-button type="button"
+                <button id="remove_flashcard_btn{{medication._id}}" class="med_card_btn" mat-raised-button type="button"
                 (click)="removeMedFromStudydeck(medication)" [disabled]="!inStudyDeck()" style="background-color: rgb(241, 102, 102);">
                     Remove from study deck
                 </button>

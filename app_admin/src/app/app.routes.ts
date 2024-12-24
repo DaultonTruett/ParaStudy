@@ -8,6 +8,12 @@ import { ListMedicationsComponent } from './list-medications/list-medications.co
 import { AddMedicationComponent } from './add-medication/add-medication.component';
 import { EditMedicationComponent } from './edit-medication/edit-medication.component';
 import { DeleteMedicationComponent } from './delete-medication/delete-medication.component';
+import { AddMedicationIndicationComponent } from './add-medication-indication/add-medication-indication.component';
+import { EditMedicationIndicationComponent } from './edit-medication-indication/edit-medication-indication.component';
+import { DeleteMedicationIndicationComponent } from './delete-medication-indication/delete-medication-indication.component';
+import { AddMedicationDoseComponent } from './add-medication-dose/add-medication-dose.component';
+import { EditMedicationDoseComponent } from './edit-medication-dose/edit-medication-dose.component';
+import { DeleteMedicationDoseComponent } from './delete-medication-dose/delete-medication-dose.component';
 import { ListProtocolsComponent } from './list-protocols/list-protocols.component';
 import { AddProtocolComponent } from './add-protocol/add-protocol.component';
 import { EditProtocolComponent } from './edit-protocol/edit-protocol.component';
@@ -25,6 +31,12 @@ export const routes: Routes = [
     {path: 'add-medication', component: AddMedicationComponent},
     {path: 'edit-medication', component: EditMedicationComponent},
     {path: 'delete-medication', component: DeleteMedicationComponent},
+    {path: 'add-medication-indication', component: AddMedicationIndicationComponent},
+    {path: 'edit-medication-indication', component: EditMedicationIndicationComponent},
+    {path: 'delete-medication-indication', component: DeleteMedicationIndicationComponent},
+    {path: 'add-medication-dose', component: AddMedicationDoseComponent},
+    {path: 'edit-medication-dose', component: EditMedicationDoseComponent},
+    {path: 'delete-medication-dose', component: DeleteMedicationDoseComponent},
     {path: 'list-protocols', component: ListProtocolsComponent},
     {path: 'add-protocol', component: AddProtocolComponent},
     {path: 'edit-protocol', component: EditProtocolComponent},

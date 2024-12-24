@@ -1,0 +1,68 @@
+
+<div id="add_indication">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                Add indication: {{medication_name}}
+            </mat-card-title>
+        </mat-card-header>
+        
+        <mat-card-content>
+            <form id="indication_form" *ngIf="indicationForm" [formGroup]="indicationForm" (ngSubmit)="onSubmit()">
+
+                <div class="form_fields">
+                    <label>Indication</label>
+                    <input type="text" formControlName="indication" placeholder="name"
+                        [ngClass]="{'is-invalid': submitted && values['indication'].errors}">
+        
+                    <div *ngIf="submitted && values['indication'].errors">
+                        <div *ngIf="values['indication'].errors?.['required']">
+                            Indication is required.
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form_fields">
+                    <label>Dose</label>
+                    <input type="text" formControlName="dose" placeholder="50, 0.1, etc.."
+                        [ngClass]="{'is-invalid': submitted && values['dose'].errors}">
+        
+                    <div *ngIf="submitted && values['dose'].errors">
+                        <div *ngIf="values['dose'].errors?.['required']">
+                            Dose is required.
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form_fields">
+                    <label>Measurement units</label>
+                    <input type="text" formControlName="mu" placeholder="mg, mcg, etc.."
+                        [ngClass]="{'is-invalid': submitted && values['mu'].errors}">
+        
+                    <div *ngIf="submitted && values['mu'].errors">
+                        <div *ngIf="values['mu'].errors?.['required']">
+                            Units are required.
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="form_fields">
+                    <label>Route</label>
+                    <input type="text" formControlName="route" placeholder="IV, PO, etc.."
+                        [ngClass]="{'is-invalid': submitted && values['route'].errors}">
+        
+                    <div *ngIf="submitted && values['route'].errors">
+                        <div *ngIf="values['route'].errors?.['required']">
+                            Route is required.
+                        </div>
+                    </div>
+                </div>
+        
+                <div id="buttons_div">
+                    <button mat-raised-button id="save_btn" type="submit">Save</button>
+                    <button mat-raised-button id="cancel_btn" type="submit" (click)="onCancel()">Cancel</button>
+                </div>        
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

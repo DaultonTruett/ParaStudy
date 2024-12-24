@@ -50,5 +50,52 @@ export class MedicationDataService {
     });
   };
 
+  addMedicationIndication(form_data: any): Observable<any>{
+    return this.http.put(`${this.apiBaseUrl}/medications/addIndication/${form_data.medication_id}`, form_data,{
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('paraStudy-token')}`
+      })
+    });
+  };
+
+  updateMedicationIndication(form_data: any): Observable<any>{
+    return this.http.put(`${this.apiBaseUrl}/medications/editIndication/${form_data.medication_id}`, form_data, {
+      headers: new HttpHeaders ({
+        'Authorization': `Bearer ${localStorage.getItem('paraStudy-token')}`
+      })
+    })
+  }
+
+  deleteMedicationIndication(data: any): Observable<any>{
+    return this.http.put(`${this.apiBaseUrl}/medications/deleteIndication/${data.medication_id}`, data, {
+      headers: new HttpHeaders ({
+        'Authorization': `Bearer ${localStorage.getItem('paraStudy-token')}`
+      })
+    });
+  };
+
+  addMedicationDose(form_data: any): Observable<any>{
+    return this.http.put(`${this.apiBaseUrl}/medications/addMedicationDose/${form_data.medication_id}`, form_data,{
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('paraStudy-token')}`
+      })
+    });
+  };
+
+  updateMedicationDose(form_data: any): Observable<any>{
+    return this.http.put(`${this.apiBaseUrl}/medications/updateMedicationDose/${form_data.medication_id}`, form_data, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('paraStudy-token')}`
+      })
+    });
+  };
+
+  deleteMedicationDose(data: any): Observable<any>{
+    return this.http.put(`${this.apiBaseUrl}/medications/deleteMedicationDose/${data.medication_id}`, data, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${localStorage.getItem('paraStudy-token')}`
+      })
+    });
+  };
 
 };
