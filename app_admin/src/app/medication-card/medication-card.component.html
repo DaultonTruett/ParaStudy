@@ -29,7 +29,7 @@
                     </button>
 
                     <button id="delete_indications_btn" class="indications_btns" *ngIf="isAdmin()" type="button" mat-raised-button
-                    (click)="deleteMedicationIndication(medication._id, indication._id)">
+                    (click)="deleteMedicationIndication(medication._id, indication._id, medication.name, indication.indication)">
                         Delete indication
                     </button>
                 </div>
@@ -48,7 +48,7 @@
                             Edit dose
                         </button>
                         <button id="delete_dose_btn" class="doses_btns" *ngIf="isAdmin()" type="button" mat-raised-button
-                        (click)="deleteMedicationDose(medication._id, indication._id, dose._id)">
+                        (click)="deleteMedicationDose(medication.name, indication.indication, medication._id, indication._id, dose._id, dose.dose, dose.mu, dose.route)">
                             Delete dose
                         </button>
                     </div>

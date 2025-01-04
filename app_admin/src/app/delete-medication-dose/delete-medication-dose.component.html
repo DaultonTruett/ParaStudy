@@ -1,1 +1,33 @@
-<p>delete-medication-dose works!</p>
+<div id="delete_div">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                WARNING! Deleting can not be undone, please review the data below before proceeding.
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div id="data_div">
+                <p>
+                    <b>Medication: </b>{{medication_name}}
+                </p>
+                <p>
+                    <b>Indication: </b>{{indication_name}}
+                </p>
+                <p>
+                    <b>Dose: </b>{{dose}}{{mu}} - {{route}} <b style="color: red"> <- DELETE</b>
+                </p>
+
+                <h3> Are you sure you want to delete {{dose}}{{mu}} - {{route}} dose from {{medication_name}}-{{indication_name}}</h3>
+            
+                <div id="btns_div">
+                    <button id="delete_btn" mat-raised-button (click)="onSubmit()"
+                        style="background-color: rgb(241, 102, 102)">
+                        Confirm delete
+                    </button>
+                    <button id="cancel_btn" mat-raised-button (click)="onCancel()"
+                        style="background-color:rgb(124, 124, 124); color: white">Cancel</button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

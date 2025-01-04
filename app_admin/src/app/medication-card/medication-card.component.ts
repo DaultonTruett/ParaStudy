@@ -175,20 +175,18 @@ export class MedicationCardComponent implements OnInit{
       this.router.navigate(['edit-medication-indication'])
     };
   
-    public deleteMedicationIndication(medication_id: string, indication_id: string){
-      let data = {
-        medication_id: medication_id,
-        indication_id: indication_id
-      };
-      this.medService.deleteMedicationIndication(data)
-      .subscribe({
-        next: () => {
-          this.reloadPage();
-        },
-        error: (err: any) => {
-          console.log(err)
-        }
-      });
+    public deleteMedicationIndication(medication_id: string, indication_id: string, medication_name: string, indication_name: string){
+      localStorage.removeItem('medication_id');
+      localStorage.removeItem('indication_id');
+      localStorage.removeItem('medication_name');
+      localStorage.removeItem('indication_name');
+
+      localStorage.setItem('medication_id', medication_id);
+      localStorage.setItem('indication_id', indication_id);
+      localStorage.setItem('medication_name', medication_name);
+      localStorage.setItem('indication_name', indication_name);
+
+      this.router.navigate(['delete-medication-indication'])
     };
   
     // Medication indication doses
@@ -228,22 +226,27 @@ export class MedicationCardComponent implements OnInit{
       this.router.navigate(['edit-medication-dose']);
     };
 
-    public deleteMedicationDose(medication_id: string, indication_id: string, dose_id: string){
-      const data = {
-        medication_id: medication_id,
-        indication_id: indication_id,
-        dose_id: dose_id
-      };
+    public deleteMedicationDose(medication_name: string, indication_name: string, medication_id: string, indication_id: string, dose_id: string, dose: string, mu: string, route: string){
+      localStorage.removeItem('medication_name');
+      localStorage.removeItem('indication_name');
+      localStorage.removeItem('medication_id');
+      localStorage.removeItem('indication_id');
+      localStorage.removeItem('dose_id');
+      localStorage.removeItem('dose');
+      localStorage.removeItem('mu');
+      localStorage.removeItem('route');
+
+      localStorage.setItem('medication_name', medication_name);
+      localStorage.setItem('indication_name', indication_name);
+      localStorage.setItem('medication_id', medication_id);
+      localStorage.setItem('indication_id', indication_id);
+      localStorage.setItem('dose_id', dose_id);
+      localStorage.setItem('dose', dose);
+      localStorage.setItem('mu', mu);
+      localStorage.setItem('route', route);
       
-      this.medService.deleteMedicationDose(data)
-      .subscribe({
-        next: (value: any) => {
-          this.reloadPage();
-        },
-        error: (err: any) => {
-          console.log(err);
-        }
-      });
+      this.router.navigate(['delete-medication-dose']);
+
     };
 
 }
