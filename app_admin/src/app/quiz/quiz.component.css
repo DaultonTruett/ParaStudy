@@ -1,0 +1,43 @@
+#title_top{
+    text-align: center;
+}
+
+.quiz{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+    margin-top: 2rem;
+}
+
+mat-radio-group{
+    display: flex;
+    flex-direction: column;
+}
+
+mat-card{
+    box-shadow: 2px 2px;
+}
+
+.question_group{
+    padding: 1rem;
+    margin-top: 1rem;
+    min-height: 50vh;
+}
+
+#quiz_submit_btn{
+    width: 10rem;
+    height: 5rem;
+    margin-bottom: 4rem;
+    font-size: large;
+}
+
+#user_result{
+    text-align: center;
+}
+
+.question_answer{
+    float: right;
+}
