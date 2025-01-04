@@ -1,14 +1,18 @@
 export interface Medication {
     _id: string,
-    category: string,
+    classification: string,
     name: string,
     age: string,
-    dose: string,
-    mu: string,
-    indications: string,
     contraindications: string,
     sideEffects: string,
     actions: string,
     notes: string
-    indications_dose: {}
+    indications_dose: {
+        indication: string,
+        dose_and_route: {
+            dose: string,
+            mu: string,
+            route: string
+        }[]
+    }[]
 };
