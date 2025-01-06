@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonModule } from '@angular/material/button';
 
 import { Medication } from '../models/medication';
 import { MedicationCardComponent } from '../medication-card/medication-card.component';
@@ -14,7 +15,7 @@ import { User } from '../models/user';
 @Component({
   selector: 'app-list-medications',
   standalone: true,
-  imports: [CommonModule, MedicationCardComponent, MatTabsModule],
+  imports: [CommonModule, MedicationCardComponent, MatTabsModule, MatButtonModule],
   templateUrl: './list-medications.component.html',
   styleUrl: './list-medications.component.css',
   providers: [MedicationDataService]
