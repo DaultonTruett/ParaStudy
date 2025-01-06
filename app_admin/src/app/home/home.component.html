@@ -1,28 +1,55 @@
 
 <div class="page_div" *ngIf="!isLoggedIn()">
-  <div id="landing_logged_out_div">
+  <div id="img">
+    <div id="landing_logged_out_div">
 
-    <h1 id="landing_title">Master your medications</h1>
-    <p id="landing_subtitle">Study anytime, anywhere</p>
-    <button mat-raised-button>
-      <a href="list-medications">Get started >></a>
-    </button>
-    
+      <h1 id="landing_title">Master your medications</h1>
+      <p id="landing_subtitle">Study anytime, anywhere</p>
+      <button mat-raised-button>
+        <a href="list-medications">Get started >></a>
+      </button>
+      
+    </div>
   </div>
+
 </div>
 
 
 <div class="page_div" *ngIf="isLoggedIn()">
   <div id="user_home_div">
-    <h1 id="user_title" class="info">Hello {{user.name}}</h1>
 
-    <div id="user_info">
-      <h3 class="info">My stats</h3>
-      <p class="info">Flashcards in study deck: {{user.study_deck.length}}</p>
-      <p class="info">Quizes taken in the last 7 days: {{user.quiz_results.length}}</p>
-      <p class="info">Average quiz score: {{average}}%</p>
-    </div>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <h3>Hello, {{user.name}}</h3>
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="info_divs">
+          <p>Flashcards in study deck:</p> 
+          <p>{{user.study_deck.length}}</p>
+        </div>
+
+        <div class="info_divs">
+          <p>Quizes taken:</p>
+          <p>{{user.quiz_results.length}}</p>
+        </div>
+
+        <div *ngIf="average >= 0" class="info_divs">
+          <p>Average quiz score:</p>
+          <p>{{average}}%</p>
+        </div>
+
+        <div *ngIf="average == 'No quizes taken'" class="info_divs">
+          <p>Average quiz score:</p>
+          <p>{{average}}</p>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
 
     <app-chart></app-chart>
+
   </div>
 </div>

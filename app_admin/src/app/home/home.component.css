@@ -8,21 +8,26 @@ a{
     width: 100vw;
 }
 
+#img{
+    background: url("../../assets/images/medical-5835701_1920.jpg");
+    background: contain;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+}
+
 #landing_logged_out_div{
     height: 100vh;
+    padding-left: 3rem;
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding-left: 4rem;
-    color: white;
-    background: url("../../assets/images/medical-5835701_1920.jpg");
-    background: contain;
-    background-repeat: no-repeat;
 }
 
 #landing_title{
-    font-size: 80px;
+    font-size: 55px;
+    padding-bottom: 4.7rem;
 }
 
 #landing_subtitle{
@@ -33,31 +38,53 @@ a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    height:100vh;
 }
 
-#user_title{
+mat-card{
+    width: 60vw;
     margin-top: 4rem;
+    box-shadow: 1px 1px 1px 1px black;
 }
 
-#user_info{
+mat-card-title{
+    padding: 0 3rem;
+}
+
+mat-card-content{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 50vw;
-    border: 1px solid black;
-    box-shadow: 1px 1px 1px black;
-    margin-top: 4rem;
+    align-content: space-around;
+
 }
 
-.info{
-    padding-left: 1rem;
+.info_divs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 3rem;
 }
 
+@media screen and (max-width: 1300px){
+    #img{
+        background: url("../../assets/images/medical-sm.jpg");
+        background: contain;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+    }
 
-@media screen and (max-width: 600px){
-    #user_info{
-        width: 80vw;
+    #landing_title{
+        font-size: 45px;
+        padding-bottom: 1rem;
+    }
+}
+
+@media screen and (max-width: 800px){
+    #landing_logged_out_div{
+        padding-left: 0.5rem;
+    }
+
+    mat-card{
+        width: 95vw;
     }
     .page_div{
         min-height: auto;
