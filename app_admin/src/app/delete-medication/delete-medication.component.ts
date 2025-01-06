@@ -2,17 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+
 import { MedicationDataService } from '../services/medication-data.service';
 
 @Component({
   selector: 'app-delete-medication',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatCardModule],
   templateUrl: './delete-medication.component.html',
   styleUrl: './delete-medication.component.css'
 })
 export class DeleteMedicationComponent implements OnInit{
-  id!: string;
+  medication_id = localStorage.getItem('medication_id');
+  medication_name = localStorage.getItem('medication_name');
+  medication_age = localStorage.getItem('medication_age');
+
 
   constructor(
     private router: Router,
@@ -20,16 +26,17 @@ export class DeleteMedicationComponent implements OnInit{
   ){}
 
   ngOnInit(){
-    let id = localStorage.getItem('_id');
+    localStorage.removeItem('medication_id');
+    localStorage.removeItem('medication_name');
+    localStorage.removeItem('medication_age');
+  };
 
-    if(!id){
-      alert("Medication not found, something went wrong");
+  onSubmit(){
+    let data = {
+      medication_id: this.medication_id
+    };
 
-      this.router.navigate(['']);
-      return;
-    }
-
-    this.medicationDataService.deleteMedication(id)
+    this.medicationDataService.deleteMedication(data)
     .subscribe({
       next: (value: any) => {
         console.log(value);
@@ -39,6 +46,11 @@ export class DeleteMedicationComponent implements OnInit{
         console.log(error);
       }
     });
+  };
+
+
+  onCancel(){
+    this.router.navigate(['list-medications'])
   };
 
 }; //end

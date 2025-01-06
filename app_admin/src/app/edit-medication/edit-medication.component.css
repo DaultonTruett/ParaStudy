@@ -24,18 +24,31 @@
     }
 }
 
+#btns_div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 #save_btn{
     margin: 1rem 0.6rem;
     height: 2rem;
     background-color: rgb(34, 99, 219);
     color: white;
-    cursor: pointer;
 }
 
 #cancel_btn{
     margin: 1rem 0.6rem;
     height: 2rem;
-    background-color: grey;
+    background-color:rgb(124, 124, 124);
     color: white;
-    cursor: pointer;
+}
+
+@media screen and (max-width: 800px){
+    #editMed_form{
+        width: 80vw;
+    }
+    mat-card{
+        width: 95vw;
+    }
 }
