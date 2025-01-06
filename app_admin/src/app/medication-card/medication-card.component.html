@@ -44,11 +44,11 @@
                     </p>
                     <div id="doses_btns_div">
                         <button id="edit_dose_btn" class="doses_btns" *ngIf="isAdmin()" type="button" mat-raised-button
-                        (click)="editMedicationDose(medication.name, indication.indication, medication._id, indication._id, dose._id, dose.dose, dose.mu, dose.route)">
+                        (click)="editMedicationDose(medication._id, indication._id, dose._id, medication.name, indication.indication, dose.dose, dose.mu, dose.route)">
                             Edit dose
                         </button>
                         <button id="delete_dose_btn" class="doses_btns" *ngIf="isAdmin()" type="button" mat-raised-button
-                        (click)="deleteMedicationDose(medication.name, indication.indication, medication._id, indication._id, dose._id, dose.dose, dose.mu, dose.route)">
+                        (click)="deleteMedicationDose(medication._id, indication._id, dose._id, medication.name, indication.indication, dose.dose, dose.mu, dose.route)">
                             Delete dose
                         </button>
                     </div>
@@ -65,16 +65,16 @@
 
         <div class="buttons" *ngIf="isLoggedIn()">
             <button id="add_indication_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" mat-raised-button
-            (click)="addMedicationIndication(medication._id, medication.name)">
+            (click)="addMedicationIndication(medication)">
                 Add indication
             </button>
 
             <button id="edit_med_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" (click)="editMed(medication)" mat-raised-button>
-                Edit
+                Edit medication
             </button>
 
             <button id="delete_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" (click)="deleteMed(medication)" mat-raised-button>
-                Delete
+                Delete medication
             </button>
 
             <div>

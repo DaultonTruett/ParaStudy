@@ -140,25 +140,45 @@ export class MedicationCardComponent implements OnInit{
     // Medications
     public editMed(medication: Medication){
       localStorage.removeItem('medication_id');
+      localStorage.removeItem('classification');
+      localStorage.removeItem('medication_name');
+      localStorage.removeItem('age');
+      localStorage.removeItem('contraindications');
+      localStorage.removeItem('side_effects');
+      localStorage.removeItem('actions');
+      localStorage.removeItem('notes');
+
       localStorage.setItem('medication_id', medication._id);
-  
+      localStorage.setItem('classification', medication.classification);
+      localStorage.setItem('medication_name', medication.name);
+      localStorage.setItem('age', medication.age);
+      localStorage.setItem('contraindications', medication.contraindications);
+      localStorage.setItem('side_effects', medication.side_effects);
+      localStorage.setItem('actions', medication.actions);
+      localStorage.setItem('notes', medication.notes);
+
       this.router.navigate(['edit-medication']);
     };
   
     public deleteMed(medication: Medication){
       localStorage.removeItem('medication_id');
+      localStorage.removeItem('medication_name');
+      localStorage.removeItem('medication_age');
+
       localStorage.setItem('medication_id', medication._id);
-  
+      localStorage.setItem('medication_name', medication.name);
+      localStorage.setItem('medication_age', medication.age);
+
       this.router.navigate(['delete-medication']);
     };
   
     // Medication indications
-    public addMedicationIndication(medication_id: string, medication_name: string){
+    public addMedicationIndication(medication: Medication){
       localStorage.removeItem('medication_id');
       localStorage.removeItem('medication_name')
 
-      localStorage.setItem('medication_id', medication_id);
-      localStorage.setItem('medication_name', medication_name);
+      localStorage.setItem('medication_id', medication._id);
+      localStorage.setItem('medication_name', medication.name);
   
       this.router.navigate(['add-medication-indication']);
     };
@@ -204,7 +224,7 @@ export class MedicationCardComponent implements OnInit{
       this.router.navigate(['add-medication-dose'])
     };
 
-    public editMedicationDose(medication_name: string, indication_name: string, medication_id: string, indication_id: string, dose_id: string, dose: string, mu: string, route: string){
+    public editMedicationDose(medication_id: string, indication_id: string, dose_id: string, medication_name: string, indication_name: string, dose: string, mu: string, route: string){
       localStorage.removeItem('medication_name');
       localStorage.removeItem('indication_name');
       localStorage.removeItem('medication_id');
@@ -226,7 +246,7 @@ export class MedicationCardComponent implements OnInit{
       this.router.navigate(['edit-medication-dose']);
     };
 
-    public deleteMedicationDose(medication_name: string, indication_name: string, medication_id: string, indication_id: string, dose_id: string, dose: string, mu: string, route: string){
+    public deleteMedicationDose(medication_id: string, indication_id: string, dose_id: string, medication_name: string, indication_name: string, dose: string, mu: string, route: string){
       localStorage.removeItem('medication_name');
       localStorage.removeItem('indication_name');
       localStorage.removeItem('medication_id');
