@@ -95,16 +95,14 @@ const updateMedication = async(req, res) => {
         Med.findOneAndUpdate(
             {'_id': req.body._id},
             {
-                category: req.body.category,
+                classification: req.body.classification,
                 name: req.body.name,
                 age: req.body.age,
-                indications_dose:{},
                 contraindications: req.body.contraindications,
-                sideEffects: req.body.sideEffects,
+                side_effects: req.body.side_effects,
                 actions: req.body.actions,
                 notes: req.body.notes
             },
-            Med.indications_dose.set(req.body.indications, req.body.dose),
             {new: true})
         .then(med => {
             if(!med){
@@ -119,17 +117,15 @@ const updateMedication = async(req, res) => {
 
 const deleteMedication = async(req, res) => {
     await auth.getUser(req, res, (req, res) => {
-        Med.findByIdAndDelete(
-            {'_id': req.params._id})
-            .then(res.send({message: 'OK'}))
-            .catch(err => {
-                if(err.kind === 'ObjectId'){
-                    return res
-                        .status(404)
-                        .send({message: "Medication not found with id: " + req.params._id});
-                }
-                return res.status(500).json(err);
-            });
+        Med.findOneAndDelete({'_id': req.body.medication_id})
+        .then(med => {
+            if(!med){
+                return res.status(404).send({message: 'Not found'});
+            };
+            return res.status(200).send(med);
+        }).catch(err => {
+            return res.status(500).json(err);
+        });
     });
 };
 

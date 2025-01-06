@@ -42,8 +42,8 @@ export class MedicationDataService {
     });
   };
 
-  deleteMedication(id: string): Observable<any>{
-    return this.http.post(`${this.apiBaseUrl}/medications/${id}`, id, {
+  deleteMedication(data: any): Observable<any>{
+    return this.http.post(`${this.apiBaseUrl}/medications/${data.medication_id}`, data, {
       headers: new HttpHeaders ({
         'Authorization': `Bearer ${localStorage.getItem('paraStudy-token')}`
       })
