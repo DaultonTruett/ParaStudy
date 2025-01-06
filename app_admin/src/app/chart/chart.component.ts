@@ -65,7 +65,7 @@ export class ChartComponent implements OnInit{
     plugins: {
       title: {
         display: true,
-        text: "All quiz results (7 days)",
+        text: "All quiz results",
         font: {
           size: 28,
         },
