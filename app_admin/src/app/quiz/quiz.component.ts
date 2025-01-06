@@ -132,7 +132,7 @@ export class QuizComponent implements OnInit{
                     Math.floor(1 + Math.random() * 300).toString(),
                     tmp.toString()
                   ],
-                  question: "What is the " + med.age + " " + dose!.route + " dose of " + med.name + " for " + indication!.indication + "?",
+                  question: "What is the " + med.age + " dose of " + med.name + " for " + indication!.indication + " administered " + dose!.route + "?",
                   answer: String(dose!.dose),
                   userChoice: ''
 
