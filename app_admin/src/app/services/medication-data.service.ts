@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 
 import { Medication } from '../models/medication';
 import { BROWSER_STORAGE } from '../storage';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,7 @@ export class MedicationDataService {
     @Inject(BROWSER_STORAGE) private storage: Storage
   ) { }
 
-  private apiBaseUrl = 'http://localhost:3000/api';
+  private apiBaseUrl = environment.apiUrl;
 
 
   getMedications(): Observable<Medication[]> {

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { AuthResponse } from '../models/auth-response';
 import { BROWSER_STORAGE } from '../storage';
+import { environment } from '../../environments/environment';
 
 
 
@@ -15,7 +16,7 @@ import { BROWSER_STORAGE } from '../storage';
 })
 export class AuthenticationService {
 
-  private apiBaseUrl = 'http://localhost:3000/api';
+  private apiBaseUrl = environment.apiUrl;
 
   constructor(
     @Inject(BROWSER_STORAGE) private storage: Storage,

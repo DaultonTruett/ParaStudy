@@ -1,17 +1,19 @@
 const mongoose = require('mongoose');
-const host = process.env.DB_HOST || '127.0.0.1';
-const dbURI = `mongodb://${host}/parastudy`;
 const readLine = require('readline');
 
+// const host = process.env.DB_HOST || '127.0.0.1';
+// const dbURI = `mongodb://${host}/parastudy`;
+const MONGO_URI = process.env.MONGO_URI_DEV
+
 const connect = () => {
-    setTimeout( () => mongoose.connect(dbURI, {
+    setTimeout( () => mongoose.connect(MONGO_URI, {
     }), 1000);
 };
 
 
 // monitor connections
 mongoose.connection.on('connected', () => {
-    console.log('Mongoose connected to: ', dbURI)
+    console.log('Mongoose connected to: ', MONGO_URI)
 });
 
 mongoose.connection.on('erroor', err => {

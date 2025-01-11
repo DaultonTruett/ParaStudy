@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { User } from '../models/user';
 import { AuthenticationService } from './authentication.service'
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class UserDataService {
     private authService: AuthenticationService
   ) { }
 
-  private apiBaseUrl = 'http://localhost:3000/api';
+  private apiBaseUrl = environment.apiUrl;
 
   public addFlashcard(user: any, medicationId: string): Observable<any>{
     return this.http.post(`${this.apiBaseUrl}/addFlashcard`, {

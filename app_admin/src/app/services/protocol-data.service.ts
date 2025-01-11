@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Protocol } from '../models/protocol';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ import { Protocol } from '../models/protocol';
 export class ProtocolDataService {
   constructor(private http: HttpClient) { }
 
-  private apiBaseUrl = 'http://localhost:3000/api';
+  private apiBaseUrl = environment.apiUrl;
 
   getProtocols(): Observable<Protocol[]>{
     return this.http.get<Protocol[]>(`${this.apiBaseUrl}/protocols`);
