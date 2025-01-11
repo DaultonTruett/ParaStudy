@@ -42,12 +42,15 @@ export class StudydeckComponent implements OnInit{
   ){}
 
   ngOnInit(){
-    this.user = this.authService.getCurrentUser();
-    this.deck = this.user.study_deck;
 
-    if(this.deck.length > 0){
-      this.deckEmpty = false;
-      this.getStudyMeds();
+    if(this.isLoggedIn()){
+      this.user = this.authService.getCurrentUser();
+      this.deck = this.user.study_deck;
+
+      if(this.deck.length > 0){
+        this.deckEmpty = false;
+        this.getStudyMeds();
+      };
     };
 
   };
