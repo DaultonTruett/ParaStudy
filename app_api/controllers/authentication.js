@@ -6,8 +6,6 @@ const crypto = require('crypto');
 const bcrypt = require('bcrypt');
 const BCRYPT_SALT = process.env.BCRYPT_SALT;
 
-const CLIENT_URL = process.env.CLIENT_URL;
-
 const sendEmail = require('../utils/sendEmail');
 
 const register = async(req, res) => {
@@ -111,7 +109,12 @@ const requestPasswordReset = async(req, res) => {
         createdAt: Date.now(),
     }).save()
 
-    const link = `${CLIENT_URL}/reset-password?token=${resetToken}&id=${user._id}`;
+    let client_url = process.env.CLIENT_URL;
+    if(process.env.NODE_ENV === 'development'){
+        client_url = process.env.CLIENT_URL_DEV;
+    };
+
+    const link = `${client_url}/reset-password?token=${resetToken}&id=${user._id}`;
     sendEmail(
         user.email,
         "Password Reset Request",
