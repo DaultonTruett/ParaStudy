@@ -14,36 +14,10 @@ require('./app_api/models/db');
 require('./app_api/config/passport');
 
 // define routes
-const indexRouter = require('./app_server/routes/index');
-
-const medicationsRouter = require('./app_server/routes/medications');
-
-const cardiacRouter = require('./app_server/routes/cardiac');
-const cardiacMedicationsRouter = require('./app_server/routes/cardiacMedications');
-const cardiacProtocolsRouter = require('./app_server/routes/cardiacProtocols');
-
-const medicalRouter = require('./app_server/routes/medical');
-const medicalMedicationsRouter = require('./app_server/routes/medicalMedications');
-const medicalProtocolsRouter = require('./app_server/routes/medicalProtocols');
-
-const traumaRouter = require('./app_server/routes/trauma');
-const traumaMedicationsRouter = require('./app_server/routes/traumaMedications');
-const traumaProtocolsRouter = require('./app_server/routes/traumaProtocols');
-
-const usersRouter = require('./app_server/routes/users');
-const loginRouter = require('./app_server/routes/login');
-
 const apiRouter = require('./app_api/routes/index');
 
 
 const app = express();
-
-// view engine setup
-// add "app_server" when restructring architecture
-app.set('views', path.join(__dirname, 'app_server', 'views'));
-
-hbs.registerPartials(__dirname + '/app_server/views/partials');
-app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -69,27 +43,7 @@ app.use('/api', (req, res, next) => {
 });
 
 
-// wire routes to views
-app.use('/', indexRouter);
-
-app.use('/medications', medicationsRouter);
-
-app.use('/cardiac', cardiacRouter);
-app.use('/cardiac/medications', cardiacMedicationsRouter);
-app.use('/cardiac/protocols', cardiacProtocolsRouter);
-
-app.use('/medical', medicalRouter);
-app.use('/medical/medications', medicalMedicationsRouter);
-app.use('/medical/protocols', medicalProtocolsRouter);
-
-
-app.use('/trauma', traumaRouter);
-app.use('/trauma/medications', traumaMedicationsRouter);
-app.use('/trauma/protocols', traumaProtocolsRouter);
-
-app.use('/users', usersRouter);
-app.use('/login', loginRouter);
-
+// wire routes
 app.use('/api', apiRouter);
 
 
