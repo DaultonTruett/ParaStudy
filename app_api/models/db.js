@@ -3,7 +3,7 @@ const readLine = require('readline');
 
 // const host = process.env.DB_HOST || '127.0.0.1';
 // const dbURI = `mongodb://${host}/parastudy`;
-const MONGO_URI = process.env.MONGO_URI_DEV
+const MONGO_URI = process.env.MONGO_URI
 
 const connect = () => {
     setTimeout( () => mongoose.connect(MONGO_URI, {
