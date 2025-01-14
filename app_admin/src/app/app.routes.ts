@@ -21,6 +21,7 @@ import { DeleteProtocolComponent } from './delete-protocol/delete-protocol.compo
 import { StudydeckComponent } from './studydeck/studydeck.component'
 import { QuizComponent } from './quiz/quiz.component';
 import { UserAccountComponent } from './user-account/user-account.component';
+import { DeleteUserAccountComponent } from './delete-user-account/delete-user-account.component';
 
 
 export const routes: Routes = [
@@ -45,5 +46,6 @@ export const routes: Routes = [
     {path: 'flashcards', component: StudydeckComponent},
     {path: 'quiz', component: QuizComponent},
     {path: 'my-account', component: UserAccountComponent},
+    {path: 'delete-account', component: DeleteUserAccountComponent},
     {path: '', component: HomeComponent, pathMatch: 'full'}
 ];

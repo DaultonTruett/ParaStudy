@@ -105,27 +105,10 @@ export class UserAccountComponent implements OnInit{
   };
 
   public deleteUserAccount(){
-    this._snack.open('Account deleted...redirecting', 'Ok', {
-      duration: 5000
-    })
-    setTimeout(() => {
-      5000
-    })
-    this.authService.logout()
-    this.router.navigate(['']);
+    this.router.navigate(['delete-account'])
+  };
 
-    return this.authService.deleteUserAccount(this.user)
-    .subscribe({
-      next: (value: any) => {
-        console.log(value);
-      },
-      error: (err: any) => {
-        console.log(err)
-      }
-    })
-  }
-
-}
+};
 
 @Component({
   selector: 'dialog',
