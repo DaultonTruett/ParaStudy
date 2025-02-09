@@ -8,11 +8,12 @@ export interface Medication {
         dose_and_route: {
             dose: string,
             mu: string,
-            route: string
+            route: string,
+            notes: String
         }[]
     }[],
     contraindications: string,
     side_effects: string,
     actions: string,
-    notes: string
+    considerations: string
 };

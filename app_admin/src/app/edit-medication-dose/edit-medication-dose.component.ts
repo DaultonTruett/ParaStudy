@@ -31,6 +31,8 @@ export class EditMedicationDoseComponent implements OnInit{
   dose = localStorage.getItem('dose');
   mu = localStorage.getItem('mu');
   route = localStorage.getItem('route');
+  notes = localStorage.getItem('notes');
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,6 +49,8 @@ export class EditMedicationDoseComponent implements OnInit{
     localStorage.removeItem('dose');
     localStorage.removeItem('mu');
     localStorage.removeItem('route');
+    localStorage.removeItem('notes');
+
 
     this.edit_form = this.formBuilder.group({
       medication_id: [this.medication_id],
@@ -54,7 +58,8 @@ export class EditMedicationDoseComponent implements OnInit{
       dose_id: [this.dose_id],
       dose: [this.dose, Validators.required],
       mu: [this.mu, Validators.required],
-      route: [this.route, Validators.required]
+      route: [this.route, Validators.required],
+      notes: [this.notes]
     });
   };
 

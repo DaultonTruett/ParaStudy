@@ -45,6 +45,18 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form_fields">
+                    <label>Notes</label>
+                    <input type="text" formControlName="notes" placeholder="notes"
+                        [ngClass]="{'is-invalid': submitted && values['notes'].errors}">
+        
+                    <div *ngIf="submitted && values['notes'].errors">
+                        <div *ngIf="values['notes'].errors?.['required']">
+                            Notes required.
+                        </div>
+                    </div>
+                </div>
         
                 <div id="buttons_div">
                     <button mat-raised-button id="save_btn" type="submit">Save</button>

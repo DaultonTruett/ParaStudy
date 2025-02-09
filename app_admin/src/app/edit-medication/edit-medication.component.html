@@ -82,13 +82,13 @@
                 </div>
         
                 <div class="form_fields">
-                    <label>Notes</label>
-                    <textarea type="text" formControlName="notes" placeholder="notes"
-                        [ngClass]="{'is-invalid': submitted && values['notes'].errors}"></textarea>
+                    <label>Considerations</label>
+                    <textarea type="text" formControlName="considerations" placeholder="considerations"
+                        [ngClass]="{'is-invalid': submitted && values['considerations'].errors}"></textarea>
         
-                    <div *ngIf="submitted && values['notes'].errors">
-                        <div *ngIf="values['notes'].errors?.['required']">
-                            Notes is required.
+                    <div *ngIf="submitted && values['considerations'].errors">
+                        <div *ngIf="values['considerations'].errors?.['required']">
+                            Considerations required.
                         </div>
                     </div>
                 </div>

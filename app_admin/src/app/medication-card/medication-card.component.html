@@ -44,7 +44,7 @@
                     </p>
                     <div id="doses_btns_div">
                         <button id="edit_dose_btn" class="doses_btns" *ngIf="isAdmin()" type="button" mat-raised-button
-                        (click)="editMedicationDose(medication._id, indication._id, dose._id, medication.name, indication.indication, dose.dose, dose.mu, dose.route)">
+                        (click)="editMedicationDose(medication._id, indication._id, dose._id, medication.name, indication.indication, dose.dose, dose.mu, dose.route, dose.notes)">
                             Edit dose
                         </button>
                         <button id="delete_dose_btn" class="doses_btns" *ngIf="isAdmin()" type="button" mat-raised-button
@@ -53,6 +53,7 @@
                         </button>
                     </div>
                 </div>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Notes: </b>{{dose.notes}}</p>
 
             </div>
 
@@ -61,7 +62,7 @@
         <p><b>Contraindications:</b> {{medication.contraindications}}</p>
         <p><b>Side Effects:</b> {{medication.side_effects}}</p>
         <p><b>Actions:</b> {{medication.actions}}</p>
-        <p><b>Notes:</b> {{medication.notes}}</p>
+        <p><b>Considerations:</b> {{medication.considerations}}</p>
 
         <div class="buttons" *ngIf="isLoggedIn()">
             <button id="add_indication_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" mat-raised-button

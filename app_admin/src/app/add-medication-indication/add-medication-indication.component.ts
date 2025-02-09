@@ -40,7 +40,8 @@ export class AddMedicationIndicationComponent implements OnInit{
       indication: ['', Validators.required],
       dose: ['', Validators.required],
       mu: ['', Validators.required],
-      route: ['', Validators.required]
+      route: ['', Validators.required],
+      notes: ['', Validators.required]
     });
   };
 

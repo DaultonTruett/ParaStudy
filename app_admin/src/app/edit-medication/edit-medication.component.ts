@@ -33,7 +33,7 @@ export class EditMedicationComponent implements OnInit{
   contraindications = localStorage.getItem('contraindications');
   side_effects = localStorage.getItem('side_effects');
   actions = localStorage.getItem('actions');
-  notes = localStorage.getItem('notes');
+  considerations = localStorage.getItem('considerations');
 
 
   constructor(
@@ -64,7 +64,7 @@ export class EditMedicationComponent implements OnInit{
       contraindications: [this.contraindications, Validators.required],
       side_effects: [this.side_effects, Validators.required],
       actions: [this.actions, Validators.required],
-      notes: [this.notes, Validators.required]
+      considerations: [this.considerations, Validators.required]
     });
 
   };

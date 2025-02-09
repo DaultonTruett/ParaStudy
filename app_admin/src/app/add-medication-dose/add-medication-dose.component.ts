@@ -43,7 +43,8 @@ export class AddMedicationDoseComponent implements OnInit{
       indication_id: [this.indication_id],
       dose: ['', Validators.required],
       mu: ['', Validators.required],
-      route: ['', Validators.required]
+      route: ['', Validators.required],
+      notes: ['']
     });
   }
 

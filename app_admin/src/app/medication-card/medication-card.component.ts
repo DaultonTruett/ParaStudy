@@ -146,7 +146,7 @@ export class MedicationCardComponent implements OnInit{
       localStorage.removeItem('contraindications');
       localStorage.removeItem('side_effects');
       localStorage.removeItem('actions');
-      localStorage.removeItem('notes');
+      localStorage.removeItem('considerations');
 
       localStorage.setItem('medication_id', medication._id);
       localStorage.setItem('classification', medication.classification);
@@ -155,7 +155,7 @@ export class MedicationCardComponent implements OnInit{
       localStorage.setItem('contraindications', medication.contraindications);
       localStorage.setItem('side_effects', medication.side_effects);
       localStorage.setItem('actions', medication.actions);
-      localStorage.setItem('notes', medication.notes);
+      localStorage.setItem('considerations', medication.considerations);
 
       this.router.navigate(['edit-medication']);
     };
@@ -224,7 +224,7 @@ export class MedicationCardComponent implements OnInit{
       this.router.navigate(['add-medication-dose'])
     };
 
-    public editMedicationDose(medication_id: string, indication_id: string, dose_id: string, medication_name: string, indication_name: string, dose: string, mu: string, route: string){
+    public editMedicationDose(medication_id: string, indication_id: string, dose_id: string, medication_name: string, indication_name: string, dose: string, mu: string, route: string, notes: string){
       localStorage.removeItem('medication_name');
       localStorage.removeItem('indication_name');
       localStorage.removeItem('medication_id');
@@ -233,6 +233,7 @@ export class MedicationCardComponent implements OnInit{
       localStorage.removeItem('dose');
       localStorage.removeItem('mu');
       localStorage.removeItem('route');
+      localStorage.removeItem('notes');
 
       localStorage.setItem('medication_name', medication_name);
       localStorage.setItem('indication_name', indication_name);
@@ -242,6 +243,7 @@ export class MedicationCardComponent implements OnInit{
       localStorage.setItem('dose', dose);
       localStorage.setItem('mu', mu);
       localStorage.setItem('route', route);
+      localStorage.setItem('notes', notes)
 
       this.router.navigate(['edit-medication-dose']);
     };
