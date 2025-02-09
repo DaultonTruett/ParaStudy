@@ -12,6 +12,9 @@ const doseAndRouteSchema = new mongoose.Schema({
     route: {
         type: String,
         required: true
+    },
+    notes: {
+        type: String
     }
 });
 
@@ -55,7 +58,7 @@ const medicationSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    notes: {
+    considerations: {
         type: String,
         required: false
     }

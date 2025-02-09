@@ -49,13 +49,14 @@ const addMedication = async(req, res) => {
                 dose_and_route: [{
                     dose: req.body.dose,
                     mu: req.body.mu,
-                    route: req.body.route
+                    route: req.body.route,
+                    notes: req.body.notes
                 }]
             }],
             contraindications: req.body.contraindications,
             side_effects: req.body.side_effects,
             actions: req.body.actions,
-            notes: req.body.notes,
+            considerations: req.body.considerations,
         });
 
         try{
@@ -101,7 +102,7 @@ const updateMedication = async(req, res) => {
                 contraindications: req.body.contraindications,
                 side_effects: req.body.side_effects,
                 actions: req.body.actions,
-                notes: req.body.notes
+                considerations: req.body.considerations
             },
             {new: true})
         .then(med => {
@@ -138,7 +139,8 @@ const addMedicationIndication = async(req, res) => {
                 dose_and_route: [{
                     dose: req.body.dose,
                     mu: req.body.mu,
-                    route: req.body.route
+                    route: req.body.route,
+                    notes: req.body.notes
                 }]
             }}})
         .then(med => {
@@ -216,7 +218,8 @@ const addMedicationDose = async(req, res) => {
                 {
                     "dose": req.body.dose,
                     "mu": req.body.mu,
-                    "route": req.body.route
+                    "route": req.body.route,
+                    "notes": req.body.notes
                 }
             }
         },
@@ -252,7 +255,8 @@ const updateMedicationDose = async(req, res) => {
             "indications_dose.$[indicationID].dose_and_route.$[doseID]": {
                 "dose": req.body.dose,
                 "mu": req.body.mu,
-                "route": req.body.route
+                "route": req.body.route,
+                "notes": req.body.notes
             }
         }
         },
