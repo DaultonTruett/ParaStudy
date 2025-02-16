@@ -99,6 +99,11 @@ export class QuizComponent implements OnInit{
           if(value.length > 0){ 
             let i = 0;
 
+            for(let i = value.length - 1; i > 0; i--){
+              let j = Math.floor(Math.random() * (i + 1));
+              [value[i], value[j]] = [value[j], value[i]]
+            };
+
             value.forEach( (med) => {
               // Push data returned from DB to an array 
               this.quizMedications.push(med);
