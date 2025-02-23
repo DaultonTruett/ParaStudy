@@ -17,7 +17,7 @@
         
                     <div *ngIf="submitted && values['indication'].errors">
                         <div *ngIf="values['indication'].errors?.['required']">
-                            Indication is required.
+                            <p class="form_err">Indication is required</p>
                         </div>
                     </div>
                 </div>

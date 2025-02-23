@@ -54,16 +54,18 @@ export class AddMedicationDoseComponent implements OnInit{
     console.log(this.add_dose_form.value.medication_id)
     console.log(this.add_dose_form.value.indication_id)
 
-    this.medService.addMedicationDose(this.add_dose_form.value)
-    .subscribe({
-      next: (value: any) => {
-        console.log(value);
-        this.router.navigate(['list-medications'])
-      },
-      error: (err: any) => {
-        console.log(err)
-      }
-    });
+    if(this.add_dose_form.valid){
+      this.medService.addMedicationDose(this.add_dose_form.value)
+      .subscribe({
+        next: (value: any) => {
+          console.log(value);
+          this.router.navigate(['list-medications'])
+        },
+        error: (err: any) => {
+          console.log(err)
+        }
+      });
+    };
   };
 
   onCancel(){

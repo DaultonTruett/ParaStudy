@@ -66,15 +66,17 @@ export class EditMedicationDoseComponent implements OnInit{
   public onSubmit(){
     this.submitted = true;
 
-    this.medService.updateMedicationDose(this.edit_form.value)
-    .subscribe({
-      next: () => {
-        this.router.navigate(['list-medications']);
-      },
-      error: (err: any) => {
-        console.log(err);
-      }
-    });
+    if(this.edit_form.valid){
+      this.medService.updateMedicationDose(this.edit_form.value)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['list-medications']);
+        },
+        error: (err: any) => {
+          console.log(err);
+        }
+      });
+    };
   };
 
   public onCancel(){

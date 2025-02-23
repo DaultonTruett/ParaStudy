@@ -47,6 +47,10 @@ button{
     background-color:rgb(124, 124, 124);
 }
 
+.form_err{
+    color: red;
+}
+
 @media screen and (max-width: 800px){
     mat-card{
         width: 90vw;

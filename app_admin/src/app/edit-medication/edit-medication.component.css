@@ -44,6 +44,10 @@
     color: white;
 }
 
+.form_err{
+    color: red;
+}
+
 @media screen and (max-width: 800px){
     #editMed_form{
         width: 80vw;

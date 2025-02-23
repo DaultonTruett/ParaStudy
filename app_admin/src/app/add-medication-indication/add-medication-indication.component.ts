@@ -49,16 +49,18 @@ export class AddMedicationIndicationComponent implements OnInit{
     this.submitted = true;
     console.log(this.medication_id)
 
-    this.medService.addMedicationIndication(this.indicationForm.value)
-    .subscribe({
-      next: (value: any) => {
-        this.router.navigate(['list-medications'])
-        console.log('success: ', value)
-      },
-      error: (err: any) => {
-        console.log(err)
-      }
-    });
+    if(this.indicationForm.valid){
+      this.medService.addMedicationIndication(this.indicationForm.value)
+      .subscribe({
+        next: (value: any) => {
+          this.router.navigate(['list-medications'])
+          console.log('success: ', value)
+        },
+        error: (err: any) => {
+          console.log(err)
+        }
+      });
+    };
   };
 
   onCancel(){

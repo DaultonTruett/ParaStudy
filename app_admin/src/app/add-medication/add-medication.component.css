@@ -53,6 +53,10 @@ mat-card-content{
     color: white;
 }
 
+.form_err{
+    color: red;
+}
+
 @media screen and (max-width: 800px){
     #addMed_form{
         width: 80vw;
