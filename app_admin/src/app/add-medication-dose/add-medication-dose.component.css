@@ -1,50 +1,55 @@
 #add_medication_dose{
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    width: 100vw;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 mat-card{
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    box-shadow: 1px 1px 1px 1px grey;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px grey;
 }
 
 mat-card-content{
-    margin-top: 1.5rem;
+    padding-top: 2rem;
+}
+
+#add_dose_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50vw;
 }
 
 .form_fields{
     display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-    padding: 0.5rem 2rem;
+    flex-direction: column;
+    text-align: center;
+    margin: 0.6rem;
+    label{
+        font-weight: bold;
+    }
 }
 
 #buttons_div{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    padding: 0.5rem;
-}
-
-button{
-    margin: 1rem;
+    justify-content: space-around;
 }
 
 #save_btn{
-    background-color: #43b0f1;
-}
+    margin: 1rem 0.6rem;
+    height: 2rem;
+    background-color: rgb(34, 99, 219);
+    color: white;
+    cursor: pointer;}
 
 #cancel_btn{
-    color: white;
+    margin: 1rem 0.6rem;
+    height: 2rem;
     background-color:rgb(124, 124, 124);
+    color: white;
 }
 
 .form_err{
@@ -52,8 +57,11 @@ button{
 }
 
 @media screen and (max-width: 800px){
+    #add_dose_form{
+        width: 80vw;
+    }
     mat-card{
-        width: 90vw;
+        width: 95vw;
         padding: 0.5rem;
     }
 }
