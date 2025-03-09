@@ -12,10 +12,10 @@
 
         <p>{{medication.age}}</p>
 
-        <p><b>Indication(s) and dose:</b></p>
+        <mat-divider></mat-divider>
         <div *ngFor="let indication of medication.indications_dose">
             <div id="indications">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp; {{indication.indication}}:</p>
+                <p><b>Indication(s): </b>{{indication.indication}}</p>
 
                 <div id="indications_btns_div">
                     <button id="add_dose_btn" class="indications_btns" *ngIf="isAdmin()" type="button" mat-raised-button
@@ -38,10 +38,7 @@
 
             <div *ngFor="let dose of indication.dose_and_route">
                 <div id="doses">
-                    <p>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {{dose.dose}}{{dose.mu}} - {{dose.route}}
-                    </p>
+                    <p><b>Dose: </b>{{dose.dose}}{{dose.mu}} - {{dose.route}}</p>
                     <div id="doses_btns_div">
                         <button id="edit_dose_btn" class="doses_btns" *ngIf="isAdmin()" type="button" mat-raised-button
                         (click)="editMedicationDose(medication._id, indication._id, dose._id, medication.name, indication.indication, dose.dose, dose.mu, dose.route, dose.notes)">
@@ -53,7 +50,9 @@
                         </button>
                     </div>
                 </div>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Notes: </b>{{dose.notes}}</p>
+                <p><b>Notes: </b>{{dose.notes}}</p>
+
+                <mat-divider></mat-divider>
 
             </div>
 

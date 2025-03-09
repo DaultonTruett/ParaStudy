@@ -10,6 +10,10 @@ mat-expansion-panel{
   width: 65vw;
 }
 
+mat-divider{
+  padding: 0.5rem 0;
+}
+
 @media screen and (max-width: 800px){
   mat-expansion-panel{
     width: 90vw;

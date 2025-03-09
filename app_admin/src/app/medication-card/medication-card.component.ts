@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatAccordion, MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatDivider } from '@angular/material/divider';
 
 import { User } from '../models/user';
 import { Medication } from '../models/medication';
@@ -22,7 +23,7 @@ import { UserDataService } from '../services/user-data.service';
   standalone: true,
   imports: [
     CommonModule, MatButtonModule, MatAccordion,
-    MatExpansionModule, MatIconModule
+    MatExpansionModule, MatIconModule, MatDivider
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
