@@ -6,8 +6,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatRadioModule}  from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatDivider } from '@angular/material/divider';
 
 import { Medication } from '../models/medication';
+import { MedicationCardComponent } from '../medication-card/medication-card.component';
 import { User } from '../models/user';
 import { MedicationDataService } from '../services/medication-data.service';
 import { AuthenticationService } from '../services/authentication.service';
@@ -16,9 +18,9 @@ import { AuthenticationService } from '../services/authentication.service';
 @Component({
   selector: 'app-studydeck',
   standalone: true,
-  imports: [CommonModule,
+  imports: [CommonModule, MedicationCardComponent,
     MatIconModule, MatButtonModule, MatRadioModule, MatSelectModule,
-    MatCardModule
+    MatCardModule, MatDivider
   ],
   templateUrl: './studydeck.component.html',
   styleUrl: './studydeck.component.css',
@@ -99,6 +101,24 @@ export class StudydeckComponent implements OnInit{
       this.j -= 1;
     };
   };
+
+  public toggleBlur(): void{
+    let x = document.getElementById("med_name")
+    let y = document.getElementById("med_info")
+    let z = document.getElementById("toggle_btn")
+
+    if (x && y && z){
+      if(x.className == "no_blur"){
+        x.className = "blur"
+        y.className = "no_blur"
+        z.innerHTML = "hide"
+      }else{
+        x.className = "no_blur"
+        y.className = "blur"
+        z.innerHTML = "show"
+      }
+    }
+  }
 
   public flipCardBack(): void{
     let x = document.getElementById("side_2");
