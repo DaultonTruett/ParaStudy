@@ -9,12 +9,12 @@ const hbs = require('hbs');
 const passport = require('passport');
 
 // DB
-require('./app_api/models/db');
+require('./models/db');
 
-require('./app_api/config/passport');
+require('./config/passport');
 
 // define routes
-const apiRouter = require('./app_api/routes/index');
+const apiRouter = require('./routes/index');
 
 
 const app = express();
