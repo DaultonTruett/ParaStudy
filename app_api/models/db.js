@@ -13,7 +13,7 @@ const connect = () => {
 
 // monitor connections
 mongoose.connection.on('connected', () => {
-    console.log('Mongoose connected to: ', MONGO_URI)
+    console.log('Mongoose connected to: ', 'ParaStudy database')
 });
 
 mongoose.connection.on('erroor', err => {
