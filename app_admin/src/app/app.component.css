@@ -72,6 +72,10 @@ mat-sidenav a{
     text-decoration: none;
 }
 
+mat-sidenav-content{
+    background-color: #e8eef1;
+}
+
 mat-divider{
     background-color: white;
 }
