@@ -1,45 +1,46 @@
 <div id="not_user" *ngIf="!isLoggedIn()">
     <div id="not_user_inner">
         <h1>You must be logged in to create a study deck.</h1>
+        <h2><i>Sample Flashcard</i></h2>
     </div>
 
-    <h2><i>Sample Flashcard</i></h2>
-
-    <mat-card appearance="outlined">
-        <mat-card-header>
-            <div id="med_name" class="no_blur">
-                <mat-card-title>
-                    <p>Aspirin - Adult</p>
-                </mat-card-title>
-            </div>
-        </mat-card-header>
-
-        <mat-card-content>
-            <div class="flashcard_btns_div">
-                <button mat-raised-button id="prev_side2" class="flashcard_btns" type="submit" (click)="previousMed()">previous</button>
-                <button mat-raised-button id="toggle_btn" class="flashcard_btns" type="submit" (click)="toggleBlur()">show</button>
-                <button mat-raised-button id="next_side2" class="flashcard_btns" type="submit" (click)="nextMed()">next</button>
-            </div>
-            <div id="med_info" class="blur">  
-                <mat-divider></mat-divider>
-                <div *ngFor="let indication of showMed().indications_dose">
-                    <p><b>Indication(s): </b>Suspected MI </p>
-                
-                    <div *ngFor="let dose of indication.dose_and_route">
-                        <p><b>Dose: </b>81mg - PO x4</p>
-                        <p><b>Notes:</b></p>
-                    </div>
-                    <mat-divider></mat-divider>
+    <div class="med_flashcard">
+        <mat-card appearance="outlined">
+            <mat-card-header>
+                <div id="med_name" class="no_blur">
+                    <mat-card-title>
+                        <p>Aspirin - Adult</p>
+                    </mat-card-title>
                 </div>
-
-                <p><b>Classification: </b>Antipyretic, Salicylate, Nonopioid analgesic </p>
-                <p><b>Contraindications:</b> Known hypersensitivity, patients with bleeding disorders.</p>
-                <p><b>Side Effects:</b> Tinnitus, GI bleeding, dyspepsia, epigastric distress, nausea, vomiting, abdominal pain, anemia, anaphylaxis.</p>
-                <p><b>Actions:</b> Decreases platelet aggregation.</p>
-                <p><b>Considerations:</b> Administer ASAP if TIA, stroke, or MI is suspected.</p>
-            </div>
-        </mat-card-content>
-    </mat-card>
+            </mat-card-header>
+    
+            <mat-card-content>
+                <div class="flashcard_btns_div">
+                    <button mat-raised-button id="prev_side2" class="flashcard_btns" type="submit">previous</button>
+                    <button mat-raised-button id="toggle_btn" class="flashcard_btns" type="submit" (click)="toggleBlur()">show</button>
+                    <button mat-raised-button id="next_side2" class="flashcard_btns" type="submit">next</button>
+                </div>
+                <div id="med_info" class="blur">  
+                    <mat-divider></mat-divider>
+                    <div>
+                        <p><b>Indication(s): </b>Suspected MI </p>
+                    
+                        <div>
+                            <p><b>Dose: </b>81mg - PO x4</p>
+                            <p><b>Notes:</b></p>
+                        </div>
+                        <mat-divider></mat-divider>
+                    </div>
+    
+                    <p><b>Classification: </b>Antipyretic, Salicylate, Nonopioid analgesic </p>
+                    <p><b>Contraindications:</b> Known hypersensitivity, patients with bleeding disorders.</p>
+                    <p><b>Side Effects:</b> Tinnitus, GI bleeding, dyspepsia, epigastric distress, nausea, vomiting, abdominal pain, anemia, anaphylaxis.</p>
+                    <p><b>Actions:</b> Decreases platelet aggregation.</p>
+                    <p><b>Considerations:</b> Administer ASAP if TIA, stroke, or MI is suspected.</p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
 
 
