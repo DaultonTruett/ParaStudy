@@ -63,7 +63,7 @@
         <p><b>Actions:</b> {{medication.actions}}</p>
         <p><b>Considerations:</b> {{medication.considerations}}</p>
 
-        <div class="buttons" *ngIf="isLoggedIn()">
+        <div id="med_card_btns" *ngIf="isLoggedIn()">
             <button id="add_indication_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" mat-raised-button
             (click)="addMedicationIndication(medication)">
                 Add indication
@@ -73,20 +73,18 @@
                 Edit medication
             </button>
 
-            <button id="delete_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" (click)="deleteMed(medication)" mat-raised-button>
+            <button id="delete_med_btn" class="med_card_btn" *ngIf="isAdmin()" type="button" (click)="deleteMed(medication)" mat-raised-button>
                 Delete medication
             </button>
 
-            <div>
-                <button id="add_flashcard_btn{{medication._id}}" class="med_card_btn" mat-raised-button type="button"
-                (click)="addMedToStudydeck(medication)" [disabled]="inStudyDeck()" style="background-color: #43b0f1;">
-                    Add to study deck
-                </button>
-                <button id="remove_flashcard_btn{{medication._id}}" class="med_card_btn" mat-raised-button type="button"
-                (click)="removeMedFromStudydeck(medication)" [disabled]="!inStudyDeck()" style="background-color: rgb(241, 102, 102);">
-                    Remove from study deck
-                </button>
-            </div>
+            <button id="add_flashcard_btn{{medication._id}}" class="med_card_btn" mat-raised-button type="button"
+            (click)="addMedToStudydeck(medication)" [disabled]="inStudyDeck()" style="background-color: #43b0f1;">
+                Add to study deck
+            </button>
+            <button id="remove_flashcard_btn{{medication._id}}" class="med_card_btn" mat-raised-button type="button"
+            (click)="removeMedFromStudydeck(medication)" [disabled]="!inStudyDeck()" style="background-color: rgb(241, 102, 102);">
+                Remove from study deck
+            </button>
 
         </div>
     </mat-expansion-panel>

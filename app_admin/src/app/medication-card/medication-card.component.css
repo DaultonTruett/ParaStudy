@@ -71,16 +71,33 @@ mat-divider{
   justify-content: space-between;
 }
 
-#doses{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 #indications_btns_div{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+
+.indications_btns{
+  margin: 0.5rem;
+}
+
+#add_dose_btn{
+  background-color: #43b0f1;
+}
+
+#edit_indications_btn{
+  background-color: #057dcd;
+  color: white;
+}
+
+#delete_indications_btn{
+  background-color: rgb(241, 102, 102);
+}
+
+#doses{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #doses_btns_div{
@@ -89,7 +106,20 @@ mat-divider{
   justify-content: flex-end;
 }
 
-.buttons{
+.doses_btns{
+  margin: 0.5rem;
+}
+
+#edit_dose_btn{
+  background-color: #057dcd;
+  color: white;
+}
+
+#delete_dose_btn{
+  background-color: rgb(241, 102, 102);
+}
+
+#med_card_btns{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -100,41 +130,16 @@ mat-divider{
   margin: 0.5rem;
 }
 
-#edit_med_btn{
-    background-color: #057dcd;
-    color: white;
-}
-
-#delete_indications_btn{
-  background-color: rgb(241, 102, 102);
-  margin-left: 1rem;
-}
-
 #add_indication_btn{
   background-color: #43b0f1;
 }
 
-#add_dose_btn{
-  background-color: #43b0f1;
-}
-
-#edit_dose_btn{
+#edit_med_btn{
   background-color: #057dcd;
   color: white;
 }
 
-#delete_dose_btn{
-  background-color: rgb(241, 102, 102);
-  margin-left: 4rem;
-}
-
-#edit_indications_btn{
-  background-color: #057dcd;
-  color: white;
-  margin-left: 2rem;
-}
-
-#delete_btn{
+#delete_med_btn{
     background-color: rgb(241, 102, 102);
 }
 
@@ -155,4 +160,25 @@ mat-divider{
     margin: 0 1rem;
     font-size: 14pt;
   }
+
+  #med_card_btns{
+    flex-direction: column;
+  }
+
+  #indications{
+    flex-direction: column;
+  }
+
+  #doses{
+    flex-direction: column;
+  }
+
+  #indications_btns_div{
+    flex-direction: column;
+  }
+
+  #doses_btns_div{
+    flex-direction: column;
+  }
+
 }
