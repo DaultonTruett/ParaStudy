@@ -5,13 +5,13 @@
 
 <div id="user" *ngIf="isLoggedIn()">
     <div id="empty_deck" *ngIf="deckEmpty">
-        <h1>
-            Sorry {{user.name}}, you do not have any flash cards in your study deck.
-        </h1>
+        <h2>
+            You have 0 flashcards.
+        </h2>
         <h3>Visit the <a href="list-medications">Medications</a> page to build your study deck.</h3>
     </div>  
     
-    <div class="med_flashcard">
+    <div class="med_flashcard" *ngIf="!deckEmpty">
         <mat-card appearance="outlined">
             <mat-card-header>
                 <div id="med_name" class="no_blur">
