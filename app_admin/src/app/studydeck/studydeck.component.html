@@ -1,10 +1,7 @@
 <div id="not_user" *ngIf="!isLoggedIn()">
-    <div id="not_user_inner">
-        <h1>You must be logged in to create a study deck.</h1>
+    <div class="sample_flashcard">
+        <h1 id="not_user_title">You must be logged in to create a study deck.</h1>
         <h2><i>Sample Flashcard</i></h2>
-    </div>
-
-    <div class="med_flashcard">
         <mat-card appearance="outlined">
             <mat-card-header>
                 <div id="med_name" class="no_blur">
@@ -52,7 +49,7 @@
         <h3>Visit the <a href="list-medications">Medications</a> page to build your study deck.</h3>
     </div>  
     
-    <div class="med_flashcard" *ngIf="!deckEmpty">
+    <div class="user_flashcard" *ngIf="!deckEmpty">
         <mat-card appearance="outlined">
             <mat-card-header>
                 <div id="med_name" class="no_blur">
@@ -61,7 +58,7 @@
                     </mat-card-title>
                 </div>
             </mat-card-header>
- 
+    
             <mat-card-content>
                 <div class="flashcard_btns_div">
                     <button mat-raised-button id="prev_side2" class="flashcard_btns" type="submit" (click)="previousMed()">previous</button>
@@ -79,7 +76,7 @@
                         </div>
                         <mat-divider></mat-divider>
                     </div>
-
+    
                     <p><b>Classification: </b>{{showMed().classification}}</p>
                     <p><b>Contraindications:</b> {{showMed().contraindications}}</p>
                     <p><b>Side Effects:</b> {{showMed().side_effects}}</p>

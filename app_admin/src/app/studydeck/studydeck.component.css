@@ -5,16 +5,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 4rem 0;
 }
 
-#not_user_inner{
+#not_user_title{
+    text-align: center;
+}
+
+.sample_flashcard{
+    width: 100vw;
     height: 100vh;
-    width: 90vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    overflow: scroll;
 }
 
 #user{
@@ -35,11 +38,13 @@
     align-items: center;
 }
 
-.med_flashcard{
+.user_flashcard{
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100vw;
+    overflow: scroll;
 }
 
 mat-card{
