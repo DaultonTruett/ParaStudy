@@ -40,18 +40,24 @@ export class RequestPasswordResetComponent implements OnInit{
   public requestPasswordResetSubmit(): void{
     if(!this.user.email){
       this.formErrors = "All fields required."
+      this._snack.open('Oops! Something went wrong... Please try again', 'Ok', {
+        duration: 5000
+      });
     }else{
-      this._snack.open('Please check your email for a reset link', 'Ok', {
-        duration: 3000
-      })
       this.authService.requestPasswordReset(this.user)
       .then( () => {
+        this._snack.open('Please check your email for a reset link', 'Ok', {
+          duration: 5000
+        });
+
         this.router.navigate(['login'])
       })
-      .catch( (message) => this.formErrors = message);
-      this._snack.open('Oops! Something went wrong... Please try again', 'Ok', {
-        duration: 3000
-      })
+      .catch( (message) => {
+        this.formErrors = message
+        this._snack.open('Oops! Something went wrong... Please try again', 'Ok', {
+          duration: 5000
+        });
+      });
     }
   }
 }

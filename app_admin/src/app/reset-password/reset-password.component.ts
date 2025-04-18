@@ -42,11 +42,10 @@ export class ResetPasswordComponent implements OnInit{
   public resetPasswordSubmit(): void{
     if(!this.user.password){
       this.formErrors = "All fields required."
+      this._snack.open('Oops! Something went wrong... Please try again', 'Ok', {
+        duration: 5000
+      });
     }else{
-      this._snack.open('Password reset successfully! Please log in with your new password', 'Ok', {
-        duration: 3000
-      })
-
       let id = this.authService.getResetId();
       let resetToken = this.authService.getResetToken();
 
@@ -56,12 +55,18 @@ export class ResetPasswordComponent implements OnInit{
         password: this.user.password
       })
       .then( () => {
+        this._snack.open('Password reset successfully!', 'Ok', {
+          duration: 5000
+        });
+
         this.router.navigate(['login'])
     })
-      .catch( (message) => this.formErrors = message);
-      this._snack.open('Oops! Something went wrong... Please try again', 'Ok', {
-        duration: 3000
-      })
+      .catch( (message) => {
+        this.formErrors = message
+        this._snack.open('Oops! Something went wrong... Please try again', 'Ok', {
+          duration: 5000
+        });
+      });
     }
   }
 
