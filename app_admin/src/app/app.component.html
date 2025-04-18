@@ -1,7 +1,7 @@
 
 
 <mat-toolbar class="mat-elevation-z8">
-    <span class="menu-items">ParaStudy</span>
+    <span class="menu-items">PARASTUDY</span>
     <div id="hamburger_div">
         <button id="hamburger" mat-icon-button 
         (click)="sidenav.toggle()">
@@ -24,7 +24,7 @@
         </a>
         <div id="log">
             <a routerLink="login" class="topnav_login_logout" *ngIf="!isLoggedIn()">
-                <span>Login</span>
+                <span>Log in</span>
             </a>
             <a routerLink="my-account" class="topnav_login_logout" *ngIf="isLoggedIn()">
                 <span>Account</span>
@@ -76,7 +76,7 @@
             <mat-list-item>
                 <a routerLink="login" class="login_logout"
                     *ngIf="!isLoggedIn()" (click)="sidenav.toggle()">
-                    <span>Login</span>
+                    <span>Log in</span>
                 </a>
             </mat-list-item>
 
