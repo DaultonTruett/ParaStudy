@@ -1,53 +1,98 @@
 a{
     text-decoration: none;
     color: black;
+    transition: 0.75s ease-in-out;
 }
 
-.page_div{
-    min-height: 100vh;
+.section_info{
+    font-size: 18pt;
+    padding: 1.75rem;
+}
+
+/*
+Landing page logged out
+*/
+
+#landing_div{
     width: 100vw;
-}
-
-#img{
-    background: url("../../assets/images/medical-5835701_1920.jpg");
-    background: contain;
-    background-repeat: no-repeat;
-    background-size: 100% auto;
-}
-
-#landing_logged_out_div{
     height: 100vh;
-    padding-left: 3rem;
-    color: white;
+    background: linear-gradient(180deg, #1E3E59 7%, #047CCC 85%, #44B2F2 100%)
+}
+
+#hero_div{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#hero_info_div{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+}
+
+#hero_title{
+    color: #e8eef1;
+    font-size: 28pt;
+    margin-bottom: 0;
+}
+
+#hero_subtitle{
+    color: #e8eef1;
+    text-align: center;
+    font-size: 16pt;
+}
+
+#hero_subtext{
+    color: #e8eef1;
+}
+
+button{
+    width: 12rem;
+}
+
+button{
+    background: linear-gradient(to left, #e8eef1 50%, #1e3d58 50%) right;
+    background-size: 200%;
+    transition: 0.75s ease-in-out;
+}
+
+button:hover{
+    background-position: left;
+    transition: 0.75s ease-in-out;
+    color: #e8eef1;
+}
+
+#logo {
+    width: 275px;
+    height: 275px;
+}
+
+/*
+User home loggged in
+*/
+#page_div_user{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-}
-
-#landing_title{
-    font-size: 55px;
-    padding-bottom: 4.7rem;
-}
-
-#landing_subtitle{
-    font-size: 24px;
 }
 
 #user_home_div{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
 }
 
-mat-card{
+#user_home_data{
     width: 60vw;
-    margin-top: 4rem;
     box-shadow: 1px 1px 1px 1px black;
-}
-
-mat-card-title{
-    padding: 0 3rem;
 }
 
 mat-card-content{
@@ -61,35 +106,52 @@ mat-card-content{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 3rem;
+    padding: 0 0.5rem;
 }
 
-@media screen and (max-width: 1300px){
-    #img{
-        background: url("../../assets/images/medical-sm.jpg");
-        background: contain;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+@media screen and (max-width: 1200px){
+    #logo {
+        width: 200px;
+        height: 200px;
+        padding-top: 2rem;
     }
 
-    #landing_title{
-        font-size: 45px;
-        padding-bottom: 1rem;
+    #hero_img_div{
+        display: none;
     }
 }
 
 @media screen and (max-width: 800px){
-    #landing_logged_out_div{
-        padding-left: 0.5rem;
+    /* -- Not Logged in --*/
+    #hero_div{
+        flex-direction: column;
     }
 
-    mat-card{
+    #hero_info_div{
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #logo {
+        width: 175px;
+        height: 175px;
+        padding-top: 1rem;
+    }
+
+    #hero_title{
+        text-align: center;
+        font-size: 20pt;
+    }
+
+    #hero_subtitle{
+        text-align: center;
+        font-size: 14pt;
+    }
+
+    /* -- Logged in --*/
+    #user_home_data{
         width: 95vw;
-    }
-    .page_div{
-        min-height: auto;
-    }
-    .info{
-        padding-left: 0.5rem;
     }
 }

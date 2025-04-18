@@ -1,24 +1,28 @@
 
-<div class="page_div" *ngIf="!isLoggedIn()">
-  <div id="img">
-    <div id="landing_logged_out_div">
-
-      <h1 id="landing_title">Master your medications</h1>
-      <p id="landing_subtitle">Study anytime, anywhere</p>
-      <button mat-raised-button>
-        <a href="list-medications">Get started >></a>
-      </button>
-      
+<div id="landing_div" *ngIf="!isLoggedIn()">
+  <div id="hero_div">
+    
+    <div id="hero_info_div">
+      <img id="logo" src="../../assets/images/PS_Logo_Blue.png">
+      <h1 id="hero_title">Master your Medications</h1>
+      <p id="hero_subtitle">The smarter way to study emergency medications.</p>
+      <a href="list-medications"><button mat-raised-button type="submit" role="button">View medications</button></a>
+      <p id="hero_subtext">or</p>
+      <a href="login"><button mat-raised-button type="submit" role="button">Log in</button></a>
     </div>
-  </div>
 
+    <div id="hero_img_div">
+      <img id="hero_img" src="../../assets/images/medic_star.png">
+    </div>
+
+  </div>
 </div>
 
 
-<div class="page_div" *ngIf="isLoggedIn()">
+<div id="page_div_user" *ngIf="isLoggedIn()">
   <div id="user_home_div">
 
-    <mat-card>
+    <mat-card id="user_home_data">
       <mat-card-header>
         <mat-card-title>
           <h3>Hello, {{user.name}}</h3>
@@ -53,3 +57,19 @@
 
   </div>
 </div>
+
+<!--
+  <div id="img">
+    <div id="landing_logged_out_div">
+
+      <img id="logo" src="../../assets/images/PS_Logo_Blue.png">
+
+      <h1 id="landing_title">Master your Medications</h1>
+      <p id="landing_subtitle">The smarter way to study medications.</p>
+      <button mat-raised-button>
+        <a href="list-medications">View medications >></a>
+      </button>
+      
+    </div>
+  </div>
+-->

@@ -1,32 +1,38 @@
 
-<div id="login_signup_pic"></div>
+<div id="page_div">
 
-<div id="login">
-    <form id="login_form" (ngSubmit)="loginSubmit()">
-        <h2>Log in</h2>
-
-        <div *ngIf="formErrors">
-            <p class="form_err">Incorrect email or password</p>
+    <div id="login_div">
+        <div id="logo_div">
+            <img id="logo" src="../../assets/images/PS_Logo_Black_White_text.png">
         </div>
-
-        <div class="form_fields">
-            <input type="email" name="email" placeholder="Email"
-                [(ngModel)]="user.email"/>
-        </div>
-
-        <div class="form_fields">
-            <input type="password" name="password" placeholder="Password"
-                [(ngModel)]="user.password"/>
-        </div>
-
-        <div class="subfield_div">
-            <p>Don't have an account? <a class="subfields" href="signup">Sign up!</a></p>
-            <p><a class="subfields" href="request-password-reset">Forgot your password?</a></p>
-        </div>
-
-        <button id="login_btn" mat-raised-button type="submit" role="button">
-            Log in
-        </button>
-
-    </form>
+        <form id="login_form" (ngSubmit)="loginSubmit()">
+    
+            <h2 id="title" >Hello!</h2>
+            <p id="subtitle">Continue below to log in to your account.</p>
+    
+            <div *ngIf="formErrors">
+                <p class="form_err">Incorrect email or password</p>
+            </div>
+    
+            <div class="form_fields">
+                <input id="email_input" type="email" name="email" placeholder="Email"
+                    [(ngModel)]="user.email"/>
+            </div>
+    
+            <div class="form_fields">
+                <input id="password_input" type="password" name="password" placeholder="Password"
+                    [(ngModel)]="user.password"/>
+            </div>
+    
+            <div class="subfield_div">
+                <p>Don't have an account? <a class="subfields" href="signup">Sign up!</a></p>
+                <p><a class="subfields" href="request-password-reset">Forgot your password?</a></p>
+            </div>
+    
+            <button id="login_btn" mat-raised-button type="submit" role="button">
+                Log in
+            </button>
+    
+        </form>
+    </div>
 </div>

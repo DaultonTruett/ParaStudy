@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -17,6 +18,8 @@ import { AuthenticationService } from '../services/authentication.service';
 export class ResetPasswordComponent implements OnInit{
 
   public formErrors: string = '';
+
+  private _snack = inject(MatSnackBar);
 
   constructor(
     private router: Router,
@@ -40,6 +43,10 @@ export class ResetPasswordComponent implements OnInit{
     if(!this.user.password){
       this.formErrors = "All fields required."
     }else{
+      this._snack.open('Password reset successfully! Please log in with your new password', 'Ok', {
+        duration: 3000
+      })
+
       let id = this.authService.getResetId();
       let resetToken = this.authService.getResetToken();
 
@@ -52,6 +59,9 @@ export class ResetPasswordComponent implements OnInit{
         this.router.navigate(['login'])
     })
       .catch( (message) => this.formErrors = message);
+      this._snack.open('Oops! Something went wrong... Please try again', 'Ok', {
+        duration: 3000
+      })
     }
   }
 
