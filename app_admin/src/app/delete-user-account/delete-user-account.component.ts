@@ -31,26 +31,21 @@ export class DeleteUserAccountComponent implements OnInit{
 
   public onSubmit(){
     
-    this._snack.open('Account deleted...redirecting', 'Ok', {
-      duration: 5000
-    })
-    setTimeout(() => {
-      5000
-    });
-
-    this.authService.logout()
-    this.router.navigate(['']);
-
     return this.authService.deleteUserAccount(this.user)
     .subscribe({
+      next: () => {
+        this._snack.open('Account deleted...redirecting', 'Ok', {
+          duration: 5000
+        });
+
+        this.authService.logout();
+        this.router.navigate(['']);
+      },
       error: (err: any) => {
         console.log(err)
         this._snack.open('ERROR: something went wrong...please try again.', 'Ok', {
           duration: 5000
         })
-        setTimeout(() => {
-          5000
-        });
       }
     })
   };

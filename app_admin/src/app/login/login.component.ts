@@ -36,10 +36,14 @@ export class LoginComponent implements OnInit{
   public loginSubmit(): void{
     if(!this.user.email || !this.user.password){
       this.formErrors = "All fields required."
-    }else{
-      this.authService.login(this.user)
-      .then( () => this.router.navigateByUrl(''))
-      .catch( (message) => this.formErrors = message);
-    }
+      return;
+    };
+
+    this.authService.login(this.user)
+    .then( () => this.router.navigateByUrl(''))
+    .catch( (err) => {
+      console.log(err);
+      this.formErrors = "Incorrect email or password."
+    });
   }
 }

@@ -35,14 +35,17 @@ export class SignUpComponent implements OnInit{
   ngOnInit(){}
 
   public signUpSubmit(): void{
-
     if(!this.user.email || !this.user.password || !this.user.name){
       this.formErrors = "All fields required.";
-    }else{
-      this.authService.register(this.user)
-      .then( () => this.router.navigateByUrl(''))
-      .catch( (message) => this.formErrors = message);
+      return;
     }
+
+    this.authService.register(this.user)
+    .then( () => this.router.navigateByUrl(''))
+    .catch( (err) => {
+      console.log(err)
+      this.formErrors = "That email is already associated with an existing account."
+    });
   }
 
   public clearForm(): void{

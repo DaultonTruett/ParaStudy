@@ -11,7 +11,7 @@
             <p id="subtitle">Continue below to log in to your account.</p>
     
             <div *ngIf="formErrors">
-                <p class="form_err">Incorrect email or password</p>
+                <p class="form_err">{{formErrors}}</p>
             </div>
     
             <div class="form_fields">
