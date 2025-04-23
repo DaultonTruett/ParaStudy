@@ -10,13 +10,6 @@
 mat-toolbar{
     background-color: #1e3d58;
     color: white;
-    /*
-    position:fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    width: 100%;
-    */
 }
 
 #nav_desktop{

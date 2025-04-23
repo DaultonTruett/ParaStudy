@@ -3,7 +3,6 @@ import { lastValueFrom } from 'rxjs'
 import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 import { User } from '../models/user';
 import { AuthResponse } from '../models/auth-response';
 import { BROWSER_STORAGE } from '../storage';
@@ -71,11 +70,7 @@ export class AuthenticationService {
   public requestPasswordReset(user: User): Promise<any>{
     return this.requestPasswordResetApiCall('request-password-reset', user)
     .then( (resetData: string) => {
-      console.log("request reset response data ", resetData)
       this.savePasswordResetData(resetData);
-      console.log(this.getResetId())
-      console.log(this.getResetToken())
-
     })
   };
 
@@ -100,9 +95,8 @@ export class AuthenticationService {
 
   public passwordReset(request: {}): Promise<any>{
     return this.passwordResetApiCall('password-reset', request)
-    .then( (response: any) => {
+    .then( () => {
       this.deleteResetData();
-      console.log("password reset call ", response);
     })
   };
 
@@ -143,7 +137,6 @@ export class AuthenticationService {
 
       if(token != 'null'){
         const {email, name, role, study_deck, quiz_results} = JSON.parse(atob(token.split('.')[1]));
-        //console.log(token, email, name);
         return {email, name, role, study_deck, quiz_results} as User;
       }
     }

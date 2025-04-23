@@ -52,8 +52,7 @@ export class AddMedicationComponent implements OnInit{
     if(this.addForm.valid){
       this.medicationService.addMedication(this.addForm.value)
       .subscribe({
-        next: (data: any) => {
-          console.log(data);
+        next: () => {
           this.router.navigate(['list-medications'])
         },
         error: (error: any) => {

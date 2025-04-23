@@ -52,9 +52,8 @@ export class AddMedicationIndicationComponent implements OnInit{
     if(this.indicationForm.valid){
       this.medService.addMedicationIndication(this.indicationForm.value)
       .subscribe({
-        next: (value: any) => {
+        next: () => {
           this.router.navigate(['list-medications'])
-          console.log('success: ', value)
         },
         error: (err: any) => {
           console.log(err)

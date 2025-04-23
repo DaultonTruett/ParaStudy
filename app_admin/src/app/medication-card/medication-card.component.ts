@@ -75,6 +75,7 @@ export class MedicationCardComponent implements OnInit{
         this.authService.updateToken(this.user.email);
       },
       error: (err: any) => {
+        console.log(err)
         this._snack.open("Something went wrong...", 'Ok', {
           duration: 3000
         })
@@ -106,6 +107,7 @@ export class MedicationCardComponent implements OnInit{
         this.authService.updateToken(this.user.email);
       },
       error: (err: any) => {
+        console.log(err)
         this._snack.open("Something went wrong...", 'Ok', {
           duration: 3000
         });

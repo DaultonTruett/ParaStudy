@@ -27,9 +27,7 @@ export class ResetPasswordComponent implements OnInit{
   )
   {}
 
-  ngOnInit(){
-    
-  }
+  ngOnInit(){}
 
   public user = {
     name: '',

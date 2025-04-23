@@ -57,8 +57,7 @@ export class AddMedicationDoseComponent implements OnInit{
     if(this.add_dose_form.valid){
       this.medService.addMedicationDose(this.add_dose_form.value)
       .subscribe({
-        next: (value: any) => {
-          console.log(value);
+        next: () => {
           this.router.navigate(['list-medications'])
         },
         error: (err: any) => {

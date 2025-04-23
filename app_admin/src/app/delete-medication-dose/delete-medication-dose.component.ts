@@ -53,7 +53,7 @@ export class DeleteMedicationDoseComponent implements OnInit{
   onSubmit(){
     this.medService.deleteMedicationDose(this.data)
     .subscribe({
-      next: (value: any) => {
+      next: () => {
         this.router.navigate(['list-medications']);
       },
       error: (err: any) => {

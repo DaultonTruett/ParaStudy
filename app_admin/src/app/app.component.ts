@@ -3,7 +3,6 @@ import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,7 +27,7 @@ import { FooterComponent } from './footer/footer.component';
   ],
 })
 export class AppComponent implements OnInit{
-  title = 'parastudy';
+  title = 'PARASTUDY';
 
   constructor(
     private authenticationService: AuthenticationService

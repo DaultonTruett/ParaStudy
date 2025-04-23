@@ -14,10 +14,6 @@ import { DeleteMedicationIndicationComponent } from './delete-medication-indicat
 import { AddMedicationDoseComponent } from './add-medication-dose/add-medication-dose.component';
 import { EditMedicationDoseComponent } from './edit-medication-dose/edit-medication-dose.component';
 import { DeleteMedicationDoseComponent } from './delete-medication-dose/delete-medication-dose.component';
-import { ListProtocolsComponent } from './list-protocols/list-protocols.component';
-import { AddProtocolComponent } from './add-protocol/add-protocol.component';
-import { EditProtocolComponent } from './edit-protocol/edit-protocol.component';
-import { DeleteProtocolComponent } from './delete-protocol/delete-protocol.component';
 import { StudydeckComponent } from './studydeck/studydeck.component'
 import { QuizComponent } from './quiz/quiz.component';
 import { UserAccountComponent } from './user-account/user-account.component';
@@ -39,10 +35,6 @@ export const routes: Routes = [
     {path: 'add-medication-dose', component: AddMedicationDoseComponent},
     {path: 'edit-medication-dose', component: EditMedicationDoseComponent},
     {path: 'delete-medication-dose', component: DeleteMedicationDoseComponent},
-    {path: 'list-protocols', component: ListProtocolsComponent},
-    {path: 'add-protocol', component: AddProtocolComponent},
-    {path: 'edit-protocol', component: EditProtocolComponent},
-    {path: 'delete-protocol', component: DeleteProtocolComponent},
     {path: 'flashcards', component: StudydeckComponent},
     {path: 'quiz', component: QuizComponent},
     {path: 'my-account', component: UserAccountComponent},

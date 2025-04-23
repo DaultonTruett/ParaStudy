@@ -55,8 +55,7 @@ export class UserAccountComponent implements OnInit{
 
     return this.userDataService.deleteAllFlashcards(this.user)
     .subscribe({
-      next: (value: any) => {
-        console.log(value)
+      next: () => {
         this._snack.open('All flashcards successfully removed from study deck.', 'Ok', {
           duration: 3000
         });
@@ -82,8 +81,7 @@ export class UserAccountComponent implements OnInit{
 
     return this.userDataService.deleteAllQuizResults(this.user)    
     .subscribe({
-      next: (value: any) => {
-        console.log(value)
+      next: () => {
         this._snack.open('Quiz history cleared.', 'Ok', {
           duration: 3000
         });
@@ -109,12 +107,3 @@ export class UserAccountComponent implements OnInit{
   };
 
 };
-
-@Component({
-  selector: 'dialog',
-  standalone: true,
-  templateUrl: './dialog.html',
-  styleUrl: './user-account.component.css',
-  imports: [MatButtonModule],
-})
-export class dialog{}

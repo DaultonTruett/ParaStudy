@@ -49,7 +49,6 @@ export class ListMedicationsComponent implements OnInit{
     .subscribe({
       next: (value: any) => {
         this.medications = value;
-        console.log(this.medications)
 
         if(value.length > 0){
           this.msg = value.length + 'meds in DB';

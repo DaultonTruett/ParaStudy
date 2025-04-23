@@ -38,8 +38,7 @@ export class DeleteMedicationComponent implements OnInit{
 
     this.medicationDataService.deleteMedication(data)
     .subscribe({
-      next: (value: any) => {
-        console.log(value);
+      next: () => {
         this.router.navigate(['list-medications']);
       },
       error: (error: any) => {

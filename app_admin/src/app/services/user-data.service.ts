@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { User } from '../models/user';
-import { AuthenticationService } from './authentication.service'
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -12,8 +11,7 @@ import { environment } from '../../environments/environment';
 export class UserDataService {
 
   constructor(
-    private http: HttpClient,
-    private authService: AuthenticationService
+    private http: HttpClient
   ) { }
 
   private apiBaseUrl = environment.apiUrl;
@@ -39,7 +37,6 @@ export class UserDataService {
   };
 
   public addQuizResult(user: User, quizResult: any): Observable<any>{
-  
     return this.http.post(`${this.apiBaseUrl}/addQuizResult`, {
       user: user,
       result: quizResult

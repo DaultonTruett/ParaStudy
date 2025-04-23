@@ -44,7 +44,7 @@ export class DeleteUserAccountComponent implements OnInit{
     return this.authService.deleteUserAccount(this.user)
     .subscribe({
       error: (err: any) => {
-        //console.log(err)
+        console.log(err)
         this._snack.open('ERROR: something went wrong...please try again.', 'Ok', {
           duration: 5000
         })

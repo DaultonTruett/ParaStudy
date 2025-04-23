@@ -81,8 +81,6 @@ export class QuizComponent implements OnInit{
       9: ['', Validators.required]
     })
 
-
-
     this.getQuizMeds();
   };
 
@@ -157,7 +155,6 @@ export class QuizComponent implements OnInit{
           }else{
             this.msg = 'No medications found.';
           };
-          console.log(this.msg);
         },
         error: function(error: any){
           console.log('Error: ' + error);
@@ -182,7 +179,7 @@ export class QuizComponent implements OnInit{
 
     this.userDataService.addQuizResult(this.user, this.result)
     .subscribe({
-      next: (value: any) => {
+      next: () => {
         this.authService.updateToken(this.user.email);
       },
       error: (error: any) => {
