@@ -16,7 +16,6 @@ require('./config/passport');
 // define routes
 const apiRouter = require('./routes/index');
 
-
 const app = express();
 
 app.use(logger('dev'));
@@ -26,7 +25,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(passport.initialize());
-
 
 //CORS
 app.use('/api', (req, res, next) => {
@@ -42,17 +40,14 @@ app.use('/api', (req, res, next) => {
   next();
 });
 
-
 // wire routes
 app.use('/api', apiRouter);
-
 
 app.use( (err, req, res, next) => {
   if(err.name === 'UnauthorizedError'){
     res.status(401).json({message: err.name + ': ' + err.message});
   };
 });
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

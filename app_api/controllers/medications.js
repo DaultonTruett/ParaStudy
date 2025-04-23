@@ -68,29 +68,6 @@ const addMedication = async(req, res) => {
     });
 };
 
-/*
-    await auth.getUser(req, res, (req, res) => {
-        Med.create({
-            category: req.body.category,
-            name: req.body.name,
-            age: req.body.age,
-            indications_dose: [[req.body.indications, req.body.dose]],
-            mu: req.body.mu,
-            contraindications: req.body.contraindications,
-            sideEffects: req.body.sideEffects,
-            actions: req.body.actions,
-            notes: req.body.notes
-    }).then(med => {
-        if(!med){
-            return res.status(404).json({message: 'Not found'});
-        }
-        res.send(med);
-    }).catch(err => {
-        return res.status(500).json(err);
-    })
-    });
-*/
-
 const updateMedication = async(req, res) => {
     await auth.getUser(req, res, (req, res) => {
         Med.findOneAndUpdate(
@@ -232,7 +209,6 @@ const addMedicationDose = async(req, res) => {
             if(!med){
                 return res.status(404).send({message: 'Not found'});
             };
-            console.log(med)
             return res.status(200).send(med);
         }).catch(err => {
             return res.status(500).json(err)
@@ -305,7 +281,6 @@ const deleteMedicationDose = async(req, res) => {
         if(!med){
             return res.status(404).send({message: 'Not found'});
         };
-        console.log(med)
         return res.status(200).send(med);
     }).catch(err => {
         return res.status(500).json(err)
