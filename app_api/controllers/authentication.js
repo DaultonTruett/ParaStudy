@@ -9,27 +9,21 @@ const BCRYPT_SALT = process.env.BCRYPT_SALT;
 const sendEmail = require('../utils/sendEmail');
 
 const register = async(req, res) => {
-    let checkUser = await User.findOne({email: req.body.email});
-
-    if(checkUser){
-        res.status(422).json({msg: "Email already exists"});
-    };
-
-    const user = new User();
-    user.name = req.body.name;
-    user.email = req.body.email;
-    user.role = req.body.role;
-    user.study_deck = [];
-    user.quiz_results = [];
-    user.setPassword(req.body.password);
-
-    const token = user.generateJwt();
 
     try{
+        const user = new User();
+        user.name = req.body.name;
+        user.email = req.body.email;
+        user.role = req.body.role;
+        user.study_deck = [];
+        user.quiz_results = [];
+        user.setPassword(req.body.password);
+    
+        const token = user.generateJwt();
+        
         await user.save();
         res.status(200).json({token});
     }catch(err){
-        console.log(err);
         res.status(400).json(err);
     }
 };
@@ -50,8 +44,8 @@ const login = (req, res) => {
 
 const deleteUserAccount = async(req, res) => {
     await User.findOneAndDelete({email: req.body.user.email})
-    .then(respond =>{
-        res.status(200).send("Ok")
+    .then( response => {
+        res.status(200).send(response)
     })
     .catch(err => {
         res.status(404).send(err);
@@ -134,8 +128,6 @@ const resetPassword = async(req, res) => {
     if(!passwordResetToken){
         return res.status(400).json({msg: "Invalid or expired reset token"});
     };
-
-    console.log(passwordResetToken.token, token);
 
     const isValid = await bcrypt.compare(token, passwordResetToken.token);
 
