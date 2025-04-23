@@ -11,7 +11,6 @@ const auth = jwt({
 // controllers
 const authController = require('../controllers/authentication');
 const medController = require('../controllers/medications');
-const protocolsController = require('../controllers/protocols');
 const userDataController = require('../controllers/userData');
 
 // Account management
@@ -100,45 +99,6 @@ router
 router
     .route('/medications/deleteMedicationDose/:_id')
     .put(auth, medController.deleteMedicationDose)
-
-// NOTE: remove
-router
-    .route('/cardiac/medications/:category')
-    .get(medController.getMedsByCategory);
-
-router
-    .route('/medical/medications/:category')
-    .get(medController.getMedsByCategory)
-
-router
-    .route('/trauma/medications/:category')
-    .get(medController.getMedsByCategory)
-
-
-// Protocols
-router
-    .route('/protocols')
-    .get(protocolsController.getProtocols)
-    .post(auth, protocolsController.addProtocol);
-
-router
-    .route('/protocols/:_id')
-    .get(protocolsController.getProtocolsById)
-    .put(auth, protocolsController.updateProtocol)
-    .post(auth, protocolsController.deleteProtocol);
-
-router
-    .route('/cardiac/protocols/:category')
-    .get(protocolsController.getProtocolsByCategory);
-
-router
-    .route('/medical/protocols/:category')
-    .get(protocolsController.getProtocolsByCategory);
-
-router
-    .route('/trauma/protocols/:category')
-    .get(protocolsController.getProtocolsByCategory);
-
 
 
 module.exports = router;

@@ -64,7 +64,6 @@ connect();
 
 // pull in models
 require('./medications');
-require('./protocols');
 require('./users');
 require('./resetPasswordToken');
 
