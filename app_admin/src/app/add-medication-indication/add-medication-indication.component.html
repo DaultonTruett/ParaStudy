@@ -60,8 +60,9 @@
 
                 <div class="form_fields">
                     <label>Notes</label>
-                    <input type="text" formControlName="notes" placeholder="notes"
+                    <textarea type="text" formControlName="notes" placeholder="notes"
                         [ngClass]="{'is-invalid': submitted && values['notes'].errors}">
+                    </textarea>
         
                     <div *ngIf="submitted && values['notes'].errors">
                         <div *ngIf="values['notes'].errors?.['required']">
