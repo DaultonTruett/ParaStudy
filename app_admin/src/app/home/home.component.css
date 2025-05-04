@@ -15,17 +15,23 @@ Landing page logged out
 
 #landing_div{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(180deg, #1E3E59 7%, #047CCC 85%, #44B2F2 100%)
 }
 
 #hero_div{
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
+    margin: 2rem 0;
+    padding: 2.5rem;
 }
 
 #hero_info_div{
@@ -110,6 +116,11 @@ mat-card-content{
 }
 
 @media screen and (max-width: 1200px){
+    #hero_div{
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
     #logo {
         width: 200px;
         height: 200px;
@@ -123,10 +134,6 @@ mat-card-content{
 
 @media screen and (max-width: 800px){
     /* -- Not Logged in --*/
-    #hero_div{
-        flex-direction: column;
-    }
-
     #hero_info_div{
         width: 90vw;
         display: flex;

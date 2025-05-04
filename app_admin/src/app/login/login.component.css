@@ -1,7 +1,7 @@
 
 #page_div{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -14,10 +14,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2.5rem;
     background-color: #e8eef1;
     border-radius: 5%;
     box-shadow: 2px 2px #1E3E59;
+    margin: 2rem 0;
+    padding: 2.5rem;
 }
 
 #logo_div{
